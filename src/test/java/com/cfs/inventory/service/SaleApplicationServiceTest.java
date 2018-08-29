@@ -34,11 +34,11 @@ public class SaleApplicationServiceTest {
 	
 	@Test
 	public void successfulOrder() {
-		Product product = new Product("Ketchup","Banana Ketchup",10,5,ProductCategory.FINISHED_GOODS);
+		Product product = new Product("Ketchup","Banana Ketchup",50,5,ProductCategory.FINISHED_GOODS);
 		entityManager.persist(product);
 		Product oysterSauce = new Product("Oyster Sauce","Oyster Sauce",50,5,ProductCategory.FINISHED_GOODS);
 		entityManager.persist(oysterSauce);
-		
+		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);
 		saleApplication.enterItem(oysterSauce.getId(), 20);
 		Delivery delivery = new Delivery();

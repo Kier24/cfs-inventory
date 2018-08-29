@@ -39,7 +39,7 @@ public class DeliveryController {
 		return new ModelAndView("delivery", "orderList", saleList);
 
 	}
-
+	
 	@PostMapping(value = "/deliveryEvents")
 	@ResponseBody
 	public List<Event> getDeliveryEvents(@RequestParam String start, @RequestParam String end) {
@@ -56,4 +56,6 @@ public class DeliveryController {
 		return eventList;
 
 	}
+	
+	
 }
