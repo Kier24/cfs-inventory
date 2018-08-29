@@ -365,7 +365,6 @@
 					<form action="#" th:action="@{/rawMaterials/add}"
 						th:object="${product}" method="post">
 						<div class="modal-body">
-							<form action="" method="post" novalidate="novalidate">
 								<input id="editId" name="editId" type="hidden" th:field="*{id}">
 								<div class="form-group has-success">
 									<label for="editName" class="control-label mb-1">Product
@@ -400,8 +399,6 @@
 										autocomplete="cc-number" /> <span class="help-block"
 										data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
 								</div>
-
-							</form>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -421,7 +418,7 @@
 			aria-labelledby="smallmodalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
-					<form action="#" th:action="@{/rawMaterials/delete}" method="post">
+					<form action="#" th:action="@{/inventory/rawMaterials/delete}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
 							<button type="button" class="close" data-dismiss="modal"

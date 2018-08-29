@@ -2,424 +2,531 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content="au theme template"/>
-    <meta name="author" content="Hau Nguyen"/>
-    <meta name="keywords" content="au theme template"/>
+<!-- Required meta tags-->
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="au theme template" />
+<meta name="author" content="Hau Nguyen" />
+<meta name="keywords" content="au theme template" />
 
-    <!-- Title Page-->
-    <title>Finished Goods</title>
+<!-- Title Page-->
+<title>Finished Goods</title>
 
-    <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all"/>
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"/>
+<!-- Fontfaces CSS-->
+<link href="css/font-face.css" rel="stylesheet"
+	th:href="@{/css/font-face.css}" media="all" />
+<link href="vendor/font-awesome-4.7/css/font-awesome.min.css"
+	th:href="@{/vendor/font-awesome-4.7/css/font-awesome.min.css}"
+	rel="stylesheet" media="all" />
+<link href="vendor/font-awesome-5/css/fontawesome-all.min.css"
+	th:href="@{/vendor/font-awesome-5/css/fontawesome-all.min.css}"
+	rel="stylesheet" media="all" />
+<link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
+	th:href="@{/vendor/mdi-font/css/material-design-iconic-font.min.css}"
+	rel="stylesheet" media="all" />
 
-    <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all"/>
+<!-- Bootstrap CSS-->
+<link href="vendor/bootstrap-4.1/bootstrap.min.css"
+	th:href="@{/vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet"
+	media="all" />
 
-    <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all"/>
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all"/>
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all"/>
+<!-- Vendor CSS-->
+<link href="vendor/animsition/animsition.min.css"
+	th:href="@{/vendor/animsition/animsition.min.css}" rel="stylesheet"
+	media="all" />
+<link
+	href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+	th:href="@{/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}"
+	rel="stylesheet" media="all" />
+<link href="vendor/wow/animate.css" th:href="@{/vendor/wow/animate.css}"
+	rel="stylesheet" media="all" />
+<link href="vendor/css-hamburgers/hamburgers.min.css"
+	th:href="@{/vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet"
+	media="all" />
+<link href="vendor/slick/slick.css" rel="stylesheet"
+	th:href="@{/vendor/slick/slick.css}" media="all" />
+<link href="vendor/select2/select2.min.css"
+	th:href="@{/vendor/select2/select2.min.css}" rel="stylesheet"
+	media="all" />
+<link href="vendor/perfect-scrollbar/perfect-scrollbar.css"
+	th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}"
+	rel="stylesheet" media="all" />
 
-    <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all"/>
+<!-- Main CSS-->
+<link href="css/theme.css" th:href="@{/css/theme.css}" rel="stylesheet"
+	media="all" />
 
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
-      	 <!-- HEADER-->
-        <header  th:replace="fragments/menu :: menu"></header>
-        <aside  th:replace="fragments/menu :: sidebar"></aside>
-        <!-- END HEADER -->
+	<div class="page-wrapper">
+		<!-- HEADER-->
+		<header th:replace="fragments/menu :: menu"></header>
+		<aside th:replace="fragments/menu :: sidebar"></aside>
+		<!-- END HEADER -->
 
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="login.html">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- END HEADER DESKTOP-->
+		<!-- PAGE CONTAINER-->
+		<div class="page-container">
+			<!-- HEADER DESKTOP-->
+			<header class="header-desktop">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+						<div class="header-wrap">
+							<form class="form-header" action="" method="POST">
+								<input class="au-input au-input--xl" type="text" name="search"
+									placeholder="Search for datas &amp; reports..." />
+								<button class="au-btn--submit" type="submit">
+									<i class="zmdi zmdi-search"></i>
+								</button>
+							</form>
+							<div class="header-button">
+								<div class="noti-wrap">
+									<div class="noti__item js-item-menu">
+										<i class="zmdi zmdi-notifications"></i> <span class="quantity">3</span>
+										<div class="notifi-dropdown js-dropdown">
+											<div class="notifi__title">
+												<p>You have 3 Notifications</p>
+											</div>
+											<div class="notifi__item">
+												<div class="bg-c1 img-cir img-40">
+													<i class="zmdi zmdi-email-open"></i>
+												</div>
+												<div class="content">
+													<p>You got a email notification</p>
+													<span class="date">April 12, 2018 06:50</span>
+												</div>
+											</div>
+											<div class="notifi__item">
+												<div class="bg-c2 img-cir img-40">
+													<i class="zmdi zmdi-account-box"></i>
+												</div>
+												<div class="content">
+													<p>Your account has been blocked</p>
+													<span class="date">April 12, 2018 06:50</span>
+												</div>
+											</div>
+											<div class="notifi__item">
+												<div class="bg-c3 img-cir img-40">
+													<i class="zmdi zmdi-file-text"></i>
+												</div>
+												<div class="content">
+													<p>You got a new file</p>
+													<span class="date">April 12, 2018 06:50</span>
+												</div>
+											</div>
+											<div class="notifi__footer">
+												<a href="#">All notifications</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="account-wrap">
+									<div class="account-item clearfix js-item-menu">
+										<div class="image">
+											<img src="images/icon/avatar-01.jpg"
+												th:src="@{/images/icon/avatar-01.jpg}" alt="John Doe" />
+										</div>
+										<div class="content">
+											<a class="js-acc-btn" href="#">john doe</a>
+										</div>
+										<div class="account-dropdown js-dropdown">
+											<div class="info clearfix">
+												<div class="image">
+													<a href="#"> <img src="images/icon/avatar-01.jpg"
+														th:src="@{/images/icon/avatar-01.jpg}" alt="John Doe" />
+													</a>
+												</div>
+												<div class="content">
+													<h5 class="name">
+														<a href="#">john doe</a>
+													</h5>
+													<span class="email">johndoe@example.com</span>
+												</div>
+											</div>
+											<div class="account-dropdown__body">
+												<div class="account-dropdown__item">
+													<a href="#"> <i class="zmdi zmdi-account"></i>Account
+													</a>
+												</div>
+											</div>
+											<div class="account-dropdown__footer">
+												<a href="login.html"> <i class="zmdi zmdi-power"></i>Logout
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- END HEADER DESKTOP-->
 
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                            <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Finished Goods</h3>
-                                <div class="table-data__tool">
+			<!-- MAIN CONTENT-->
+			<div class="main-content">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<!-- DATA TABLE -->
+								<h3 class="title-5 m-b-35">Finished Goods</h3>
+								<div class="table-data__tool">
 									<div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#addModal">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-											
-                                    </div>
-                                </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Stock</th>
+										<button class="au-btn au-btn-icon au-btn--green au-btn--small"
+											data-toggle="modal" data-target="#addModal">
+											<i class="zmdi zmdi-plus"></i>add item
+										</button>
+
+									</div>
+								</div>
+								<div class="table-responsive table-responsive-data2">
+									<table class="table table-data2">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Description</th>
+												<th>Stock</th>
 												<th>Critical Level</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <th:block th:each="material:${materialList}">
-                                            <tr class="tr-shadow" th:id="${material.id}">
-                                                
-                                                <td th:text="${material.name}">Ketchup</td>
-                                                <td th:text="${material.description}"class="desc">Banana Ketchup</td>
-                                                <td th:text="${material.quantity}">200</td>
-												<td>50</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="modal" data-target="#viewModal"  title="Send">
-                                                           <i class="fa fa-search"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="modal" data-target="#editModal" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="modal" data-target="#deletemodal" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            </th:block>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                   
-                </div>
-            </div>
-        </div>
+											</tr>
+										</thead>
+										<tbody>
+											<th:block th:each="material:${materialList}">
+												<tr class="tr-shadow" th:id="${material.id}">
+
+													<td id="name" th:text="${material.name}">Ketchup</td>
+													<td id="description" th:text="${material.description}"
+														class="desc">Banana Ketchup</td>
+													<td id="quantity" th:text="${material.quantity}">200</td>
+													<td id="criticalLevel" th:text="${material.criticalLevel}">50</td>
+													<td>
+														<div class="table-data-feature">
+															<button class="item" data-toggle="modal"
+																data-target="#viewModal" title="Send">
+																<i class="fa fa-search"></i>
+															</button>
+															<button class="item btnEdit" data-toggle="modal"
+																data-target="#editModal" title="Edit">
+																<i class="zmdi zmdi-edit"></i>
+															</button>
+															<button class="item btnDelete" data-toggle="modal"
+																data-target="#deletemodal" title="Delete">
+																<i class="zmdi zmdi-delete"></i>
+															</button>
+														</div>
+													</td>
+												</tr>
+												<tr class="spacer"></tr>
+											</th:block>
+										</tbody>
+									</table>
+								</div>
+								<!-- END DATA TABLE -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="copyright">
+									<p>
+										Copyright © 2018 Colorlib. All rights reserved. Template by <a
+											href="https://colorlib.com">Colorlib</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-		<!-- Modal View -->
-			<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">View Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+	<!-- Modal View -->
+	<div class="modal fade" id="viewModal" tabindex="-1" role="dialog"
+		aria-labelledby="mediumModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="mediumModalLabel">View Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="#" method="post">
+						<div class="form-group has-success">
+							<label for="cc-name" class="control-label mb-1">Product
+								Name</label> <input id="cc-name" name="cc-name" type="text"
+								class="form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the product name"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" disabled /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 						</div>
-						<div class="modal-body">
-									<form action="#" method="post" >
-                                            <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Product Name</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the product name"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" disabled/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="form-group has-success">
-                                                <label for="cc-desc" class="control-label mb-1">Description</label>
-                                                <input id="cc-desc" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" disabled/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="row form-group">
-                                                <div class="col-4">
-													 <label for="cc-quantity" class="control-label mb-1">Stock</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" disabled/>
-                                                </div>
-                                                <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Stock Limit</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock limit" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" disabled/>
-                                                </div>
-												 <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Category</label>
-													<input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter product category" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" disabled/>
-                                                </div>
-                                            </div>
-                                    </form>
+						<div class="form-group has-success">
+							<label for="cc-desc" class="control-label mb-1">Description</label>
+							<input id="cc-desc" name="cc-name" type="text"
+								class="form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the description"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" disabled /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check"></i>OK</button>
+						<div class="row form-group">
+							<div class="col-4">
+								<label for="cc-quantity" class="control-label mb-1">Stock</label>
+								<input id="cc-quantity" name="cc-number" type="tel"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" disabled />
+							</div>
+							<div class="col-4">
+								<label for="cc-quantity" class="control-label mb-1">Stock
+									Limit</label> <input id="cc-quantity" name="cc-number" type="tel"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock limit"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" disabled />
+							</div>
+							<div class="col-4">
+								<label for="cc-quantity" class="control-label mb-1">Category</label>
+								<input id="cc-quantity" name="cc-number" type="tel"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter product category"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" disabled />
+							</div>
 						</div>
-					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						<i class="fa fa-check"></i>OK
+					</button>
 				</div>
 			</div>
-		<!-- end modal view -->
-		<!-- Modal Add -->
-			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">Add Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+		</div>
+	</div>
+	<!-- end modal view -->
+	<!-- Modal Add -->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+		aria-labelledby="mediumModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="mediumModalLabel">Add Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="#" th:action="@{/inventory/finishedGoods/add}"
+					th:object="${product}" method="post">
+					<div class="modal-body">
+						<div class="form-group has-success">
+							<label for="cc-name" class="control-label mb-1">Product
+								Name</label> <input id="cc-name" name="cc-name" th:field="*{name}"
+								type="text" class=" form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the product name"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 						</div>
-						<div class="modal-body">
-									<form action="#" method="post" >
-                                            <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Product Name</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the product name"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" />
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="form-group has-success">
-                                                <label for="cc-desc" class="control-label mb-1">Description</label>
-                                                <input id="cc-desc" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" required/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="row form-group">
-                                                <div class="col-4">
-													 <label for="cc-quantity" class="control-label mb-1">Stock</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-                                                <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Stock Limit</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock limit" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-												 <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Category</label>
-													<input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter product category" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-                                            </div>
-                                    </form>
+						<div class="form-group has-success">
+							<label for="cc-desc" class="control-label mb-1">Description</label>
+							<input id="cc-desc" name="cc-name" th:field="*{description}"
+								type="text" class="form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the description"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" required /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
-							<button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</button>
+						<div class="row form-group">
+							<div class="col-6">
+								<label for="cc-quantity" class="control-label mb-1">Stock</label>
+								<input id="cc-quantity" name="cc-number" th:field="*{quantity}"
+									type="number" class="form-control cc-number identified visa"
+									value="" data-val="true"
+									data-val-required="Please enter the product stock"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" required />
+							</div>
+							<div class="col-6">
+								<label for="cc-quantity" class="control-label mb-1">Critical
+									Level</label> <input id="cc-quantity" name="cc-number"
+									th:field="*{criticalLevel}" type="number"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock limit"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" required />
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		<!-- end modal Add -->
-		
-		<!-- Modal Edit -->
-			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">Edit Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-									<form action="#" method="post" >
-                                            <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Product Name</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the product name"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" />
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="form-group has-success">
-                                                <label for="cc-desc" class="control-label mb-1">Description</label>
-                                                <input id="cc-desc" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" required/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="row form-group">
-                                                <div class="col-4">
-													 <label for="cc-quantity" class="control-label mb-1">Stock</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-                                                <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Stock Limit</label>
-                                                    <input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock limit" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-												 <div class="col-4">
-													<label for="cc-quantity" class="control-label mb-1">Category</label>
-													<input id="cc-quantity" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter product category" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number" required/>
-                                                </div>
-                                            </div>
-                                    </form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- end modal medium -->
-		
-		<!-- Modal Delete -->
-			<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm" role="document">
-					<div class="modal-content">
-					<form action="#" th:action="@{/rawMaterials/delete}" method="post">
-						<div class="modal-header">
-							<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<p>
-								Are you sure you want to Delete?
-							</p>
-							<input id="deleteId" name="deleteId" type="hidden">
-						
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button type="submit" class="btn btn-primary">Confirm</button>
-						</div>
-					</form>	
-					</div>
-				</div>
-			</div>
-			<!-- end modal small -->
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">
+							<i class="fa fa-times-circle"></i> Cancel
+						</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-plus-square"></i> Add
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end modal Add -->
 
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
+	<!-- Modal Edit -->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+		aria-labelledby="mediumModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="mediumModalLabel">Edit Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="#" th:action="@{/inventory/finishedGoods/add}"
+					th:object="${product}" method="post">
+					<div class="modal-body">
+						<input id="editId" name="editId" type="hidden" th:field="*{id}">
+						<div class="form-group has-success">
+							<label for="cc-name" class="control-label mb-1">Product
+								Name</label> <input id="editName" name="cc-name" th:field="*{name}"
+								type="text" class="form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the product name"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+						</div>
+						<div class="form-group has-success">
+							<label for="cc-desc" class="control-label mb-1">Description</label>
+							<input id="editDesc" name="cc-name" th:field="*{description}"
+								type="text" class="form-control cc-name valid" data-val="true"
+								data-val-required="Please enter the description"
+								autocomplete="cc-name" aria-required="true" aria-invalid="false"
+								aria-describedby="cc-name-error" required /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+						</div>
+						<div class="row form-group">
+							<div class="col-6">
+								<label for="cc-quantity" class="control-label mb-1">Stock</label>
+								<input id="editQuantity" name="cc-number" th:field="*{quantity}"
+									type="number" class="form-control cc-number identified visa"
+									value="" data-val="true"
+									data-val-required="Please enter the product stock"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" required />
+							</div>
+							<div class="col-6">
+								<label for="cc-quantity" class="control-label mb-1">Critical
+									Level</label> <input id="editCriticalLevel" name="cc-number"
+									th:field="*{criticalLevel}" type="number"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock limit"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" required />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-edit"></i>Edit
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end modal medium -->
+
+	<!-- Modal Delete -->
+	<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog"
+		aria-labelledby="smallmodalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<form action="#" th:action="@{/inventory/rawMaterials/delete}"
+					method="post">
+					<div class="modal-header">
+						<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to Delete?</p>
+						<input id="deleteId" name="deleteId" type="hidden">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">Confirm</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end modal small -->
+
+	<!-- Jquery JS-->
+	<script src="vendor/jquery-3.2.1.min.js"
+		th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
+	<!-- Bootstrap JS-->
+	<script src="vendor/bootstrap-4.1/popper.min.js"
+		th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
+	<script src="vendor/bootstrap-4.1/bootstrap.min.js"
+		th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
+	<!-- Vendor JS       -->
+	<script src="vendor/slick/slick.min.js"
+		th:src="@{/vendor/slick/slick.min.js}">
+		
+	</script>
+	<script src="vendor/wow/wow.min.js" th:src="@{/vendor/wow/wow.min.js}"></script>
+	<script src="vendor/animsition/animsition.min.js"
+		th:src="@{/vendor/animsition/animsition.min.js}"></script>
+	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"
+		th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}">
+		
+	</script>
+	<script src="vendor/counter-up/jquery.waypoints.min.js"
+		th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
+	<script src="vendor/counter-up/jquery.counterup.min.js"
+		th:src="@{/vendor/counter-up/jquery.counterup.min.js}"></script>
+	<script src="vendor/circle-progress/circle-progress.min.js"
+		th:src="@{/vendor/circle-progress/circle-progress.min.js}"></script>
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"
+		th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.js}"></script>
+	<script src="vendor/chartjs/Chart.bundle.min.js"
+		th:src="@{/vendor/chartjs/Chart.bundle.min.js}"></script>
+	<script src="vendor/select2/select2.min.js"
+		th:src="@{/vendor/select2/select2.min.js}">
+		
+	</script>
+
+	<!-- Main JS-->
+	<script src="js/main.js" th:src="@{/js/main.js}"></script>
+	<!-- User-defined JS-->
+	<script src="external/crud.js" th:src="@{/external/crud.js}"></script>
 
 </body>
 

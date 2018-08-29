@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,6 +16,7 @@ import com.cfs.inventory.domain.model.ProductCategory;
 import com.cfs.inventory.domain.model.ProductRepository;
 
 @Controller
+@RequestMapping(value="/inventory")
 public class InventoryController {
 
 	@Autowired
@@ -29,7 +31,7 @@ public class InventoryController {
 		modelView.addObject(new Product());
 		return modelView;
 	}
-	
+
 	@GetMapping(value = "/finishedGoods")
 	public ModelAndView getFinishedGoods() {
 		ModelAndView modelView = new ModelAndView();
@@ -40,25 +42,35 @@ public class InventoryController {
 		return modelView;
 	}
 
-	@PostMapping(value = "/rawMaterials/add")
-	public String saveRawMaterials(@Valid @ModelAttribute("product") Product product) {
-		product.setCategory(ProductCategory.RAW_MATERIALS);
-		if(product.getName()==null) {
-			throw new IllegalStateException("Product name is null.");
-		}
-		System.out.println("ID "+product.getId());
+	@PostMapping(value = "/finishedGoods/add")
+	public String saveFinishedGoods(@Valid @ModelAttribute("product")Product product) {
+		product.setCategory(ProductCategory.FINISHED_GOODS);
 		productRepository.save(product);
-	
-		return "redirect:/rawMaterials";
+		return "redirect:/inventory/finishedGoods";
 	}
-
-	@PostMapping(value = "/rawMaterials/delete")
-	public String deleteRawMaterial(@RequestParam(name="deleteId") Long productId) {
+	
+	@PostMapping(value = "/finishedGoods/delete")
+	public String deleteFinishedGood(@RequestParam(name = "deleteId") Long productId) {
 
 		productRepository.delete(productId);
 
-		return "redirect:/rawMaterials";
+		return "redirect:/inventory/finishedGoods";
 	}
-	
+
+	@PostMapping(value = "/rawMaterials/add")
+	public String saveRawMaterials(@Valid @ModelAttribute("product") Product product) {
+		product.setCategory(ProductCategory.RAW_MATERIALS);
+		productRepository.save(product);
+
+		return "redirect:inventory/rawMaterials";
+	}
+
+	@PostMapping(value = "/rawMaterials/delete")
+	public String deleteRawMaterial(@RequestParam(name = "deleteId") Long productId) {
+
+		productRepository.delete(productId);
+
+		return "redirect:/inventory/rawMaterials";
+	}
 
 }

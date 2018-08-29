@@ -2,129 +2,98 @@
 <html>
 <head>
 </head>
-    <body>
-    <header class="header-mobile d-block d-lg-none" th:fragment="menu">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Home</a>
-                        </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-archive"></i>Inventory</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="#" th:action="@{/rawMaterials}">Raw Materials</a>
-                                </li>
-								<li>
-                                    <a href="#" th:action="@{/finishedGoods}">Finished Goods</a>
-                                </li>
-								<li>
-                                    <a href="workinprocess.html">Returned Goods</a>
-                                </li>
-                            </ul>
-                        </li>
-						<li>
-                            <a href="#" th:action="@{/orders}">
-                                <i class="fas fa-table"></i>Order</a>
-                        </li>
-						<li>
-                            <a href="#" th:action="@{/delivery}">
-                                <i class="fas fa-calendar-alt"></i>Deliveries</a>
-                        </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-files-o"></i>Reports</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="rawmaterial.html">Daily Reports</a>
-                                </li>
-								<li>
-                                    <a href="#">Weekly Reports</a>
-                                </li>
-								<li>
-                                    <a href="#">Monthly Reports</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+<body>
+	<header class="header-mobile d-block d-lg-none" th:fragment="menu">
+		<div class="header-mobile__bar">
+			<div class="container-fluid">
+				<div class="header-mobile-inner">
+					<a class="logo" href="index.html"> <img
+						src="images/icon/logo.png" th:src="@{/images/icon/logo.png}"
+						alt="CoolAdmin" />
+					</a>
+					<button class="hamburger hamburger--slider" type="button">
+						<span class="hamburger-box"> <span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar-mobile">
+			<div class="container-fluid">
+				<ul class="navbar-mobile__list list-unstyled">
+					<li class="has-sub"><a class="js-arrow" href="#"> <i
+							class="fas fa-tachometer-alt"></i>Home
+					</a></li>
+					<li class="has-sub"><a class="js-arrow" href="#"> <i
+							class="fa fa-archive"></i>Inventory
+					</a>
+						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+							<li><a href="#" th:action="@{/rawMaterials}">Raw
+									Materials</a></li>
+							<li><a href="#" th:action="@{/finishedGoods}">Finished
+									Goods</a></li>
+							<li><a href="workinprocess.html">Returned Goods</a></li>
+						</ul></li>
+					<li><a href="#" th:action="@{/orders}"> <i
+							class="fas fa-table"></i>Order
+					</a></li>
+					<li><a href="#" th:action="@{/delivery}"> <i
+							class="fas fa-calendar-alt"></i>Deliveries
+					</a></li>
+					<li class="has-sub"><a class="js-arrow" href="#"> <i
+							class="fa fa-files-o"></i>Reports
+					</a>
+						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+							<li><a href="rawmaterial.html">Daily Reports</a></li>
+							<li><a href="#">Weekly Reports</a></li>
+							<li><a href="#">Monthly Reports</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- END HEADER MOBILE-->
 
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block" th:fragment="sidebar">
-            <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
-                </a>
-            </div>
-            <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#" th:href="@{/}">
-                                <i class="fas fa-tachometer-alt"></i>Home</a>
-                        </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-archive"></i>Inventory</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="#" th:href="@{/rawMaterials}">Raw Materials</a>
-                                </li>
-								<li>
-                                    <a href="#" th:href="@{/finishedGoods}">Finished Goods</a>
-                                </li>
-								<li>
-                                    <a href="#">Returned Goods</a>
-                                </li>
-                            </ul>
-                        </li>
-						<li>
-                            <a href="#" th:href="@{/orders}">
-                                <i class="fas fa-table"></i>Order</a>
-                        </li>
-						<li>
-                            <a href="#" th:href="@{/delivery}">
-                                <i class="fas fa-calendar-alt"></i>Deliveries</a>
-                        </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-files-o"></i>Reports</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="rawmaterial.html">Daily Reports</a>
-                                </li>
-								<li>
-                                    <a href="#">Weekly Reports</a>
-                                </li>
-								<li>
-                                    <a href="#">Monthly Reports</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <!-- END MENU SIDEBAR-->
-        </body>
+	<!-- MENU SIDEBAR-->
+	<aside class="menu-sidebar d-none d-lg-block" th:fragment="sidebar">
+		<div class="logo">
+			<a href="#"> <img src="images/icon/logo.png" th:src="@{/images/icon/logo.png}" alt="Cool Admin" />
+			</a>
+		</div>
+		<div class="menu-sidebar__content js-scrollbar1">
+			<nav class="navbar-sidebar">
+				<ul class="list-unstyled navbar__list">
+					<li class="active has-sub"><a class="js-arrow" href="#"
+						th:href="@{/}"> <i class="fas fa-tachometer-alt"></i>Home
+					</a></li>
+					<li class="has-sub"><a class="js-arrow" href="#"> <i
+							class="fa fa-archive"></i>Inventory
+					</a>
+						<ul class="list-unstyled navbar__sub-list js-sub-list">
+							<li><a href="#" th:href="@{/rawMaterials}">Raw Materials</a>
+							</li>
+							<li><a href="#" th:href="@{/finishedGoods}">Finished
+									Goods</a></li>
+							<li><a href="#">Returned Goods</a></li>
+						</ul></li>
+					<li><a href="#" th:href="@{/orders}"> <i
+							class="fas fa-table"></i>Order
+					</a></li>
+					<li><a href="#" th:href="@{/delivery}"> <i
+							class="fas fa-calendar-alt"></i>Deliveries
+					</a></li>
+					<li class="has-sub"><a class="js-arrow" href="#"> <i
+							class="fa fa-files-o"></i>Reports
+					</a>
+						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+							<li><a href="rawmaterial.html">Daily Reports</a></li>
+							<li><a href="#">Weekly Reports</a></li>
+							<li><a href="#">Monthly Reports</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+	<!-- END MENU SIDEBAR-->
+</body>
 </html>

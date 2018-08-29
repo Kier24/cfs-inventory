@@ -8,11 +8,13 @@ $(document).ready(function() {
 		var productName = $(this).closest('tr').find('#name').text();
 		var productDescription = $(this).closest('tr').find('#description').text();
 		var quantity = $(this).closest('tr').find('#quantity').text();
+		var criticalLevel= $(this).closest('tr').find('#criticalLevel').text();
 
 		$('#editId').val(productId);
 		$('#editName').val(productName);
 		$('#editDesc').val(productDescription);
 		$('#editQuantity').val(quantity);
+		$('#editCriticalLevel').val(criticalLevel);
 	});
 	
 	$('.btnView').on('click', function() {
