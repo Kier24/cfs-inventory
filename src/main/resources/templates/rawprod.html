@@ -14,43 +14,56 @@
 <title>Raw Materials</title>
 
 <!-- Fontfaces CSS-->
-<link href="css/font-face.css" rel="stylesheet" media="all" />
+<link href="css/font-face.css" rel="stylesheet"
+	th:href="@{/css/font-face.css}" media="all" />
 <link href="vendor/font-awesome-4.7/css/font-awesome.min.css"
+	th:href="@{/vendor/font-awesome-4.7/css/font-awesome.min.css}"
 	rel="stylesheet" media="all" />
 <link href="vendor/font-awesome-5/css/fontawesome-all.min.css"
+	th:href="@{/vendor/font-awesome-5/css/fontawesome-all.min.css}"
 	rel="stylesheet" media="all" />
 <link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
+	th:href="@{/vendor/mdi-font/css/material-design-iconic-font.min.css}"
 	rel="stylesheet" media="all" />
 
 <!-- Bootstrap CSS-->
-<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet"
+<link href="vendor/bootstrap-4.1/bootstrap.min.css"
+	th:href="@{/vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet"
 	media="all" />
 
 <!-- Vendor CSS-->
-<link href="vendor/animsition/animsition.min.css" rel="stylesheet"
+<link href="vendor/animsition/animsition.min.css"
+	th:href="@{/vendor/animsition/animsition.min.css}" rel="stylesheet"
 	media="all" />
 <link
 	href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+	th:href="@{/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}"
 	rel="stylesheet" media="all" />
-<link href="vendor/wow/animate.css" rel="stylesheet" media="all" />
-<link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet"
+<link href="vendor/wow/animate.css" th:href="@{/vendor/wow/animate.css}"
+	rel="stylesheet" media="all" />
+<link href="vendor/css-hamburgers/hamburgers.min.css"
+	th:href="@{/vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet"
 	media="all" />
-<link href="vendor/slick/slick.css" rel="stylesheet" media="all" />
-<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all" />
+<link href="vendor/slick/slick.css" rel="stylesheet"
+	th:href="@{/vendor/slick/slick.css}" media="all" />
+<link href="vendor/select2/select2.min.css"
+	th:href="@{/vendor/select2/select2.min.css}" rel="stylesheet"
+	media="all" />
 <link href="vendor/perfect-scrollbar/perfect-scrollbar.css"
+	th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}"
 	rel="stylesheet" media="all" />
 
 <!-- Main CSS-->
-<link href="css/theme.css" rel="stylesheet" media="all" />
-
+<link href="css/theme.css" th:href="@{/css/theme.css}" rel="stylesheet"
+	media="all" />
 </head>
 
 <body class="animsition">
 	<div class="page-wrapper">
-		 <!-- HEADER-->
-        <header  th:replace="fragments/menu :: menu"></header>
-        <aside  th:replace="fragments/menu :: sidebar"></aside>
-        <!-- END HEADER -->
+		<!-- HEADER-->
+		<header th:replace="fragments/menu :: menu"></header>
+		<aside th:replace="fragments/menu :: sidebar"></aside>
+		<!-- END HEADER -->
 		<!-- PAGE CONTAINER-->
 		<div class="page-container">
 			<!-- HEADER DESKTOP-->
@@ -183,31 +196,31 @@
 										</thead>
 										<tbody>
 											<th:block th:each="material:${materialList}">
-											<tr th:id="${material.id}" class="tr-shadow">
+												<tr th:id="${material.id}" class="tr-shadow">
 
-												<td id="name" th:text="${material.name}">Lori Lynch</td>
-												<td id="description" th:text="${material.description}"
-													class="desc">Samsung S8 Black</td>
-												<td id="quantity" th:text="${material.quantity}"><span
-													class="status--process">Processed</span></td>
-												<td>
-													<div class="table-data-feature">
-														<button class="item btnView" data-toggle="modal"
-															data-target="#viewModal" title="Send">
-															<i class="fa fa-search"></i>
-														</button>
-														<button class="item btnEdit" data-toggle="modal"
-															data-target="#editModal" title="Edit">
-															<i class="zmdi zmdi-edit"></i>
-														</button>
-														<button class="item btnDelete" data-toggle="modal"
-															data-target="#deletemodal" title="Delete">
-															<i class="zmdi zmdi-delete"></i>
-														</button>
-													</div>
-												</td>
-											</tr>
-											<tr class="spacer"></tr>
+													<td id="name" th:text="${material.name}">Lori Lynch</td>
+													<td id="description" th:text="${material.description}"
+														class="desc">Samsung S8 Black</td>
+													<td id="quantity" th:text="${material.quantity}"><span
+														class="status--process">Processed</span></td>
+													<td>
+														<div class="table-data-feature">
+															<button class="item btnView" data-toggle="modal"
+																data-target="#viewModal" title="Send">
+																<i class="fa fa-search"></i>
+															</button>
+															<button class="item btnEdit" data-toggle="modal"
+																data-target="#editModal" title="Edit">
+																<i class="zmdi zmdi-edit"></i>
+															</button>
+															<button class="item btnDelete" data-toggle="modal"
+																data-target="#deletemodal" title="Delete">
+																<i class="zmdi zmdi-delete"></i>
+															</button>
+														</div>
+													</td>
+												</tr>
+												<tr class="spacer"></tr>
 											</th:block>
 										</tbody>
 									</table>
@@ -271,8 +284,8 @@
 									data-val="true"
 									data-val-required="Please enter the card number"
 									data-val-cc-number="Please enter a valid card number"
-									autocomplete="cc-number"  disabled/> <span class="help-block"
-									data-valmsg-for="cc-number" data-valmsg-replace="true" ></span>
+									autocomplete="cc-number" disabled /> <span class="help-block"
+									data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
 							</div>
 
 						</form>
@@ -300,8 +313,8 @@
 						</button>
 					</div>
 					<form action="#" th:object="${product}"
-							th:action="@{/rawMaterials/add}" method="post">
-					<div class="modal-body">
+						th:action="@{/rawMaterials/add}" method="post">
+						<div class="modal-body">
 							<div class="form-group has-success">
 								<label for="cc-name" class="control-label mb-1">Product
 									Name</label> <input id="cc-name" name="name" th:field="*{name}"
@@ -331,20 +344,20 @@
 									data-val-cc-number="Please enter a valid card number"
 									autocomplete="cc-number" required /> <span class="help-block"
 									data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
-							</div>	
-					</div>
-					
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">
-							<i class="fa fa-times-circle"></i> Cancel
-						</button>
-						<button type="submit" class="btn btn-primary">
-							<i class="fa fa-plus-square"></i> Add
-						</button>
-					</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">
+								<i class="fa fa-times-circle"></i> Cancel
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-plus-square"></i> Add
+							</button>
+						</div>
 					</form>
-			
+
 				</div>
 			</div>
 		</div>
@@ -365,40 +378,40 @@
 					<form action="#" th:action="@{/rawMaterials/add}"
 						th:object="${product}" method="post">
 						<div class="modal-body">
-								<input id="editId" name="editId" type="hidden" th:field="*{id}">
-								<div class="form-group has-success">
-									<label for="editName" class="control-label mb-1">Product
-										Name</label> <input id="editName" name="editName" type="text"
-										th:field="*{name}" class="form-control cc-name valid"
-										data-val="true"
-										data-val-required="Please enter the product name"
-										autocomplete="cc-name" aria-required="true"
-										aria-invalid="false" aria-describedby="cc-name-error" /> <span
-										class="help-block field-validation-valid"
-										data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-								</div>
-								<div class="form-group has-success">
-									<label for="editDesc" class="control-label mb-1">Description</label>
-									<input id="editDesc" name="editDesc" type="text"
-										th:field="*{description}" class="form-control cc-name valid"
-										data-val="true"
-										data-val-required="Please enter the description"
-										autocomplete="cc-name" aria-required="true"
-										aria-invalid="false" aria-describedby="cc-name-error" /> <span
-										class="help-block field-validation-valid"
-										data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-								</div>
-								<div class="form-group">
-									<label for="editQuantity" class="control-label mb-1">Quantity</label>
-									<input id="editQuantity" name="editQuantity" type="number"
-										th:field="*{quantity}"
-										class="form-control cc-number identified visa" value=""
-										data-val="true"
-										data-val-required="Please enter the card number"
-										data-val-cc-number="Please enter a valid card number"
-										autocomplete="cc-number" /> <span class="help-block"
-										data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
-								</div>
+							<input id="editId" name="editId" type="hidden" th:field="*{id}">
+							<div class="form-group has-success">
+								<label for="editName" class="control-label mb-1">Product
+									Name</label> <input id="editName" name="editName" type="text"
+									th:field="*{name}" class="form-control cc-name valid"
+									data-val="true"
+									data-val-required="Please enter the product name"
+									autocomplete="cc-name" aria-required="true"
+									aria-invalid="false" aria-describedby="cc-name-error" /> <span
+									class="help-block field-validation-valid"
+									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+							</div>
+							<div class="form-group has-success">
+								<label for="editDesc" class="control-label mb-1">Description</label>
+								<input id="editDesc" name="editDesc" type="text"
+									th:field="*{description}" class="form-control cc-name valid"
+									data-val="true"
+									data-val-required="Please enter the description"
+									autocomplete="cc-name" aria-required="true"
+									aria-invalid="false" aria-describedby="cc-name-error" /> <span
+									class="help-block field-validation-valid"
+									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+							</div>
+							<div class="form-group">
+								<label for="editQuantity" class="control-label mb-1">Quantity</label>
+								<input id="editQuantity" name="editQuantity" type="number"
+									th:field="*{quantity}"
+									class="form-control cc-number identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the card number"
+									data-val-cc-number="Please enter a valid card number"
+									autocomplete="cc-number" /> <span class="help-block"
+									data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -418,7 +431,8 @@
 			aria-labelledby="smallmodalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
-					<form action="#" th:action="@{/inventory/rawMaterials/delete}" method="post">
+					<form action="#" th:action="@{/inventory/rawMaterials/delete}"
+						method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
 							<button type="button" class="close" data-dismiss="modal"
@@ -443,35 +457,45 @@
 	</div>
 	<!-- end modal small -->
 
-	<!-- Jquery JS-->
-	<script src="vendor/jquery-3.2.1.min.js"></script>
+		<!-- Jquery JS-->
+	<script src="vendor/jquery-3.2.1.min.js"
+		th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
 	<!-- Bootstrap JS-->
-	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+	<script src="vendor/bootstrap-4.1/popper.min.js"
+		th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
+	<script src="vendor/bootstrap-4.1/bootstrap.min.js"
+		th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
 	<!-- Vendor JS       -->
-	<script src="vendor/slick/slick.min.js">
+	<script src="vendor/slick/slick.min.js"
+		th:src="@{/vendor/slick/slick.min.js}">
 		
 	</script>
-	<script src="vendor/wow/wow.min.js"></script>
-	<script src="vendor/animsition/animsition.min.js"></script>
-	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+	<script src="vendor/wow/wow.min.js" th:src="@{/vendor/wow/wow.min.js}"></script>
+	<script src="vendor/animsition/animsition.min.js"
+		th:src="@{/vendor/animsition/animsition.min.js}"></script>
+	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"
+		th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}">
 		
 	</script>
-	<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-	<script src="vendor/counter-up/jquery.counterup.min.js">
-		
-	</script>
-	<script src="vendor/circle-progress/circle-progress.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-	<script src="vendor/chartjs/Chart.bundle.min.js"></script>
-	<script src="vendor/select2/select2.min.js">
+	<script src="vendor/counter-up/jquery.waypoints.min.js"
+		th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
+	<script src="vendor/counter-up/jquery.counterup.min.js"
+		th:src="@{/vendor/counter-up/jquery.counterup.min.js}"></script>
+	<script src="vendor/circle-progress/circle-progress.min.js"
+		th:src="@{/vendor/circle-progress/circle-progress.min.js}"></script>
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"
+		th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.js}"></script>
+	<script src="vendor/chartjs/Chart.bundle.min.js"
+		th:src="@{/vendor/chartjs/Chart.bundle.min.js}"></script>
+	<script src="vendor/select2/select2.min.js"
+		th:src="@{/vendor/select2/select2.min.js}">
 		
 	</script>
 
 	<!-- Main JS-->
-	<script src="js/main.js"></script>
+	<script src="js/main.js" th:src="@{/js/main.js}"></script>
 	<!-- User-defined JS-->
-	<script src="external/crud.js"></script>
+	<script src="external/crud.js" th:src="@{/external/crud.js}"></script>
 
 
 </body>
