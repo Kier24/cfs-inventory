@@ -62,7 +62,7 @@ public class InventoryController {
 		product.setCategory(ProductCategory.RAW_MATERIALS);
 		productRepository.save(product);
 
-		return "redirect:inventory/rawMaterials";
+		return "redirect:/inventory/rawMaterials";
 	}
 
 	@PostMapping(value = "/rawMaterials/delete")

@@ -313,7 +313,7 @@
 						</button>
 					</div>
 					<form action="#" th:object="${product}"
-						th:action="@{/rawMaterials/add}" method="post">
+						th:action="@{/inventory/rawMaterials/add}" method="post">
 						<div class="modal-body">
 							<div class="form-group has-success">
 								<label for="cc-name" class="control-label mb-1">Product
@@ -375,7 +375,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="#" th:action="@{/rawMaterials/add}"
+					<form action="#" th:action="@{/inventory/rawMaterials/add}"
 						th:object="${product}" method="post">
 						<div class="modal-body">
 							<input id="editId" name="editId" type="hidden" th:field="*{id}">

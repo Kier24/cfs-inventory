@@ -97,6 +97,12 @@ p {
     border-radius: 3px;
 }
 
+.note {
+	font-size:13px;
+	padding-top:5%;
+	color: red;
+}
+
 /* ----- Typography ----- */
 body {
     font-family: "Poppins", sans-serif;
@@ -2090,7 +2096,64 @@ section {
 
 .notifi__item .content .date {
     font-size: 12px;
-    color: #999;
+    color: #999; 
+}
+
+.notifi__item1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f2f2f2;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.notif__item1:hover {
+    background: #f7f7f7;
+}
+
+.notifi__item1 .img-cir {
+    position: relative;
+    margin-right: 10px;
+}
+
+.notifi__item1 .img-cir i {
+    font-size: 22px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.notifi__item1 .content {
+    width: -webkit-calc(100% - 55px);
+    width: -moz-calc(100% - 55px);
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+}
+
+.notifi__item1 .content p {
+    color: black;
+    line-height: 1;
+    padding-top: 5px;
+}
+
+.notifi__item1 .dateright {
+    font-size: 12px;
+    color: black;
+	text-align: right;
 }
 
 .show-dropdown .js-dropdown {
@@ -2826,6 +2889,76 @@ section {
     margin-right: 40px;
 }
 
+/* The Modal (background) */
+.modalchangepass {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalchangepass-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.closechangepass {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closechangepass:hover,
+.closechangepass:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalchangepass-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modalchangepass-body {padding: 2px 16px;}
+
+.modalchangepass-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
 @media (max-width: 1570px) and (min-width: 992px) {
     .header__tool .header-button-item {
         margin-right: 20px;
@@ -3382,15 +3515,15 @@ section {
 }
 
 .au-task__title {
-    padding: 27px 15px;
-    padding-left: 40px;
-    padding-bottom: 22px;
+    padding: 12px 5px;
+    padding-left: 20px;
+    padding-bottom: 12px;
     border-bottom: 1px solid #f2f2f2;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .au-task-list {
-    height: 424px;
+    height: 390px;
     position: relative;
     overflow-y: auto;
 }
@@ -3409,12 +3542,12 @@ section {
 
 .au-task__item-inner {
     padding: 26px 15px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 .au-task__item-inner .task {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 12px;
+    margin-bottom: 3px;
 }
 
 .au-task__item-inner .task a {
@@ -3452,8 +3585,8 @@ section {
 
 .au-task__footer {
     text-align: center;
-    padding-top: 35px;
-    padding-bottom: 45px;
+    padding-top: 5px;
+    padding-bottom: 15px;
 }
 
 .au-message__footer {
@@ -4608,11 +4741,7 @@ section {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -moz-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
+
 }
 
 .table-data-feature .item {
@@ -4624,7 +4753,7 @@ section {
     -moz-border-radius: 100%;
     border-radius: 100%;
     background: #e5e5e5;
-    margin-right: 5px;
+
 }
 
 .table-data-feature .item:last-child {
@@ -4656,12 +4785,16 @@ section {
     padding: 0 14px;
 }
 
-.status--process {
+.status--delivery {
     color: #00ad5f;
 }
 
-.status--denied {
+.status--void {
     color: #fa4251;
+}
+
+.status--created {
+    color: #FFD733;
 }
 
 .table-data3 thead {
@@ -4673,8 +4806,7 @@ section {
     color: #fff;
     font-weight: 400;
     text-transform: capitalize;
-    padding: 18px 40px;
-    padding-right: 10px;
+	padding-left:3%;
 }
 
 .table-data3 thead tr th:first-child {
@@ -4689,19 +4821,14 @@ section {
     border-top-right-radius: 3px;
 }
 
-.table-data3 thead tr th:last-child {
-    text-align: right;
-    padding-right: 50px;
-}
-
-.table-data3 tbody tr td:last-child {
-    text-align: right;
-    padding-right: 50px;
-}
 
 .table-data3 tbody tr {
     border-left: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
+}
+
+.table-data3 tbody td {
+   padding-left:3%;
 }
 
 .table-data3 tbody tr:last-child td:first-child {
@@ -4714,6 +4841,7 @@ section {
     -webkit-border-bottom-right-radius: 8px;
     -moz-border-radius-bottomright: 8px;
     border-bottom-right-radius: 8px;
+
 }
 
 .table-data3 tbody td {
@@ -4721,8 +4849,6 @@ section {
     background: #fff;
     font-size: 14px;
     color: #808080;
-    padding: 12px 40px;
-    padding-right: 10px;
 }
 
 .table-data3 tbody td.process {
