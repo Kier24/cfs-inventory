@@ -52,7 +52,7 @@ public class InventoryController {
 	@PostMapping(value = "/finishedGoods/delete")
 	public String deleteFinishedGood(@RequestParam(name = "deleteId") Long productId) {
 
-		productRepository.delete(productId);
+		productRepository.deleteById(productId);
 
 		return "redirect:/inventory/finishedGoods";
 	}
@@ -68,7 +68,7 @@ public class InventoryController {
 	@PostMapping(value = "/rawMaterials/delete")
 	public String deleteRawMaterial(@RequestParam(name = "deleteId") Long productId) {
 
-		productRepository.delete(productId);
+		productRepository.deleteById(productId);
 
 		return "redirect:/inventory/rawMaterials";
 	}

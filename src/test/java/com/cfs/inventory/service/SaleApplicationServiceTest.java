@@ -48,7 +48,7 @@ public class SaleApplicationServiceTest {
 		
 		assertEquals(2,saleConfirmation.getItemList().size());
 		
-		Product newProduct=productRepository.findOne(product.getId());
+		Product newProduct=productRepository.getOne(product.getId());
 		assertEquals(newProduct.getQuantity(),35);
 	}
 }

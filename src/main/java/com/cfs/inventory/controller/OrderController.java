@@ -49,7 +49,7 @@ public class OrderController {
 	@PostMapping(value = "/orders/delete")
 	public String deleteRawMaterial(@RequestParam(name="deleteId") Long saleId) {
 
-		saleRepository.delete(saleId);
+		saleRepository.deleteById(saleId);
 
 		return "redirect:/orders";
 	}
