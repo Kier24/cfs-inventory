@@ -28,26 +28,30 @@
 							class="fa fa-archive"></i>Inventory
 					</a>
 						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-							<li><a href="#" th:action="@{/inventory/rawMaterials}">Raw
+							<li><i class="fa fa-lemon-o"></i><a href="#" th:action="@{/inventory/rawMaterials}">Raw
 									Materials</a></li>
-							<li><a href="#" th:action="@{/inventory/finishedGoods}">Finished
+							<li><i class="fa fa-thumbs-up"></i><a href="#" th:action="@{/inventory/finishedGoods}">Finished
 									Goods</a></li>
-							<li><a href="workinprocess.html">Returned Goods</a></li>
+							<li><i class="fa fa-copy"></i><a href="#" th:action="@{/inventory/returnedGoods}">Returned Goods</a></li>
 						</ul></li>
 					<li><a href="#" th:action="@{/orders}"> <i
 							class="fas fa-table"></i>Order
 					</a></li>
-					<li><a href="#" th:action="@{/delivery}"> <i
-							class="fas fa-calendar-alt"></i>Deliveries
-					</a></li>
-					<li class="has-sub"><a class="js-arrow" href="#"> <i
-							class="fa fa-files-o"></i>Reports
-					</a>
-						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-							<li><a href="rawmaterial.html">Daily Reports</a></li>
-							<li><a href="#">Weekly Reports</a></li>
-							<li><a href="#">Monthly Reports</a></li>
-						</ul></li>
+					<li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-files-o"></i>Reports</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                               <li>
+                                    <a href="dailyreport.html"><i class="fa fa-file-text"></i>Daily Reports</a>
+                                </li>
+								<li>
+                                    <a href="weeklyreport.html"><i class="fa fa-files-o"></i>Weekly Reports</a>
+                                </li>
+								<li>
+                                    <a href="monthlyreport.html"><i class="fa fa-calendar-o"></i>Monthly Reports</a>
+                                </li>
+                            </ul>
+                        </li>
 				</ul>
 			</div>
 		</nav>
