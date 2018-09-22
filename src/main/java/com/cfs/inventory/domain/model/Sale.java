@@ -8,12 +8,14 @@ import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.cfs.inventory.converter.LocalDateAttributeConverter;
 
@@ -29,8 +31,10 @@ public class Sale {
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
-	@OneToOne(cascade = CascadeType.ALL)
+	@Embedded
 	private Delivery delivery;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	public Sale(String customerName, Delivery delivery) {
 		
@@ -45,6 +49,7 @@ public class Sale {
 		this.orderDate = LocalDate.now();
 		this.customerName = customerName;
 		this.delivery = delivery;
+		this.status=Status.CREATED;
 	}
 
 	public Long getId() {
@@ -53,6 +58,10 @@ public class Sale {
 
 	public String getCustomerName() {
 		return customerName;
+	}
+	
+	public Status getStatus() {
+		return status;
 	}
 
 	public void setItemQuantity(Product product, int quantity) {
@@ -86,6 +95,30 @@ public class Sale {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
 		items.remove(product);
+	}
+	
+	public void returnItem(Product product,int quantity) {
+		if (product == null) {
+			throw new IllegalArgumentException("Product cannot be null");
+		}
+		if (product.getId() == null) {
+			throw new IllegalArgumentException("Product ID cannot be null");
+		}
+		if (quantity < 0) {
+			throw new IllegalArgumentException("Quantity cannot be negative");
+		}
+		if(items.get(product)==null) {
+			throw new IllegalStateException("Product to return does not exist from order");
+		}else {
+			SalesLineItem item = items.get(product);
+			if(item.getQuantity()<=quantity) {
+				removeItem(product);
+			}else {
+				item.setQuantity(item.getQuantity()-quantity);
+			}
+		}
+		
+		
 	}
 
 	public void clear() {

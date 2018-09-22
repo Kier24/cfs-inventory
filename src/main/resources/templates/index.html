@@ -38,7 +38,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER-->
+         <!-- HEADER-->
         <header  th:replace="fragments/menu :: menu"></header>
         <aside  th:replace="fragments/menu :: sidebar"></aside>
         <!-- END HEADER -->
@@ -57,38 +57,41 @@
                                 </button>
                             </form>
 							<div class="header-button">
-                                <div class="noti-wrap">
+                                <!--Notification Bar (Updated with link for notification list)-->
+								
+								<div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
+                                        <span class="quantity">2</span>
                                         <div class="notifi-dropdown js-dropdown">
                                             <div class="notifi__title">
                                                 <p>You have 3 Notifications</p>
                                             </div>
 											<div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="fa fa-exclamation"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>Upcoming Delivery</p>
+                                                    <p>Stock Limit</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="fa fa-truck"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>No Stock Left</p>
+                                                    <p>Delivery Notice</p>
                                                     <span class="date">February 16, 2018 06:50</span>
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
+                                                <a href="notification.html">All notifications</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+								<!--End of Notification Bar -->
                             <div class="header-button">
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
@@ -114,7 +117,8 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+													
+                                                     <a href = "#">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                             </div>
@@ -143,10 +147,72 @@
                                 </div>
                             </div>
                         </div> </br>
-                       
+                      
+						<div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 th:text="${totalOrderedItems}">388,688</h2>
+                                                <span>ordered items</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 th:text="${totalDeliveredItems}">1,086</h2>
+                                                <span>delivered items</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-rotate-left"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>10368</h2>
+                                                <span>returned items</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-badge-check"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>$200,000</h2>
+                                                <span>total earnings</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 						
-						<div class = "row">
-							<div class="col-md-12">
+					<div class = "row">
+							<div class="col-md-8">
 									<div class="card">
 												<div class="card-header">
 													<strong>Calendar</strong>
@@ -157,12 +223,55 @@
 								</div>
 							</div>
 						
-						</div>
-                        
+						
+                        <div class="col-lg-4">
+                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-30">
+                                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                                        <div class="bg-overlay bg-overlay--blue"></div>
+                                        <h3>
+                                            <i class="zmdi zmdi-account-calendar"></i><span th:text="${#dates.format(#dates.createNow(),'dd MMMM, yyyy')}">26 April, 2018</span></h3>
+                                    </div>
+                                    <div class="au-task js-list-load">
+                                        <div class="au-task__title">
+                                            <p>Upcoming Deliveries</p>
+                                        </div>
+                                        <div class="au-task-list js-scrollbar3">
+                                            <div class="au-task__item au-task__item--danger">
+                                                <div class="au-task__item-inner">
+                                                    <h6 class="task">
+                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                    </h6>
+                                                    <span class="time">10:00 AM</span>
+                                                </div>
+                                            </div>
+                                            <div class="au-task__item au-task__item--warning">
+                                                <div class="au-task__item-inner">
+                                                    <h6 class="task">
+                                                        <a href="#">Create new task for Dashboard</a>
+                                                    </h6>
+                                                    <span class="time">11:00 AM</span>
+                                                </div>
+                                            </div>
+                                            <div class="au-task__item au-task__item--primary">
+                                                <div class="au-task__item-inner">
+                                                    <h6 class="task">
+                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                    </h6>
+                                                    <span class="time">02:00 PM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="au-task__footer">
+                                            <button class="au-btn au-btn-load js-load-btn">load more</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>    
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2018. All rights reserved.</p>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +283,42 @@
         </div>
 
     </div>
+	
+	<!-- Modal Change Password -->
+			<div class="modalchangepass fade" id="changepass" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modalchangepass-content">
+						<div class="modalchangepass-header">
+							<h5 class="modalchangepass-title" id="smallmodalLabel">Change Password</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modalchangepass-body">
+							<div class="col-12 col-md-12">
+									<input type="text" id="oldpassword" placeholder="Enter Old Password" class="form-control"/> </br>
+							</div>
+							<div class="col-12 col-md-12">
+									<input type="text" id="newpassword" placeholder="Enter New Password" class="form-control"/> </br>
+							</div>
+							<div class="col-12 col-md-12">
+									<input type="text" id="confirmpassword" placeholder="Confirm New Password" class="form-control"/> </br>
+							</div>
+						</div>
+						<div class="modalchangepass-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		<!-- Modal Change Password -->
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
+	<script src="js/modaledit.js"></script>
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -201,7 +343,7 @@
     <script src="js/main.js"></script>
 	
 	<script src="vendor/calendar-conf-events.js"></script>  
-
+	
 </body>
 
 </html>

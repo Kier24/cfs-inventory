@@ -24,10 +24,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public UserDetailsService userDetailsService() {
 		UserDetails user = User.withDefaultPasswordEncoder().username("admin")
-				.password("$2y$12$yaK1icrynyR01z7ZnkKG2uPzKlxutXcWBhOE6xXmuhviO0DtPOhDm").roles("ADMIN").build();
-
+				.password("admin").roles("ADMIN").build();
 		return new InMemoryUserDetailsManager(user);
 	}
+
+//		http.authorizeRequests().antMatchers("/","/public/**")
+//        .permitAll().anyRequest().authenticated().and().formLogin()
+//				.loginPage("/login").permitAll().and().logout().permitAll();
+//		http.csrf().disable();
+//>>>>>>> Stashed changes
+	
 
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {

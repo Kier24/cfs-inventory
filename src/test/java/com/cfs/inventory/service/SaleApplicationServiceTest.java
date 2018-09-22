@@ -41,9 +41,7 @@ public class SaleApplicationServiceTest {
 		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);
 		saleApplication.enterItem(oysterSauce.getId(), 20);
-		Delivery delivery = new Delivery();
-		delivery.setDeliveryDate(LocalDate.of(2018, 7, 17));
-		delivery.setDeliveryAddress("Calaca,Batangas");
+		Delivery delivery = new Delivery("Calaca,Batangas",LocalDate.of(2018, 7, 17));
 		SaleConfirmation saleConfirmation =saleApplication.createNewOrder("Kier Tenorio",delivery);
 		
 		assertEquals(2,saleConfirmation.getItemList().size());

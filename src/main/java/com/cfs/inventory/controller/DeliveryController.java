@@ -35,7 +35,7 @@ public class DeliveryController {
 			saleList = saleRepository.findOrdersByDate(localStartDate, localEndDate);
 		}
 		
-
+		
 		return new ModelAndView("delivery", "orderList", saleList);
 
 	}
@@ -44,7 +44,7 @@ public class DeliveryController {
 	@ResponseBody
 	public List<Event> getDeliveryEvents(@RequestParam String start, @RequestParam String end) {
 
-		List<Sale> saleList = saleRepository.findAll();
+		List<Sale> saleList = saleRepository.getOrderFromToday();
 		List<Event> eventList = new ArrayList<>();
 
 		for (Sale sale : saleList) {
