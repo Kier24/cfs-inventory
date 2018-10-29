@@ -61,7 +61,7 @@ public class SaleApplicationService {
 		}
 
 		saleRepository.save(sale);
-		SaleConfirmation confirmation = new SaleConfirmation(sale.getItemList(), sale.getCustomerName());
+		SaleConfirmation confirmation = new SaleConfirmation(sale.getItems(), sale.getCustomerName());
 		cartItemsList.clear();
 
 		return confirmation;

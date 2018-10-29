@@ -15,7 +15,9 @@ $(document).ready(function() {
 	            data: {"id":productId,"quantity":quantity},
 	            timeout : 100000,
 	            success : function(data) {
-	            $('#addToCartModal').modal('hide');		                 
+	            $('#addToCartModal').modal('hide');	
+	            showNotification();
+	            
 	            },
 	            error : function(e) {
 	                console.log("ERROR: ", e);
@@ -27,4 +29,10 @@ $(document).ready(function() {
 	});
 
 });
+
+function showNotification() {
+    var snackbar = document.getElementById("snackbar");
+    snackbar.className = "show";
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show",""); }, 3000);
+}
 

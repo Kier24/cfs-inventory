@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@Import({ ApplicationConfig.class,AspectJConfig.class })
+@Import({ ApplicationConfig.class ,AspectJConfig.class})
 public class SystemTestConfig {
 
 	@Bean

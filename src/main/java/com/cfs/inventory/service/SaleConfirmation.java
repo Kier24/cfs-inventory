@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cfs.inventory.domain.model.SalesLineItem;
 
-class SaleConfirmation {
+public class SaleConfirmation {
 
 	private List<SalesLineItem> itemList;
 	private String customerName;

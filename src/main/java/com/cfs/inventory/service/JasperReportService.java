@@ -21,7 +21,7 @@ public class JasperReportService implements ReportService {
 
 	@Override
 	public void generateReport(LocalDate date) {
-		InputStream employeeReportStream = getClass().getResourceAsStream("/employeeReport.jrxml");
+		InputStream employeeReportStream = getClass().getResourceAsStream("/productReport.jrxml");
 
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(employeeReportStream);

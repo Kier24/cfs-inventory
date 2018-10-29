@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import com.cfs.inventory.domain.model.ProductCategory;
 import com.cfs.inventory.domain.model.ProductRepository;
 import com.cfs.inventory.domain.model.Sale;
 import com.cfs.inventory.domain.model.SaleRepository;
+import com.cfs.inventory.dto.SaleDto;
 import com.cfs.inventory.service.SaleApplicationService;
 
 @Controller
@@ -45,9 +47,14 @@ public class OrderController {
 		return new ModelAndView("createOrder", "productList", productList);
 
 	}
-	
+
+	@GetMapping(value = "viewCart")
+	public ModelAndView viewCartItems() {
+		return new ModelAndView("orderCart", "cartItems", saleApplication.getCartItems());
+	}
+
 	@PostMapping(value = "/orders/delete")
-	public String deleteRawMaterial(@RequestParam(name="deleteId") Long saleId) {
+	public String deleteRawMaterial(@RequestParam(name = "deleteId") Long saleId) {
 
 		saleRepository.deleteById(saleId);
 
@@ -60,16 +67,20 @@ public class OrderController {
 		saleApplication.enterItem(id, quantity);
 	}
 
-	@GetMapping(value = "/checkout")
-	public ModelAndView checkout() {
-		return new ModelAndView("checkoutDetails", "cartItems", saleApplication.getCartItems());
+	@GetMapping(value = "/orders/{id}")
+	@ResponseBody
+	public SaleDto getOrder(@PathVariable Long id) {
+
+		Sale sale = saleRepository.getOne(id);
+		return new SaleDto(sale.getCustomerName(),sale.getDelivery(),sale.getItems());
 	}
 
 	@PostMapping(value = "/saveOrder")
-	public String saveOrder(@RequestParam String customerName,@RequestParam String deliveryAddress,@RequestParam Date deliveryDate) {
+	public String saveOrder(@RequestParam String customerName, @RequestParam String deliveryAddress,
+			@RequestParam Date deliveryDate) {
 		Delivery delivery = new Delivery(deliveryAddress, deliveryDate.toLocalDate());
 		saleApplication.createNewOrder(customerName, delivery);
-		
+
 		return "redirect:/orders";
 	}
 }

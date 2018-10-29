@@ -125,7 +125,7 @@ public class Sale {
 		items.clear();
 	}
 
-	public List<SalesLineItem> getItemList() {
+	public List<SalesLineItem> getItems() {
 		return new ArrayList<SalesLineItem>(items.values());
 	}
 
