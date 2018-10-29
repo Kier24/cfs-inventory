@@ -2,15 +2,13 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content="au theme template"/>
-    <meta name="author" content="Hau Nguyen"/>
-    <meta name="keywords" content="au theme template"/>
+<!-- Required meta tags-->
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Title Page-->
-    <title>Produced Goods</title>
+<!-- Title Page-->
+<title>Produced Goods</title>
 
 <!-- Fontfaces CSS-->
 <link href="css/font-face.css" rel="stylesheet"
@@ -31,9 +29,6 @@
 	media="all" />
 
 <!-- Vendor CSS-->
-<link href="vendor/animsition/animsition.min.css"
-	th:href="@{/vendor/animsition/animsition.min.css}" rel="stylesheet"
-	media="all" />
 <link
 	href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
 	th:href="@{/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}"
@@ -55,61 +50,63 @@
 <!-- Main CSS-->
 <link href="css/theme.css" th:href="@{/css/theme.css}" rel="stylesheet"
 	media="all" />
-	
-	<script th:src="@{/vendor/yui-min.js}"></script>
+<script th:src="@{/vendor/yui-min.js}"></script>
 
 </head>
 
 <body>
-    <div class="page-wrapper">
-       	<!-- HEADER-->
+	<div class="page-wrapper">
+		<!-- HEADER-->
 		<header th:replace="fragments/menu :: menu"></header>
 		<aside th:replace="fragments/menu :: sidebar"></aside>
 		<!-- END HEADER -->
 
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
+		<!-- PAGE CONTAINER-->
+		<div class="page-container">
+			<!-- HEADER DESKTOP-->
 			<header th:replace="fragments/pageheader::pageHeader"> </header>
 			<!-- END HEADER DESKTOP-->
 
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
+			<!-- MAIN CONTENT-->
+			<div class="main-content">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
 						<div class="row">
-                            <div class="col-md-12">
+							<div class="col-md-12">
 								<div class="headertitle">
-                                <h2>Produced Goods</h2>
+									<h2>Produced Goods</h2>
 								</div>
-                            </div>
+							</div>
 						</div>
-                            <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                <div class="table-data__tool">
-                                   <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#addModal">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-											
-                                    </div>
-                                </div>
-								<div class = "row">
-								
-									<div class="col-lg-4">
-										<div id="demo" class="yui3-skin-sam yui3-g"> <!-- You need this skin class -->
+						<div class="row">
+							<div class="col-md-12">
+								<!-- DATA TABLE -->
+								<div class="table-data__tool">
+									<div class="table-data__tool-right">
+										<button class="au-btn au-btn-icon au-btn--green au-btn--small"
+											data-toggle="modal" data-target="#addModal">
+											<i class="zmdi zmdi-plus"></i>add item
+										</button>
 
-										  <div id="leftcolumn" class="yui3-u">
-											 <!-- Container for the calendar -->
-											 <div id="calendarsmall"></div>
-										  </div>
+									</div>
+								</div>
+								<div class="row">
+
+									<div class="col-lg-4">
+										<div id="demo" class="yui3-skin-sam yui3-g">
+											<!-- You need this skin class -->
+
+											<div id="leftcolumn" class="yui3-u">
+												<!-- Container for the calendar -->
+												<div id="calendarsmall"></div>
+											</div>
 										</div>
-									</div>	
-									<div class = "col-lg-8">
+									</div>
+									<div class="col-lg-8">
 										<div class="table-responsive m-b-40">
-											<div class = "tableContainer" id="tableContainer">
+											<div class="tableContainer" id="tableContainer">
 												<table class="table table-borderless table-data-fixed">
-													<thead class = "fixedHeader">
+													<thead class="fixedHeader">
 														<tr>
 															<th>Product Name</th>
 															<th>Quantity</th>
@@ -122,190 +119,246 @@
 															<td></td>
 															<td>
 																<div class="table-data-feature">
-																	<button class="item" data-toggle="modal" data-target="#editModal" title="Edit">
+																	<button class="item" data-toggle="modal"
+																		data-target="#editModal" title="Edit">
 																		<i class="zmdi zmdi-edit"></i>
 																	</button>
-																	<button class="item" data-toggle="modal" data-target="#deletemodal" title="Delete">
+																	<button class="item" data-toggle="modal"
+																		data-target="#deletemodal" title="Delete">
 																		<i class="zmdi zmdi-delete"></i>
 																	</button>
 																</div>
 															</td>
 														</tr>
 
-														
+
 													</tbody>
 												</table>
 											</div>
 										</div>
 									</div>
-								
+
 								</div>
-								
-                                
-                                <!-- END DATA TABLE -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                   
-                </div>
-            </div>
-        </div>
-	</div>
-	</div>
-	
-		
-		<!-- Modal Add -->
-			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">Add Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-									<form action="#" method="post" >
-                                            <div class="row form-group">
-                                                <div class="col-6">
-												<label for="productname" class="control-label mb-1">Product Name</label>
-												<input id="productname" name="productname" type="text" class="form-control productname valid" data-val="true" data-val-required="Please enter the product name"
-                                                    autocomplete="productname" aria-required="true" aria-invalid="false" aria-describedby="productname-error" />
-                                                <span class="help-block field-validation-valid" data-valmsg-for="productname" data-valmsg-replace="true"></span>
-                                                </div>
-                                                <div class="col-6">
-													 <label for="productdesc" class="control-label mb-1">Production Date</label>
-													<input id="productdate" name="productdate" type="date" class="form-control productname valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="productname" aria-required="true" aria-invalid="false" aria-describedby="productname-error" required/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="productdate" data-valmsg-replace="true"></span>
-                                                </div>
-                                            </div>
-											<div class="form-group has-success">
-                                                <label for="productdesc" class="control-label mb-1">Description</label>
-                                                <input id="productdesc" name="productname" type="text" class="form-control productname valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="productname" aria-required="true" aria-invalid="false" aria-describedby="productname-error" required/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="productname" data-valmsg-replace="true"></span>
-                                            </div>
-											
-											<div class="row form-group">
-                                                <div class="col-4">
-													 <label for="productquantity" class="control-label mb-1">Stock</label>
-                                                    <input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-                                                <div class="col-4">
-													<label for="productquantity" class="control-label mb-1">Stock Limit</label>
-                                                    <input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock limit" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-												 <div class="col-4">
-													<label for="productquantity" class="control-label mb-1">Category</label>
-													<input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter product category" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-                                            </div>
-                                    </form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
-							<button type="submit" class="btn btn-primary"><i class="fa fa-plus-square"></i> Add</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- end modal Add -->
-		
-		<!-- Modal Edit -->
-			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">Edit Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-									<form action="#" method="post" >
-                                            <div class="form-group has-success">
-                                                <label for="productname" class="control-label mb-1">Product Name</label>
-                                                <input id="productname" name="productname" type="text" class="form-control productname valid" data-val="true" data-val-required="Please enter the product name"
-                                                    autocomplete="productname" aria-required="true" aria-invalid="false" aria-describedby="productname-error" />
-                                                <span class="help-block field-validation-valid" data-valmsg-for="productname" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="form-group has-success">
-                                                <label for="productdesc" class="control-label mb-1">Description</label>
-                                                <input id="productdesc" name="productname" type="text" class="form-control productname valid" data-val="true" data-val-required="Please enter the description"
-                                                    autocomplete="productname" aria-required="true" aria-invalid="false" aria-describedby="productname-error" required/>
-                                                <span class="help-block field-validation-valid" data-valmsg-for="productname" data-valmsg-replace="true"></span>
-                                            </div>
-											<div class="row form-group">
-                                                <div class="col-4">
-													 <label for="productquantity" class="control-label mb-1">Stock</label>
-                                                    <input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-                                                <div class="col-4">
-													<label for="productquantity" class="control-label mb-1">Stock Limit</label>
-                                                    <input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the product stock limit" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-												 <div class="col-4">
-													<label for="productquantity" class="control-label mb-1">Category</label>
-													<input id="productquantity" name="productnumber" type="tel" class="form-control productnumber identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter product category" data-val-productnumber="Please enter a valid card number"
-                                                    autocomplete="productnumber" required/>
-                                                </div>
-                                            </div>
-                                    </form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- end modal medium -->
-		
-		<!-- Modal Delete -->
-			<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<p>
-								Are you sure you want to Delete?
-							</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-primary">Confirm</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end modal small -->
 
-		
 
-<!-- Jquery JS-->
+								<!-- END DATA TABLE -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="copyright">
+									<p>
+										Copyright © 2018 Colorlib. All rights reserved. Template by <a
+											href="https://colorlib.com">Colorlib</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal Add -->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+		aria-labelledby="mediumModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="mediumModalLabel">Add Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="#" method="post">
+						<div class="row form-group">
+							<div class="col-6">
+								<label for="productname" class="control-label mb-1">Product
+									Name</label> <input id="productname" name="productname" type="text"
+									class="form-control productname valid" data-val="true"
+									data-val-required="Please enter the product name"
+									autocomplete="productname" aria-required="true"
+									aria-invalid="false" aria-describedby="productname-error" /> <span
+									class="help-block field-validation-valid"
+									data-valmsg-for="productname" data-valmsg-replace="true"></span>
+							</div>
+							<div class="col-6">
+								<label for="productdesc" class="control-label mb-1">Production
+									Date</label> <input id="productdate" name="productdate" type="date"
+									class="form-control productname valid" data-val="true"
+									data-val-required="Please enter the description"
+									autocomplete="productname" aria-required="true"
+									aria-invalid="false" aria-describedby="productname-error"
+									required /> <span class="help-block field-validation-valid"
+									data-valmsg-for="productdate" data-valmsg-replace="true"></span>
+							</div>
+						</div>
+						<div class="form-group has-success">
+							<label for="productdesc" class="control-label mb-1">Description</label>
+							<input id="productdesc" name="productname" type="text"
+								class="form-control productname valid" data-val="true"
+								data-val-required="Please enter the description"
+								autocomplete="productname" aria-required="true"
+								aria-invalid="false" aria-describedby="productname-error"
+								required /> <span class="help-block field-validation-valid"
+								data-valmsg-for="productname" data-valmsg-replace="true"></span>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Stock</label>
+								<input id="productquantity" name="productnumber" type="tel"
+									class="form-control productnumber identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Stock
+									Limit</label> <input id="productquantity" name="productnumber"
+									type="tel" class="form-control productnumber identified visa"
+									value="" data-val="true"
+									data-val-required="Please enter the product stock limit"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Category</label>
+								<input id="productquantity" name="productnumber" type="tel"
+									class="form-control productnumber identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter product category"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">
+						<i class="fa fa-times-circle"></i> Cancel
+					</button>
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-plus-square"></i> Add
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal Add -->
+
+	<!-- Modal Edit -->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+		aria-labelledby="mediumModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="mediumModalLabel">Edit Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="#" method="post">
+						<div class="form-group has-success">
+							<label for="productname" class="control-label mb-1">Product
+								Name</label> <input id="productname" name="productname" type="text"
+								class="form-control productname valid" data-val="true"
+								data-val-required="Please enter the product name"
+								autocomplete="productname" aria-required="true"
+								aria-invalid="false" aria-describedby="productname-error" /> <span
+								class="help-block field-validation-valid"
+								data-valmsg-for="productname" data-valmsg-replace="true"></span>
+						</div>
+						<div class="form-group has-success">
+							<label for="productdesc" class="control-label mb-1">Description</label>
+							<input id="productdesc" name="productname" type="text"
+								class="form-control productname valid" data-val="true"
+								data-val-required="Please enter the description"
+								autocomplete="productname" aria-required="true"
+								aria-invalid="false" aria-describedby="productname-error"
+								required /> <span class="help-block field-validation-valid"
+								data-valmsg-for="productname" data-valmsg-replace="true"></span>
+						</div>
+						<div class="row form-group">
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Stock</label>
+								<input id="productquantity" name="productnumber" type="tel"
+									class="form-control productnumber identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter the product stock"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Stock
+									Limit</label> <input id="productquantity" name="productnumber"
+									type="tel" class="form-control productnumber identified visa"
+									value="" data-val="true"
+									data-val-required="Please enter the product stock limit"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+							<div class="col-4">
+								<label for="productquantity" class="control-label mb-1">Category</label>
+								<input id="productquantity" name="productnumber" type="tel"
+									class="form-control productnumber identified visa" value=""
+									data-val="true"
+									data-val-required="Please enter product category"
+									data-val-productnumber="Please enter a valid card number"
+									autocomplete="productnumber" required />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary">
+						<i class="fa fa-edit"></i>Edit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal medium -->
+
+	<!-- Modal Delete -->
+	<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog"
+		aria-labelledby="smallmodalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure you want to Delete?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary">Confirm</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal small -->
+
+
+
+	<!-- Jquery JS-->
 	<script src="vendor/jquery-3.2.1.min.js"
 		th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
 	<!-- Bootstrap JS-->
@@ -336,18 +389,17 @@
 	<script src="vendor/chartjs/Chart.bundle.min.js"
 		th:src="@{/vendor/chartjs/Chart.bundle.min.js}"></script>
 	<script src="vendor/select2/select2.min.js"
-		th:src="@{/vendor/select2/select2.min.js}">
-		
-	</script>
-
+		th:src="@{/vendor/select2/select2.min.js}"></script>
+	<script src="vendor/calendarsmall.js"
+		th:src="@{/vendor/calendarsmall.js}"></script>
 	<!-- Main JS-->
 	<script src="js/main.js" th:src="@{/js/main.js}"></script>
 	<!-- User-defined JS-->
 	<script src="external/crud.js" th:src="@{/external/crud.js}"></script>
 
-	
-	
-	
+
+
+
 
 </body>
 

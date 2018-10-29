@@ -37,9 +37,9 @@ public class ProductRepositoryTest {
 
 	@Test
 	public void getAllProductsAndTotalNumberDeliveredByDate() {
-		Product product = new Product("Ketchup","Banana Ketchup",50,5,ProductCategory.FINISHED_GOODS);
+		Product product = new Product("Ketchup","Banana Ketchup",50,5);
 		entityManager.persist(product);
-		Product oysterSauce = new Product("Oyster Sauce","Oyster Sauce",50,5,ProductCategory.FINISHED_GOODS);
+		Product oysterSauce = new Product("Oyster Sauce","Oyster Sauce",50,5);
 		entityManager.persist(oysterSauce);
 		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);

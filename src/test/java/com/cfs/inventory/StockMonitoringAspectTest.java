@@ -28,7 +28,7 @@ public class StockMonitoringAspectTest {
 	@Test
 	@Transactional	
 	public void productStockLevelMonitor() {
-		Product product = new Product("Ketchup", "Banana Ketchup", 50, 5, ProductCategory.FINISHED_GOODS);
+		Product product = new Product("Ketchup", "Banana Ketchup", 50, 5);
 		entityManager.persist(product);
 		product.deductStock(5);
 		
