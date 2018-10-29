@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+
 public class ProductTest {
 
 	@Test

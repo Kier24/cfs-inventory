@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.ProductCategory;
-import com.cfs.inventory.domain.model.ProductRepository;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.ProductRepository;
 
 @Controller
 @RequestMapping(value="/inventory")
@@ -23,28 +23,28 @@ public class InventoryController {
 	private ProductRepository productRepository;
 
 	@GetMapping(value = "/rawMaterials")
-	public ModelAndView getRawMaterials() {
+	public ModelAndView getRawMaterials(Product product) {
 		ModelAndView modelView = new ModelAndView();
 
-		modelView.addObject("materialList", productRepository.getProductByCategory(ProductCategory.RAW_MATERIALS));
 		modelView.setViewName("rawprod");
-		modelView.addObject(new Product());
 		return modelView;
 	}
 
 	@GetMapping(value = "/finishedGoods")
-	public ModelAndView getFinishedGoods() {
+	public ModelAndView getFinishedGoods(Product product) {
 		ModelAndView modelView = new ModelAndView();
 
-		modelView.addObject("materialList", productRepository.getProductByCategory(ProductCategory.FINISHED_GOODS));
 		modelView.setViewName("finishedgood");
-		modelView.addObject(new Product());
 		return modelView;
+	}
+	
+	@GetMapping(value = "/producedGoods")
+	public String getProducedGoods() {
+		return "producedgoods";
 	}
 
 	@PostMapping(value = "/finishedGoods/add")
 	public String saveFinishedGoods(@Valid @ModelAttribute("product")Product product) {
-		product.setCategory(ProductCategory.FINISHED_GOODS);
 		productRepository.save(product);
 		return "redirect:/inventory/finishedGoods";
 	}
@@ -59,7 +59,6 @@ public class InventoryController {
 
 	@PostMapping(value = "/rawMaterials/add")
 	public String saveRawMaterials(@Valid @ModelAttribute("product") Product product) {
-		product.setCategory(ProductCategory.RAW_MATERIALS);
 		productRepository.save(product);
 
 		return "redirect:/inventory/rawMaterials";

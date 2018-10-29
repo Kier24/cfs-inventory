@@ -2,8 +2,8 @@ package com.cfs.inventory.service;
 
 import org.springframework.stereotype.Service;
 
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.Sale;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.Sale;
 
 @Service
 public class ProductReturnService {

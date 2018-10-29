@@ -8,11 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cfs.inventory.domain.model.Delivery;
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.ProductRepository;
-import com.cfs.inventory.domain.model.Sale;
-import com.cfs.inventory.domain.model.SaleRepository;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductRepository;
+import com.cfs.inventory.model.Sale;
+import com.cfs.inventory.model.SaleRepository;
 
 @Service
 public class SaleApplicationService {

@@ -1,18 +1,17 @@
-package com.cfs.inventory.domain.model;
+package com.cfs.inventory.model;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Inheritance(strategy=InheritanceType.JOINED)
+@Getter
 public class Product {
 
 	@Id
@@ -22,27 +21,25 @@ public class Product {
 	private String description;
 	private int quantity;
 	private int criticalLevel;
-	@Enumerated(EnumType.STRING)
-	private ProductCategory category;
 
-	public Product(String name, String description,int quantity,int criticalLevel,ProductCategory category) {
+	public Product(String name, String description, int quantity, int criticalLevel) {
 		this.name = name;
 		this.description = description;
-		this.quantity=quantity;
-		this.criticalLevel=criticalLevel;
-		this.category=category;
+		this.quantity = quantity;
+		this.criticalLevel = criticalLevel;
 	}
-	
-	public void deductStock(int quantity){
-		if(quantity>this.quantity){
+
+	public void deductStock(int quantity) {
+		if (quantity > this.quantity) {
 			throw new IllegalStateException("Quantity to be deduct cannot be greater than current stock");
 		}
-		this.quantity-=quantity;
+		this.quantity -= quantity;
 	}
-	public Product(){
-		
+
+	protected Product() {
+
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,6 +64,5 @@ public class Product {
 			return false;
 		return true;
 	}
-
 
 }

@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.cfs.inventory.domain.model.Delivery;
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.ProductCategory;
-import com.cfs.inventory.domain.model.ProductRepository;
-import com.cfs.inventory.domain.model.Sale;
-import com.cfs.inventory.domain.model.SaleRepository;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.ProductRepository;
+import com.cfs.inventory.model.Sale;
+import com.cfs.inventory.model.SaleRepository;
 import com.cfs.inventory.dto.SaleDto;
+
+
 import com.cfs.inventory.service.SaleApplicationService;
 
 @Controller
@@ -42,9 +43,8 @@ public class OrderController {
 
 	@GetMapping(value = "/createOrder")
 	public ModelAndView createOrder() {
-		List<Product> productList = productRepository.getProductByCategory(ProductCategory.FINISHED_GOODS);
 
-		return new ModelAndView("createOrder", "productList", productList);
+		return new ModelAndView("createOrder", "productList", null);
 
 	}
 

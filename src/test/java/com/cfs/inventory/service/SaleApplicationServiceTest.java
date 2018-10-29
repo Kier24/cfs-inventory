@@ -15,10 +15,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cfs.inventory.config.SystemTestConfig;
-import com.cfs.inventory.domain.model.Delivery;
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.ProductCategory;
-import com.cfs.inventory.domain.model.ProductRepository;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.ProductRepository;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,6 +31,7 @@ public class SaleApplicationServiceTest {
 	private ProductRepository productRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
+	
 	
 	@Test
 	public void successfulOrder() {
@@ -49,4 +50,7 @@ public class SaleApplicationServiceTest {
 		Product newProduct=productRepository.getOne(product.getId());
 		assertEquals(newProduct.getQuantity(),35);
 	}
+	
+	
+	
 }

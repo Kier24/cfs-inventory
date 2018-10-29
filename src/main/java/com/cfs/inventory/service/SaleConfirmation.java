@@ -2,7 +2,7 @@ package com.cfs.inventory.service;
 
 import java.util.List;
 
-import com.cfs.inventory.domain.model.SalesLineItem;
+import com.cfs.inventory.model.SalesLineItem;
 
 public class SaleConfirmation {
 

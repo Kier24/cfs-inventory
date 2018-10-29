@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cfs.inventory.config.SystemTestConfig;
-import com.cfs.inventory.domain.model.Product;
-import com.cfs.inventory.domain.model.ProductCategory;
-import com.cfs.inventory.domain.model.ProductRepository;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.ProductRepository;
 
 @ContextConfiguration(classes = { SystemTestConfig.class })
 @RunWith(SpringJUnit4ClassRunner.class)

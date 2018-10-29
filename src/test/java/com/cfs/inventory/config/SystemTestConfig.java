@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@Import({ ApplicationConfig.class ,AspectJConfig.class})
+@Import({ ApplicationConfig.class, AspectJConfig.class })
 public class SystemTestConfig {
 
 	@Bean
@@ -31,7 +31,7 @@ public class SystemTestConfig {
 		props.setProperty("javax.persistence.schema-generation.create-source", "metadata");
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource());
-		emf.setPackagesToScan("com.cfs.inventory.domain.model");
+		emf.setPackagesToScan("com.cfs.inventory.model");
 		emf.setJpaProperties(props);
 		emf.setJpaVendorAdapter(adapter);
 		return emf;

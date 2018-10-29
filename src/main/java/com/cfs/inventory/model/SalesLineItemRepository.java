@@ -1,4 +1,4 @@
-package com.cfs.inventory.domain.model;
+package com.cfs.inventory.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

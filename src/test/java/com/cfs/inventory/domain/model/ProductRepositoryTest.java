@@ -17,6 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cfs.inventory.config.SystemTestConfig;
 import com.cfs.inventory.dto.ProductDto;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.Product;
+import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.ProductRepository;
 import com.cfs.inventory.service.SaleApplicationService;
 
 @RunWith(SpringJUnit4ClassRunner.class)

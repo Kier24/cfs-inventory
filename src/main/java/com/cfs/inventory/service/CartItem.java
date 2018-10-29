@@ -1,6 +1,6 @@
 package com.cfs.inventory.service;
 
-import com.cfs.inventory.domain.model.Product;
+import com.cfs.inventory.model.Product;
 
 public class CartItem {
 

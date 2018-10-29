@@ -2,8 +2,8 @@ package com.cfs.inventory.dto;
 
 import java.util.List;
 
-import com.cfs.inventory.domain.model.Delivery;
-import com.cfs.inventory.domain.model.SalesLineItem;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.SalesLineItem;
 
 public class SaleDto {
 

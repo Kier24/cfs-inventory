@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cfs.inventory.domain.model.Delivery;
-import com.cfs.inventory.domain.model.Sale;
-import com.cfs.inventory.domain.model.SaleRepository;
+import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.Sale;
+import com.cfs.inventory.model.SaleRepository;
 
 @Controller
 public class DeliveryController {
