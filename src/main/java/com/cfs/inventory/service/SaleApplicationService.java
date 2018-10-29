@@ -13,6 +13,7 @@ import com.cfs.inventory.model.Product;
 import com.cfs.inventory.model.ProductRepository;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
+import static com.cfs.inventory.model.OrderType.*;
 
 @Service
 public class SaleApplicationService {
@@ -56,7 +57,7 @@ public class SaleApplicationService {
 
 		for (CartItem cartItem : cartItemsList) {
 			Product product = productRepository.getOne(cartItem.getProduct().getId());
-			sale.setItemQuantity(product, cartItem.getQuantity());
+			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
 			product.deductStock(cartItem.getQuantity());
 		}
 

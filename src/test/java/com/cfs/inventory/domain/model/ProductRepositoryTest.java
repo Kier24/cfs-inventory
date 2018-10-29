@@ -44,7 +44,7 @@ public class ProductRepositoryTest {
 		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);
 		saleApplication.enterItem(oysterSauce.getId(), 20);
-		Delivery delivery = new Delivery("Calaca,Batangas",LocalDate.of(2018, 7, 17));
+		Delivery delivery = new Delivery("Calaca,Batangas",LocalDate.of(2018, 7, 17),"Kim");
 		saleApplication.createNewOrder("Kier Tenorio",delivery);
 		
 		List<ProductDto> productDtoList = productRepository.getDailyProductOrdered(LocalDate.of(2018, 10,23));

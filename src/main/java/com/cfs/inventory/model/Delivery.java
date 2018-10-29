@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Convert;
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import com.cfs.inventory.converter.LocalDateAttributeConverter;
 
@@ -15,10 +13,12 @@ public class Delivery {
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate deliveryDate;
 	private String deliveryAddress;
+	private String deliveredBy;
 
-	public Delivery(String deliveryAddress, LocalDate deliveryDate) {
+	public Delivery(String deliveryAddress, LocalDate deliveryDate, String deliveredBy) {
 		this.deliveryAddress = deliveryAddress;
 		this.deliveryDate = deliveryDate;
+		this.deliveredBy = deliveredBy;
 	}
 
 	public LocalDate getDeliveryDate() {
@@ -28,6 +28,10 @@ public class Delivery {
 	public String getDeliveryAddress() {
 		return deliveryAddress;
 	}
+	
+	public String getDeliveredBy() {
+		return deliveredBy;
+	}
 
 	public void setDeliveryDate(LocalDate deliveryDate) {
 		this.deliveryDate = deliveryDate;
@@ -36,9 +40,9 @@ public class Delivery {
 	public void setDeliveryAddress(String deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
 	}
-	
+
 	protected Delivery() {
-		
+
 	}
 
 	@Override

@@ -63,8 +63,14 @@ public class Sale {
 	public Status getStatus() {
 		return status;
 	}
-
-	public void setItemQuantity(Product product, int quantity) {
+	
+	public void addToOrder(Product product,int quantity,OrderType orderType) {
+		if(orderType.equals(OrderType.PER_PIECE)) {
+			setItemQuantity(product,quantity);
+		}
+		//TODO: get equivalent quantity per box according to container
+	}
+	private void setItemQuantity(Product product, int quantity) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
