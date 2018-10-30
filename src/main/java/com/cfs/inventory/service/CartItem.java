@@ -6,13 +6,13 @@ public class CartItem {
 
 	private Product product;
 	private String name;
-	private String description;
+	private String containerType;
 	private int quantity;
 
 	public CartItem(Product product, int quantity) {
 		this.product = product;
 		this.name=product.getName();
-		this.description=product.getDescription();
+		this.containerType=product.getContainerType();
 		this.quantity = quantity;
 	}
 
@@ -24,8 +24,8 @@ public class CartItem {
 		return name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getContainerType() {
+		return containerType;
 	}
 
 	public int getQuantity() {

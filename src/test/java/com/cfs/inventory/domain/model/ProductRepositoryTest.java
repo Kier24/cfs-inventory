@@ -1,6 +1,6 @@
 package com.cfs.inventory.domain.model;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,9 +37,9 @@ public class ProductRepositoryTest {
 
 	@Test
 	public void getAllProductsAndTotalNumberDeliveredByDate() {
-		Product product = new Product("Ketchup","Banana Ketchup",50,5);
+		Product product = new Product("Ketchup","GALLON",ProductCategory.FINISHED_GOODS,50,10);
 		entityManager.persist(product);
-		Product oysterSauce = new Product("Oyster Sauce","Oyster Sauce",50,5);
+		Product oysterSauce = new Product("Oyster Sauce","HALF GALLON",ProductCategory.FINISHED_GOODS,60,20);
 		entityManager.persist(oysterSauce);
 		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);
@@ -47,12 +47,7 @@ public class ProductRepositoryTest {
 		Delivery delivery = new Delivery("Calaca,Batangas",LocalDate.of(2018, 7, 17),"Kim");
 		saleApplication.createNewOrder("Kier Tenorio",delivery);
 		
-		List<ProductDto> productDtoList = productRepository.getDailyProductOrdered(LocalDate.of(2018, 10,23));
-		assertNotNull(productDtoList);
-		
-		for(ProductDto productDto: productDtoList) {
-			System.out.println(productDto.getCurrentStock()+ " order: "+productDto.getTotalNumberOrdered());
-		}
-		
+		List<ProductDto> productDtoList = productRepository.getDailyProductOrdered(LocalDate.now());
+		assertEquals(2,productDtoList.size());
 	}
 }

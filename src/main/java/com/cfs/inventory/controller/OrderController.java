@@ -19,7 +19,6 @@ import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
 import com.cfs.inventory.dto.SaleDto;
 
-
 import com.cfs.inventory.service.SaleApplicationService;
 
 @Controller
@@ -72,13 +71,13 @@ public class OrderController {
 	public SaleDto getOrder(@PathVariable Long id) {
 
 		Sale sale = saleRepository.getOne(id);
-		return new SaleDto(sale.getCustomerName(),sale.getDelivery(),sale.getItems());
+		return new SaleDto(sale.getCustomerName(), sale.getDelivery(), sale.getItems());
 	}
 
 	@PostMapping(value = "/saveOrder")
-	public String saveOrder(@RequestParam String customerName, @RequestParam String deliveryAddress,
-			@RequestParam Date deliveryDate) {
-		Delivery delivery = new Delivery(deliveryAddress, deliveryDate.toLocalDate());
+	public String saveOrder(@RequestParam String customerName, @RequestParam String deliveredBy,
+			@RequestParam String deliveryAddress, @RequestParam Date deliveryDate) {
+		Delivery delivery = new Delivery(deliveryAddress, deliveryDate.toLocalDate(), deliveredBy);
 		saleApplication.createNewOrder(customerName, delivery);
 
 		return "redirect:/orders";

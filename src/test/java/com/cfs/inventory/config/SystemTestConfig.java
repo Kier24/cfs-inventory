@@ -44,7 +44,7 @@ public class SystemTestConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		return (new EmbeddedDatabaseBuilder()).setType(EmbeddedDatabaseType.HSQL).build();
+		return (new EmbeddedDatabaseBuilder()).setType(EmbeddedDatabaseType.H2).build();
 	}
 
 	@Bean

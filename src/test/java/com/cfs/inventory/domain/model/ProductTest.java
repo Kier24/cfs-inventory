@@ -11,15 +11,16 @@ public class ProductTest {
 
 	@Test
 	public void deductProductStock() {
-		Product product = new Product("Ketchup","Banana Ketchup",10,3);
+		Product product = new Product("Ketchup", "Banana Ketchup", ProductCategory.FINISHED_GOODS);
 		product.deductStock(4);
-		assertEquals(6,product.getQuantity());
+		assertEquals(6, product.getQuantity());
 	}
-	
-	@Test(expected=IllegalStateException.class)
+
+	@Test(expected = IllegalStateException.class)
 	public void deductProductStockHigherThanCurrentStock() {
-		Product product = new Product("Ketchup","Banana Ketchup",10,3);
+		Product product = new Product("Ketchup", "Banana Ketchup", ProductCategory.FINISHED_GOODS);
 		product.deductStock(15);
-		
+
 	}
+
 }

@@ -35,9 +35,9 @@ public class SaleApplicationServiceTest {
 	
 	@Test
 	public void successfulOrder() {
-		Product product = new Product("Ketchup","Banana Ketchup",50,5);
+		Product product = new Product("Ketchup","GALLON",ProductCategory.FINISHED_GOODS,50,10);
 		entityManager.persist(product);
-		Product oysterSauce = new Product("Oyster Sauce","Oyster Sauce",50,5);
+		Product oysterSauce = new Product("Oyster Sauce","HALF GALLON",ProductCategory.FINISHED_GOODS,60,20);
 		entityManager.persist(oysterSauce);
 		saleApplication.enterItem(product.getId(),10);
 		saleApplication.enterItem(product.getId(), 5);
