@@ -28,7 +28,7 @@ public class StockMonitoringAspectTest {
 	@Test
 	@Transactional	
 	public void productStockLevelMonitor() {
-		Product product = new Product("Oyster Sauce","HALF GALLON",ProductCategory.FINISHED_GOODS,60,20);
+		Product product = new Product("Oyster Sauce","HALF GALLON",12,ProductCategory.FINISHED_GOODS,60,20);
 		entityManager.persist(product);
 		product.deductStock(5);
 		

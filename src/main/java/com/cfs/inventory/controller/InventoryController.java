@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cfs.inventory.model.Product;
-import com.cfs.inventory.model.ProductCategory;
+import static com.cfs.inventory.model.ProductCategory.*;
 import com.cfs.inventory.model.ProductRepository;
 
 @Controller
@@ -22,10 +22,18 @@ public class InventoryController {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping(value = "/rawMaterials")
-	public ModelAndView getRawMaterials(Product product) {
+	@GetMapping(value = "/rawMaterials/liquid")
+	public ModelAndView getLiquidRawMaterials(Product product) {
 		ModelAndView modelView = new ModelAndView();
-
+		productRepository.getProductByCategory(INGREDIENT_LIQUID);
+		modelView.setViewName("rawprod");
+		return modelView;
+	}
+	
+	@GetMapping(value = "/rawMaterials/solid")
+	public ModelAndView getSolidRawMaterials(Product product) {
+		ModelAndView modelView = new ModelAndView();
+		productRepository.getProductByCategory(INGREDIENT_SOLID);
 		modelView.setViewName("rawprod");
 		return modelView;
 	}

@@ -25,14 +25,17 @@ public class Product {
 	private ProductCategory category;
 	private int quantity;
 	private int criticalLevel;
+	private int quantityPerBox;
 
-	public Product(String name, String containerType, ProductCategory category) {
-		this(name,containerType,category,1,0);
+	public Product(String name, String containerType, int quantityPerBox, ProductCategory category) {
+		this(name, containerType, quantityPerBox, category, 1, 0);
 	}
-	
-	public Product(String name,String containerType,ProductCategory category,int quantity,int criticalLevel) {
+
+	public Product(String name, String containerType, int quantityPerBox, ProductCategory category, int quantity,
+			int criticalLevel) {
 		this.name = name;
 		this.containerType = containerType;
+		this.quantityPerBox = quantityPerBox;
 		this.quantity = quantity;
 		this.criticalLevel = criticalLevel;
 	}

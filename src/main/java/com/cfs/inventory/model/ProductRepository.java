@@ -19,4 +19,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 			+ "where s.orderDate = :orderDate group by p.name,p.quantity")
 	List<ProductDto> getDailyProductOrdered(@Param("orderDate")LocalDate date);
 	
+	List<Product> getProductByCategory(ProductCategory category);
+	
 }
