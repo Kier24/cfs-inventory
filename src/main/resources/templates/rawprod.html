@@ -6,9 +6,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="au theme template" />
-<meta name="author" content="Hau Nguyen" />
-<meta name="keywords" content="au theme template" />
 
 <!-- Title Page-->
 <title>Solid Materials</title>
@@ -98,8 +95,8 @@
 										<thead>
 											<tr>
 												<th>Name</th>
-												<th>Description</th>
 												<th>Quantity</th>
+												<th>Critical Level</th>
 												<th></th>
 											</tr>
 										</thead>
@@ -108,9 +105,9 @@
 												<tr th:id="${material.id}" class="tr-shadow">
 
 													<td id="name" th:text="${material.name}">Lori Lynch</td>
-													<td id="description" th:text="${material.description}"
+													<td id="description" th:text="${material.quantity}"
 														class="desc">Samsung S8 Black</td>
-													<td id="quantity" th:text="${material.quantity}"><span
+													<td id="quantity" th:text="${material.criticalLevel}"><span
 														class="status--process">Processed</span></td>
 													<td>
 														<div class="table-data-feature">
@@ -220,8 +217,8 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="#" th:object="${product}"
-						th:action="@{/inventory/rawMaterials/add}" method="post">
+					<form action="#" th:object="${rawMaterialDto}"
+						th:action="@{/inventory/rawMaterials/solid/add}" method="post">
 						<div class="modal-body">
 							<div class="form-group has-success">
 								<label for="cc-name" class="control-label mb-1">Product
@@ -234,8 +231,8 @@
 									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 							</div>
 							<div class="form-group has-success">
-								<label for="cc-desc" class="control-label mb-1">Description</label>
-								<input id="cc-desc" name="description" th:field="*{description}"
+								<label for="cc-desc" class="control-label mb-1">Critical level</label>
+								<input id="cc-desc" name="description" th:field="*{criticalLevel}"
 									type="text" class="form-control cc-name valid" data-val="true"
 									data-val-required="Please enter the description"
 									autocomplete="cc-name" aria-required="true"
@@ -284,7 +281,7 @@
 						</button>
 					</div>
 					<form action="#" th:action="@{/inventory/rawMaterials/add}"
-						th:object="${product}" method="post">
+						th:object="${rawMaterialDto}" method="post">
 						<div class="modal-body">
 							<input id="editId" name="editId" type="hidden" th:field="*{id}">
 							<div class="form-group has-success">
@@ -299,9 +296,9 @@
 									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 							</div>
 							<div class="form-group has-success">
-								<label for="editDesc" class="control-label mb-1">Description</label>
+								<label for="editDesc" class="control-label mb-1">Critical level</label>
 								<input id="editDesc" name="editDesc" type="text"
-									th:field="*{description}" class="form-control cc-name valid"
+									th:field="*{criticalLevel}" class="form-control cc-name valid"
 									data-val="true"
 									data-val-required="Please enter the description"
 									autocomplete="cc-name" aria-required="true"

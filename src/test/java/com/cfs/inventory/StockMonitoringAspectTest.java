@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cfs.inventory.config.SystemTestConfig;
 import com.cfs.inventory.model.Product;
-import com.cfs.inventory.model.ProductCategory;
+import com.cfs.inventory.model.MaterialType;
 import com.cfs.inventory.model.ProductRepository;
 
 @ContextConfiguration(classes = { SystemTestConfig.class })
@@ -28,7 +28,7 @@ public class StockMonitoringAspectTest {
 	@Test
 	@Transactional	
 	public void productStockLevelMonitor() {
-		Product product = new Product("Oyster Sauce","HALF GALLON",12,ProductCategory.FINISHED_GOODS,60,20);
+		Product product = new Product("Oyster Sauce","HALF GALLON",12,MaterialType.FINISHED_GOODS,60,20);
 		entityManager.persist(product);
 		product.deductStock(5);
 		

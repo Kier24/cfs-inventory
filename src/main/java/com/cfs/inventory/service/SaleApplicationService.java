@@ -1,5 +1,7 @@
 package com.cfs.inventory.service;
 
+import static com.cfs.inventory.model.OrderType.PER_PIECE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,23 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.ProducedGood;
+import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.Product;
-import com.cfs.inventory.model.ProductRepository;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
-import static com.cfs.inventory.model.OrderType.*;
 
 @Service
 public class SaleApplicationService {
 
 	private final SaleRepository saleRepository;
-	private final ProductRepository productRepository;
+	private final ProducedGoodRepository producedGoodRepository;
 	private final List<CartItem> cartItemsList = new ArrayList<>();
 
 	@Autowired
-	public SaleApplicationService(SaleRepository saleRepository, ProductRepository productRepository) {
+	public SaleApplicationService(SaleRepository saleRepository, ProducedGoodRepository producedGoodRepository) {
 		this.saleRepository = saleRepository;
-		this.productRepository = productRepository;
+		this.producedGoodRepository = producedGoodRepository;
 	}
 
 	// TODO: Plan if it should be List or Map. Possible conflict if user want to
@@ -34,11 +36,11 @@ public class SaleApplicationService {
 		if (quantity < 0) {
 			throw new IllegalArgumentException("Quantity must be greather than zero but was " + quantity);
 		}
-		Product product = productRepository.getOne(id);
-		if (product.getQuantity() < quantity) {
+		ProducedGood item = producedGoodRepository.getOne(id);
+		if (item.getQuantity() < quantity) {
 			throw new IllegalStateException("Input quantity cannot be greater than stock quantity.");
 		}
-		cartItemsList.add(new CartItem(product, quantity));
+		cartItemsList.add(new CartItem(item, quantity));
 
 	}
 
@@ -56,7 +58,7 @@ public class SaleApplicationService {
 		Sale sale = new Sale(customerName, delivery);
 
 		for (CartItem cartItem : cartItemsList) {
-			Product product = productRepository.getOne(cartItem.getProduct().getId());
+			Product product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
 			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
 			product.deductStock(cartItem.getQuantity());
 		}

@@ -1,5 +1,5 @@
 package com.cfs.inventory.model;
 
-public enum ProductCategory {
+public enum MaterialType {
 	INGREDIENT_SOLID,INGREDIENT_LIQUID,CONTAINER,FINISHED_GOODS
 }
