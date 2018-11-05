@@ -8,9 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RawMaterialDto {
-	private long id;
+	private Long id;
 	private String name;
 	private int quantity;
+	private String unit;
 	private int criticalLevel;
-	private MaterialType category;
+	private MaterialType materialType;
 }

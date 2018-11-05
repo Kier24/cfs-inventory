@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.cfs.inventory.model.Delivery;
 import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
-import com.cfs.inventory.model.Product;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
 
@@ -58,7 +57,7 @@ public class SaleApplicationService {
 		Sale sale = new Sale(customerName, delivery);
 
 		for (CartItem cartItem : cartItemsList) {
-			Product product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
+			ProducedGood product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
 			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
 			product.deductStock(cartItem.getQuantity());
 		}

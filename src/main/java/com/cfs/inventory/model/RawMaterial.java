@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class RawMaterial {
 
 	@Id
@@ -18,6 +20,7 @@ public class RawMaterial {
 	private Long id;
 	private String name;
 	private int quantity;
+	private String unit;
 	private int criticalLevel;
 	@Enumerated(EnumType.STRING)
 	private MaterialType materialType;

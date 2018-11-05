@@ -14,7 +14,7 @@ public class SalesLineItemId implements Serializable{
 	@Column(name = "product_id", updatable = false, nullable = false)
 	private Long productId;
 
-	SalesLineItemId(Sale sale, Product product) {
+	SalesLineItemId(Sale sale, ProducedGood product) {
 		this.saleId = sale.getId();
 		this.productId = product.getId();
 	}

@@ -1,11 +1,10 @@
 package com.cfs.inventory.controller;
 
-import static com.cfs.inventory.model.MaterialType.INGREDIENT_LIQUID;
-import static com.cfs.inventory.model.MaterialType.INGREDIENT_SOLID;
+import static com.cfs.inventory.model.MaterialType.LIQUID;
+import static com.cfs.inventory.model.MaterialType.SOLID;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cfs.inventory.dto.ProducedGoodDto;
 import com.cfs.inventory.dto.RawMaterialDto;
+import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
-import com.cfs.inventory.model.Product;
 import com.cfs.inventory.model.RawMaterial;
 import com.cfs.inventory.model.RawMaterialRepository;
+import com.github.dozermapper.core.Mapper;
 
 @Controller
 @RequestMapping(value = "/inventory")
@@ -31,13 +31,19 @@ public class InventoryController {
 	@Autowired
 	private ProducedGoodRepository producedGoodRepository;
 	@Autowired
-	private ModelMapper modelMapper;
+	private Mapper modelMapper;
 
+	@GetMapping(value = "/rawMaterials")
+	public String viewRawMaterials() {
+		return "rawmaterial";
+	}
 	@GetMapping(value = "/rawMaterials/liquid")
 	public ModelAndView getLiquidRawMaterials(RawMaterialDto rawMaterialDto) {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("rawprod");
-		modelView.addObject("materialList", rawMaterialRepository.getRawMaterialByMaterialType(INGREDIENT_LIQUID));
+		modelView.addObject("title", "Liquid Materials");
+		modelView.addObject("materialList", rawMaterialRepository.getRawMaterialByMaterialType(LIQUID));
+		modelView.addObject("action", "/inventory/rawMaterials/liquid/add");
 		return modelView;
 	}
 
@@ -45,15 +51,9 @@ public class InventoryController {
 	public ModelAndView getSolidRawMaterials(RawMaterialDto rawMaterialDto) {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("rawprod");
-		modelView.addObject("materialList", rawMaterialRepository.getRawMaterialByMaterialType(INGREDIENT_SOLID));
-		return modelView;
-	}
-
-	@GetMapping(value = "/finishedGoods")
-	public ModelAndView getFinishedGoods(ProducedGoodDto producedGoodDto) {
-		ModelAndView modelView = new ModelAndView();
-
-		modelView.setViewName("finishedgood");
+		modelView.addObject("title", "Solid Materials");
+		modelView.addObject("materialList", rawMaterialRepository.getRawMaterialByMaterialType(SOLID));
+		modelView.addObject("action", "/inventory/rawMaterials/solid/add");
 		return modelView;
 	}
 
@@ -65,41 +65,48 @@ public class InventoryController {
 		return modelView;
 	}
 
-	@PostMapping(value = "/finishedGoods/add")
-	public String saveFinishedGoods(@Valid @ModelAttribute("product") (ProducedGoodDto producedGoodDto) {
-
-		return "redirect:/inventory/finishedGoods";
+	@PostMapping(value = "/producedGoods/add")
+	public String saveFinishedGoods(@Valid @ModelAttribute("producedGoodDto") ProducedGoodDto producedGoodDto) {
+		ProducedGood newProducedGood = modelMapper.map(producedGoodDto, ProducedGood.class);
+		producedGoodRepository.save(newProducedGood);
+		return "redirect:/inventory/producedGoods";
 	}
 
-	@PostMapping(value = "/finishedGoods/delete")
-	public String deleteFinishedGood(@RequestParam(name = "deleteId") Long productId) {
-
+	@PostMapping(value = "/producedGoods/delete")
+	public String deleteFinishedGood(@RequestParam(name = "deleteId") Long producedGoodId) {
+		producedGoodRepository.deleteById(producedGoodId);
 		return "redirect:/inventory/finishedGoods";
 	}
 
 	@PostMapping(value = "/rawMaterials/solid/add")
 	public String saveSolidRawMaterial(@Valid @ModelAttribute("rawMaterial") RawMaterialDto rawMaterialDto) {
-		rawMaterialDto.setCategory(INGREDIENT_SOLID);
+		rawMaterialDto.setMaterialType(SOLID);
 		RawMaterial newRawMaterial = modelMapper.map(rawMaterialDto, RawMaterial.class);
 
 		rawMaterialRepository.save(newRawMaterial);
-		
+
 		return "redirect:/inventory/rawMaterials/solid";
 	}
-	
+
 	@PostMapping(value = "/rawMaterials/liquid/add")
 	public String saveLiuqidRawMaterial(@Valid @ModelAttribute("rawMaterial") RawMaterialDto rawMaterialDto) {
-		rawMaterialDto.setCategory(INGREDIENT_LIQUID);
+		rawMaterialDto.setMaterialType(LIQUID);
 		RawMaterial newRawMaterial = modelMapper.map(rawMaterialDto, RawMaterial.class);
 		rawMaterialRepository.save(newRawMaterial);
-		
-		return "redirect:/inventory/rawMaterials/liuqid";
-	}	
 
-	@PostMapping(value = "/rawMaterials/delete")
-	public String deleteRawMaterial(@RequestParam(name = "deleteId") Long productId) {
+		return "redirect:/inventory/rawMaterials/liquid";
+	}
 
-		return "redirect:/inventory/rawMaterials";
+	@PostMapping(value = "/rawMaterials/liquid/delete")
+	public String deleteLiquidRawMaterial(@RequestParam(name = "deleteId") Long materialId) {
+		rawMaterialRepository.deleteById(materialId);
+		return "redirect:/inventory/rawMaterials/liquid";
+	}
+
+	@PostMapping(value = "/rawMaterials/solid/delete")
+	public String deleteSolidRawMaterial(@RequestParam(name = "deleteId") Long materialId) {
+		rawMaterialRepository.deleteById(materialId);
+		return "redirect:/inventory/rawMaterials/solid";
 	}
 
 }

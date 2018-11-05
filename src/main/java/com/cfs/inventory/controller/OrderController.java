@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.cfs.inventory.model.Delivery;
-import com.cfs.inventory.model.Product;
-import com.cfs.inventory.model.MaterialType;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
 import com.cfs.inventory.dto.SaleDto;

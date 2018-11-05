@@ -8,7 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 <!-- Title Page-->
-<title>Solid Materials</title>
+<title th:text="${title}">Solid Materials</title>
 
 <!-- Fontfaces CSS-->
 <link href="css/font-face.css" rel="stylesheet"
@@ -74,7 +74,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<!-- DATA TABLE -->
-								<h3 class="title-5 m-b-35">Solid Materials - Ingredients</h3>
+								<h3 class="title-5 m-b-35" th:text="${title}+' - Ingredients'">Solid Materials - Ingredients</h3>
 								<div class="table-data__tool">
 									<div class="table-data__tool-right">
 										<a href="rawmaterial.html"><button
@@ -96,6 +96,7 @@
 											<tr>
 												<th>Name</th>
 												<th>Quantity</th>
+												<th>Unit</th>
 												<th>Critical Level</th>
 												<th></th>
 											</tr>
@@ -104,11 +105,13 @@
 											<th:block th:each="material:${materialList}">
 												<tr th:id="${material.id}" class="tr-shadow">
 
-													<td id="name" th:text="${material.name}">Lori Lynch</td>
-													<td id="description" th:text="${material.quantity}"
-														class="desc">Samsung S8 Black</td>
+													<td id="name" th:text="${material.name}">Corn</td>
+													<td id="quantity" th:text="${material.quantity}"
+														class="desc">50</td>
+													<td id="unit" th:text="${material.unit}">kg</td>
 													<td id="quantity" th:text="${material.criticalLevel}"><span
 														class="status--process">Processed</span></td>
+													
 													<td>
 														<div class="table-data-feature">
 															<button class="item btnView" data-toggle="modal"
@@ -218,7 +221,7 @@
 						</button>
 					</div>
 					<form action="#" th:object="${rawMaterialDto}"
-						th:action="@{/inventory/rawMaterials/solid/add}" method="post">
+						th:action="@{${action}}" method="post">
 						<div class="modal-body">
 							<div class="form-group has-success">
 								<label for="cc-name" class="control-label mb-1">Product
@@ -230,26 +233,36 @@
 									class="help-block field-validation-valid"
 									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 							</div>
-							<div class="form-group has-success">
-								<label for="cc-desc" class="control-label mb-1">Critical level</label>
-								<input id="cc-desc" name="description" th:field="*{criticalLevel}"
-									type="text" class="form-control cc-name valid" data-val="true"
-									data-val-required="Please enter the description"
-									autocomplete="cc-name" aria-required="true"
-									aria-invalid="false" aria-describedby="cc-name-error" required />
-								<span class="help-block field-validation-valid"
-									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-							</div>
-							<div class="form-group">
+								<div class="form-group">
 								<label for="cc-quantity" class="control-label mb-1">Quantity</label>
 								<input id="cc-quantity" name="quantity" th:field="*{quantity}"
-									type="number" class="form-control cc-number identified visa"
+									type="number" min="1" class="form-control cc-number identified visa"
 									value="" data-val="true"
 									data-val-required="Please enter the card number"
 									data-val-cc-number="Please enter a valid card number"
 									autocomplete="cc-number" required /> <span class="help-block"
 									data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
 							</div>
+							<div class="form-group has-success">
+								<label for="cc-unit" class="control-label mb-1">Unit</label> <input id="cc-unit" name="unit" th:field="*{unit}"
+									type="text" class="form-control cc-unit valid" data-val="true"
+									data-val-required="Please enter the product unit"
+									autocomplete="cc-name" aria-required="true"
+									aria-invalid="false" aria-describedby="cc-name-error" /> <span
+									class="help-block field-validation-valid"
+									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+							</div>
+							<div class="form-group has-success">
+								<label for="cc-crit" class="control-label mb-1">Critical level</label>
+								<input id="cc-crit" name="criticalLevel" th:field="*{criticalLevel}"
+									type="number" min="0" class="form-control cc-name valid" data-val="true"
+									data-val-required="Please enter the description"
+									autocomplete="cc-name" aria-required="true"
+									aria-invalid="false" aria-describedby="cc-name-error" required />
+								<span class="help-block field-validation-valid"
+									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+							</div>
+						
 						</div>
 
 						<div class="modal-footer">
@@ -280,7 +293,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="#" th:action="@{/inventory/rawMaterials/add}"
+					<form action="#" th:action="@{${action}}"
 						th:object="${rawMaterialDto}" method="post">
 						<div class="modal-body">
 							<input id="editId" name="editId" type="hidden" th:field="*{id}">
@@ -336,7 +349,7 @@
 			aria-labelledby="smallmodalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
-					<form action="#" th:action="@{/inventory/rawMaterials/delete}"
+					<form action="#" th:action="@{/inventory/rawMaterials/liquid/delete}"
 						method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="smallmodalLabel">Delete Item</h5>

@@ -27,7 +27,7 @@ public class Sale {
 	private Long id;
 	@OneToMany(mappedBy = "sale", orphanRemoval = true, cascade = CascadeType.ALL)
 	@MapKey(name = "product")
-	private Map<Product, SalesLineItem> items;
+	private Map<ProducedGood, SalesLineItem> items;
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
@@ -64,13 +64,13 @@ public class Sale {
 		return status;
 	}
 	
-	public void addToOrder(Product product,int quantity,OrderType orderType) {
+	public void addToOrder(ProducedGood product,int quantity,OrderType orderType) {
 		if(orderType.equals(OrderType.PER_PIECE)) {
 			setItemQuantity(product,quantity);
 		}
 		//TODO: get equivalent quantity per box according to container
 	}
-	private void setItemQuantity(Product product, int quantity) {
+	private void setItemQuantity(ProducedGood product, int quantity) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
@@ -96,14 +96,14 @@ public class Sale {
 		}
 	}
 
-	public void removeItem(Product product) {
+	public void removeItem(ProducedGood product) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
 		items.remove(product);
 	}
 	
-	public void returnItem(Product product,int quantity) {
+	public void returnItem(ProducedGood product,int quantity) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}

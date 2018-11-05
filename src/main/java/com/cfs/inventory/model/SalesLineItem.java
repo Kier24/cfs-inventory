@@ -21,14 +21,14 @@ public class SalesLineItem {
 
 	@ManyToOne
 	@MapsId("productId")
-	private Product product;
+	private ProducedGood product;
 
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;
 
 	private int quantity;
 
-	SalesLineItem(Sale sale, Product product, int quantity) {
+	SalesLineItem(Sale sale, ProducedGood product, int quantity) {
 		if (sale == null) {
 			throw new IllegalArgumentException("Sale cannot be null");
 		}
@@ -44,7 +44,7 @@ public class SalesLineItem {
 		this.quantity = quantity;
 	}
 
-	public Product getProduct() {
+	public ProducedGood getProduct() {
 		return product;
 	}
 

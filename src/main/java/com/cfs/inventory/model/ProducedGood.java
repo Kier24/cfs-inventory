@@ -6,9 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class ProducedGood {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +21,13 @@ public class ProducedGood {
 	private String containerType;
 	private int quantityPerBox;
 
+	public void deductStock(int quantity) {
+		if (quantity > this.quantity) {
+			throw new IllegalStateException("Quantity to be deduct cannot be greater than current stock");
+		}
+		this.quantity -= quantity;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
