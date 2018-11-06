@@ -1,9 +1,14 @@
 package com.cfs.inventory.model;
 
+import java.time.LocalDate;
+
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.cfs.inventory.converter.LocalDateAttributeConverter;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +24,8 @@ public class ProducedGood {
 	private int quantity;
 	private int criticalLevel;
 	private String containerType;
-	private int quantityPerBox;
+	@Convert(converter = LocalDateAttributeConverter.class)
+	private LocalDate dateCreated;
 
 	public void deductStock(int quantity) {
 		if (quantity > this.quantity) {

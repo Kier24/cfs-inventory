@@ -3,15 +3,22 @@ package com.cfs.inventory.controller;
 import static com.cfs.inventory.model.MaterialType.LIQUID;
 import static com.cfs.inventory.model.MaterialType.SOLID;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cfs.inventory.dto.ProducedGoodDto;
@@ -64,7 +71,11 @@ public class InventoryController {
 		modelView.setViewName("producedgoods");
 		return modelView;
 	}
-
+	@GetMapping(value="/producedGoods/{date}")
+	@ResponseBody
+	public List<ProducedGood> getProducedGoodsByDateCreated(@PathVariable("date") @DateTimeFormat(iso=ISO.DATE) LocalDate date){
+		return producedGoodRepository.getProducedGoodsByDateCreated(date);
+	}
 	@PostMapping(value = "/producedGoods/add")
 	public String saveFinishedGoods(@Valid @ModelAttribute("producedGoodDto") ProducedGoodDto producedGoodDto) {
 		ProducedGood newProducedGood = modelMapper.map(producedGoodDto, ProducedGood.class);

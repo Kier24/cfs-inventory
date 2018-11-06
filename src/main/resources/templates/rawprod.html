@@ -308,9 +308,18 @@
 									class="help-block field-validation-valid"
 									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 							</div>
+								<div class="form-group has-success">
+								<label for="cc-unit" class="control-label mb-1">Unit</label> <input id="editUnit" name="unit" th:field="*{unit}"
+									type="text" class="form-control cc-unit valid" data-val="true"
+									data-val-required="Please enter the product unit"
+									autocomplete="cc-name" aria-required="true"
+									aria-invalid="false" aria-describedby="cc-name-error" /> <span
+									class="help-block field-validation-valid"
+									data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+							</div>
 							<div class="form-group has-success">
 								<label for="editDesc" class="control-label mb-1">Critical level</label>
-								<input id="editDesc" name="editDesc" type="text"
+								<input id="editDesc" name="editDesc" type="number" min="0"
 									th:field="*{criticalLevel}" class="form-control cc-name valid"
 									data-val="true"
 									data-val-required="Please enter the description"
@@ -321,7 +330,7 @@
 							</div>
 							<div class="form-group">
 								<label for="editQuantity" class="control-label mb-1">Quantity</label>
-								<input id="editQuantity" name="editQuantity" type="number"
+								<input id="editQuantity" name="editQuantity" type="number" min="0"
 									th:field="*{quantity}"
 									class="form-control cc-number identified visa" value=""
 									data-val="true"

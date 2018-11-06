@@ -105,7 +105,7 @@
 									<div class="col-lg-8">
 										<div class="table-responsive m-b-40">
 											<div class="tableContainer" id="tableContainer">
-												<table class="table table-borderless table-data-fixed">
+												<table id="tblGoods" class="table table-borderless table-data-fixed">
 													<thead class="fixedHeader">
 														<tr>
 															<th>Product Name</th>
@@ -174,12 +174,13 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+				<form action="#" th:action="@{/inventory/producedGoods/add}"
+					th:object="${producedGoodDto}" method="post">
 				<div class="modal-body">
-					<form action="#" method="post">
 						<div class="row form-group">
 							<div class="col-6">
 								<label for="productname" class="control-label mb-1">Product
-									Name</label> <input id="productname" name="productname" type="text"
+									Name</label> <input id="productname" th:field="*{name}" name="productname" type="text"
 									class="form-control productname valid" data-val="true"
 									data-val-required="Please enter the product name"
 									autocomplete="productname" aria-required="true"
@@ -189,56 +190,45 @@
 							</div>
 							<div class="col-6">
 								<label for="productdesc" class="control-label mb-1">Production
-									Date</label> <input id="productdate" name="productdate" type="date"
+									Date</label> <input id="productdate" th:field="*{dateCreated}" name="productdate" type="date"
 									class="form-control productname valid" data-val="true"
-									data-val-required="Please enter the description"
-									autocomplete="productname" aria-required="true"
+									data-val-required="Please enter the production date"
+									autocomplete="productdate" aria-required="true"
 									aria-invalid="false" aria-describedby="productname-error"
 									required /> <span class="help-block field-validation-valid"
 									data-valmsg-for="productdate" data-valmsg-replace="true"></span>
 							</div>
 						</div>
-						<div class="form-group has-success">
-							<label for="productdesc" class="control-label mb-1">Description</label>
-							<input id="productdesc" name="productname" type="text"
-								class="form-control productname valid" data-val="true"
-								data-val-required="Please enter the description"
-								autocomplete="productname" aria-required="true"
-								aria-invalid="false" aria-describedby="productname-error"
-								required /> <span class="help-block field-validation-valid"
-								data-valmsg-for="productname" data-valmsg-replace="true"></span>
-						</div>
-
 						<div class="row form-group">
 							<div class="col-4">
-								<label for="productquantity" class="control-label mb-1">Stock</label>
-								<input id="productquantity" name="productnumber" type="tel"
-									class="form-control productnumber identified visa" value=""
+								<label for="quantity" class="control-label mb-1">Stock</label>
+								<input id="quantity" th:field="*{quantity}" name="quantity" type="number" min="1"
+									class="form-control quantity identified visa" value=""
 									data-val="true"
-									data-val-required="Please enter the product stock"
-									data-val-productnumber="Please enter a valid card number"
-									autocomplete="productnumber" required />
+									data-val-required="Please enter quantity"
+									data-val-productnumber="Please enter a valid quantity"
+									autocomplete="quantity" required />
 							</div>
 							<div class="col-4">
-								<label for="productquantity" class="control-label mb-1">Stock
-									Limit</label> <input id="productquantity" name="productnumber"
-									type="tel" class="form-control productnumber identified visa"
+								<label for="criticalLevel" class="control-label mb-1">Critical level</label> 
+								<input id="criticalLevel" th:field="*{criticalLevel}" name="criticalLevel"
+									type="number" min="0" class="form-control productnumber identified visa"
 									value="" data-val="true"
-									data-val-required="Please enter the product stock limit"
-									data-val-productnumber="Please enter a valid card number"
+									data-val-required="Please enter the critical level"
+									data-val-productnumber="Please enter a valid input for critical level"
 									autocomplete="productnumber" required />
 							</div>
 							<div class="col-4">
-								<label for="productquantity" class="control-label mb-1">Category</label>
-								<input id="productquantity" name="productnumber" type="tel"
+								<label for="containerType" class="control-label mb-1">Container Type</label>
+								<input id="containerType" th:field="*{containerType}" name="containerType" type="tel"
 									class="form-control productnumber identified visa" value=""
 									data-val="true"
-									data-val-required="Please enter product category"
-									data-val-productnumber="Please enter a valid card number"
-									autocomplete="productnumber" required />
+									data-val-required="Please enter containerType"
+									data-val-productnumber="Please enter a valid input for container type"
+									autocomplete="containerType" required />
 							</div>
 						</div>
-					</form>
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -249,6 +239,7 @@
 						<i class="fa fa-plus-square"></i> Add
 					</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
