@@ -11,16 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.cfs.inventory.dto.SaleDto;
 import com.cfs.inventory.model.Delivery;
+import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
-import com.cfs.inventory.dto.SaleDto;
-
 import com.cfs.inventory.service.SaleApplicationService;
 
 @Controller
 public class OrderController {
-
+	
+	@Autowired
+	private ProducedGoodRepository producedGoodRepository;
 	@Autowired
 	private SaleRepository saleRepository;
 	@Autowired
@@ -37,8 +40,8 @@ public class OrderController {
 
 	@GetMapping(value = "/createOrder")
 	public ModelAndView createOrder() {
-
-		return new ModelAndView("createOrder", "productList", null);
+		
+		return new ModelAndView("createOrder", "productList", producedGoodRepository.findAll());
 
 	}
 

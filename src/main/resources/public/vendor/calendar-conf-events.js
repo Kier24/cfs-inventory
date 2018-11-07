@@ -32,7 +32,7 @@ var Script = function () {
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-
+    
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -67,7 +67,6 @@ var Script = function () {
         events: {
             url: '/deliveryEvents',
             type: 'POST',
-         
             error: function() {
               alert('there was an error while fetching events!');
             }

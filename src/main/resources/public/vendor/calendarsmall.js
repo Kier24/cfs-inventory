@@ -27,21 +27,29 @@ YUI().use(
 				// dates returned with the event (since only
 				// single selection is enabled by default,
 				// we expect there to be only one date)
-				var newDate = ev.newSelection[0];
-				var table ="$(#tblGoods tbody)" ;
+				var newDate = dtdate.format(ev.newSelection[0]);
+				var table = $("#tblGoods tbody");
+			
+				var actionButtons = "<td><div class=\"table-data-feature\">"+
+									"<button class=\"item\" data-toggle=\"modal\""+
+									"data-target=\"#editModal\" title=\"Edit\">"+
+									"<i class=\"zmdi zmdi-edit\"></i>"+
+									"</button>"+
+									"<button class=\"item\" data-toggle=\"modal\""+
+									"data-target=\"#deletemodal\" title=\"Delete\">"+
+									"<i class=\"zmdi zmdi-delete\"></i>"+
+									"</button>"+
+									"</div>	</td>";
 				$.ajax({
-					type : "POST",
-					url : $(this).attr('action'),
-					data : {
-						"date" : newDate
-					},
+					type : "GET",
+					url : "/inventory/producedGoods/" + newDate,
 					timeout : 100000,
 					success : function(data) {
-
+						table.empty();
 						$.each(data, function(idx, elem) {
-							table.append("<tr><td>" + elem.username
-									+ "</td><td>" + elem.name + "</td>   <td>"
-									+ elem.lastname + "</td></tr>");
+							table.append("<tr class=\"tr-shadow\"><td>" + elem.name
+									+ "</td><td>" + elem.quantity + "</td>   <td>"
+									+ elem.criticalLevel + "</td>"+actionButtons+"</tr>");
 						});
 					},
 					error : function(e) {
@@ -53,7 +61,7 @@ YUI().use(
 				});
 				// Format the date and output it to a DOM
 				// element.
-				Y.one("#selecteddate").setHTML(dtdate.format(newDate));
+				// Y.one("#selecteddate").setHTML(dtdate.format(newDate));
 			});
 
 			// When the 'Show Previous Month' link is clicked,

@@ -21,7 +21,7 @@
 		<nav class="navbar-mobile">
 			<div class="container-fluid">
 				<ul class="navbar-mobile__list list-unstyled">
-					<li class="has-sub"><a class="js-arrow" href="#"> <i
+					<li class="has-sub"><a class="js-arrow" href="#" th:action="@{/}"> <i
 							class="fas fa-tachometer-alt"></i>Home
 					</a></li>
 					<li class="has-sub"><a class="js-arrow" href="#"> <i
@@ -30,7 +30,7 @@
 						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 							<li><i class="fa fa-lemon-o"></i><a href="#" th:action="@{/inventory/rawMaterials}">Raw
 									Materials</a></li>
-							<li><i class="fa fa-thumbs-up"></i><a href="#" th:action="@{/inventory/finishedGoods}">Produced
+							<li><i class="fa fa-thumbs-up"></i><a href="#" th:action="@{/inventory/producedGoods}">Produced
 									Goods</a></li>
 							<li><i class="fa fa-copy"></i><a href="#" th:action="@{/inventory/returnedGoods}">Returned Goods</a></li>
 						</ul></li>
@@ -80,7 +80,7 @@
                                     <a href="rawmaterial.html" th:href="@{/inventory/rawMaterials}"><i class=" fa fa-lemon-o"></i>Raw Materials</a>
                                 </li>
 								<li>
-                                    <a href="finishedgood.html" th:href="@{/inventory/finishedGoods}"><i class="fa fa-thumbs-up"></i>Finished Goods</a>
+                                    <a href="Producedgood.html" th:href="@{/inventory/producedGoods}"><i class="fa fa-thumbs-up"></i>Produced Goods</a>
                                 </li>
 								<li>
                                     <a href="returnedgoods.html" th:href="@{/inventory/returnedGoods}"><i class="fa fa-copy"></i>Returned Goods</a>

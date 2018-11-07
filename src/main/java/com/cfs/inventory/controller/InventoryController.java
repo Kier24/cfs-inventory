@@ -74,6 +74,7 @@ public class InventoryController {
 	@GetMapping(value="/producedGoods/{date}")
 	@ResponseBody
 	public List<ProducedGood> getProducedGoodsByDateCreated(@PathVariable("date") @DateTimeFormat(iso=ISO.DATE) LocalDate date){
+		System.out.println(date.toString());
 		return producedGoodRepository.getProducedGoodsByDateCreated(date);
 	}
 	@PostMapping(value = "/producedGoods/add")

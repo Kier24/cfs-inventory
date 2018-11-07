@@ -97,8 +97,8 @@
 										</thead>
 										<tbody>
 											<tr th:each="cartItem : ${cartItems}">
-												<td th:text="${cartItem.product.name}">Product</td>
-												<td th:text="${cartItem.description}">Description</td>
+												<td th:text="${cartItem.name}">Product</td>
+												<td th:text="${cartItem.containerType}">Description</td>
 												<td th:text="${cartItem.quantity}" class="process"></td>
 												<td>
 													<div class="table-data-feature">

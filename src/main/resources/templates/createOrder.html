@@ -77,7 +77,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Product Name</th>
-                                                <th>Description</th>
+                                                <th>Container</th>
                                                 <th>Stock</th>
                                                 <th></th>
                                             </tr>
@@ -85,7 +85,7 @@
                                         <tbody>
                                             <tr th:id="${product.id}" th:each= "product : ${productList}">
                                                 <td th:text="${product.name}"></td>
-                                                <td th:text="${product.description}"></td>
+                                                <td th:text="${product.containerType}"></td>
                                                 <td th:text="${product.quantity}"class="process"></td>
                                                 <td>
                                                     <div class="table-data-feature">
