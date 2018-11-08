@@ -48,7 +48,7 @@
                                             <img src="images/icon/avatar-01.png" th:src="@{/images/icon/avatar-01.png}" alt="avatar" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><span sec:authentication="name">Kier Tenorio</span></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -59,9 +59,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">Admin</a>
+                                                        <a href="#"><span>Kier Kier</span></a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email" sec:authentication="principal.authorities">johndoe@example.com</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -71,7 +71,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="login.html">
+                                                <a href="login.html" th:href="@{/logout}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

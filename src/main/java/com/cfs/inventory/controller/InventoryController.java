@@ -120,5 +120,10 @@ public class InventoryController {
 		rawMaterialRepository.deleteById(materialId);
 		return "redirect:/inventory/rawMaterials/solid";
 	}
+	
+	@GetMapping(value="/returnedGoods")
+	public String getReturnedGoods() {
+		return "returnedGoods";
+	}
 
 }

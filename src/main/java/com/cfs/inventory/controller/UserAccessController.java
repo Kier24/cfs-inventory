@@ -1,22 +1,18 @@
 package com.cfs.inventory.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserAccessController {
 
-	@RequestMapping("/login")
-	public String login(HttpServletRequest request) {
-		String exception = ((Exception)request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION")).getMessage();
-		System.out.println(exception);
+	@GetMapping("/login")
+	public String login() {
 		return "login";
 	}
 
-//	@GetMapping("/403")
-//	public String accessDenied() {
-//		return "403";
-//	}
+	@GetMapping("/403")
+	public String accessDenied() {
+		return "403";
+	}
 }
