@@ -130,6 +130,10 @@ public class Sale {
 	public void clear() {
 		items.clear();
 	}
+	
+	public void setStatus(Status status) {
+		this.status=status;
+	}
 
 	public List<SalesLineItem> getItems() {
 		return new ArrayList<SalesLineItem>(items.values());

@@ -288,6 +288,87 @@ section {
     padding-left: 300px;
 }
 
+/**Receipt**/
+
+.receiptlogo{
+	float:left;
+	white-space: nowrap
+	
+}
+
+.receipttext{
+	text-align:center;
+	white-space: nowrap
+}
+
+.receiptlogo a{
+	float:left;
+	margin-left:2%;
+	white-space: nowrap
+	
+}
+
+.amounttext{
+	text-align:right;
+	float:left;
+	white-space: nowrap
+}
+.tablereceipt{
+	
+	margin:2%;
+	white-space: nowrap
+}
+
+.amounttext span{
+	margin:11%;
+	white-space: nowrap
+}
+
+.checkedby{
+	margin-left:2%;
+	font-size:0.8rem;
+	white-space: nowrap
+}
+
+.checkedby .delivered{
+	margin-left:3%;
+	font-size:0.8rem;
+	white-space: nowrap
+}
+
+.note{
+	margin-right:11%;
+	text-align:right;
+	font-size:0.8rem;
+	white-space: nowrap;
+	margin-bottom:2%;
+}
+
+.disclaimer{
+	font-size:0.8rem;
+	margin:2%;
+	margin-top:-10px;
+	
+}
+
+.receivedby {
+	text-align:right;
+	font-size:0.8rem;
+	margin-right:6%;
+	white-space: nowrap
+
+	
+}
+
+.receivedby span{
+		margin-left:5%;
+}
+
+.receiptlogo .headertitle {
+	float:left;
+	margin-left:20%;
+}
+
 @media (max-width: 991px) {
     .page-container {
         position: relative;
@@ -3264,7 +3345,7 @@ section {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    padding: 30px;
+    padding: 10px;
     padding-bottom: 0;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
@@ -3304,13 +3385,13 @@ section {
 }
 
 .overview-box .icon {
-    display: fixed;
-    vertical-align: top;
+    display: relative;
+    vertical-align: bottom;
     margin-right: 15px;
 }
 
 .overview-box .icon i {
-    font-size: 60px;
+    font-size: 30px;
     color: #fff;
 }
 
@@ -3332,7 +3413,7 @@ section {
 
 .overview-box .text {
     font-weight: 300;
-    display: inline-block;
+
 }
 
 .overview-box .text h2 {
@@ -3342,6 +3423,7 @@ section {
     line-height: 1;
     margin-bottom: 5px;
 }
+
 
 .overview-box .text span {
     font-size: 18px;
@@ -4861,16 +4943,16 @@ section {
 
 /*--- table-data-fixed---*/
 div.tableContainer {
-    clear: both;
-    border: 1px solid #963;
-    height: 285px;
-    overflow: auto;
+	clear: both;
+	border: 1px solid #963;
+	height: 285px;
+	overflow: auto;
 }
 
 
 .table-data-fixed thead.fixedHeader {
-    position: relative;
-      background: #333;
+	position: relative;
+	  background: #333;
 }
 
 
@@ -4881,7 +4963,7 @@ div.tableContainer {
     color: #fff;
     font-weight: 400;
     text-transform: capitalize;
-    padding-left:3%;
+	padding-left:3%;
 }
 
 .table-data-fixed thead tr th:first-child {

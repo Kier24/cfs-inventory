@@ -17,11 +17,12 @@ import com.cfs.inventory.model.Delivery;
 import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
+import com.cfs.inventory.model.Status;
 import com.cfs.inventory.service.SaleApplicationService;
 
 @Controller
 public class OrderController {
-	
+
 	@Autowired
 	private ProducedGoodRepository producedGoodRepository;
 	@Autowired
@@ -40,7 +41,7 @@ public class OrderController {
 
 	@GetMapping(value = "/createOrder")
 	public ModelAndView createOrder() {
-		
+
 		return new ModelAndView("createOrder", "productList", producedGoodRepository.findAll());
 
 	}
@@ -79,5 +80,18 @@ public class OrderController {
 		saleApplication.createNewOrder(customerName, delivery);
 
 		return "redirect:/orders";
+	}
+
+	@PostMapping(value = "/updateStatus")
+	public String changeOrderStatus(@RequestParam Long orderId, @RequestParam String newStatus) {
+		Status status = Status.valueOf(newStatus);
+		saleApplication.changeStatus(orderId, status);
+		return "redirect:/orders";
+	}
+	
+	@GetMapping(value="/order/returnItem/{order.id}")
+	public String returnItemFromOrder() {
+		
+		return "returnitem";
 	}
 }

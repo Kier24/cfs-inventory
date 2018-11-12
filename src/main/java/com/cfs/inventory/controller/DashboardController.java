@@ -19,6 +19,7 @@ public class DashboardController {
 		mav.setViewName("index");
 		mav.addObject("totalOrderedItems", saleRepository.getTotalOrderedItems());
 		mav.addObject("totalDeliveredItems",saleRepository.getTotalDeliveredItems());
+		mav.addObject("orderTodayList",saleRepository.getAllOrdersToday());
 		return mav;
 	}
 	

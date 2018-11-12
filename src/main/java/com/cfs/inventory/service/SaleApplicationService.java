@@ -15,6 +15,8 @@ import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.Sale;
 import com.cfs.inventory.model.SaleRepository;
+import com.cfs.inventory.model.SalesLineItem;
+import com.cfs.inventory.model.Status;
 
 @Service
 public class SaleApplicationService {
@@ -58,7 +60,7 @@ public class SaleApplicationService {
 
 		for (CartItem cartItem : cartItemsList) {
 			ProducedGood product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
-			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
+			sale.addToOrder(product, cartItem.getQuantity(), PER_PIECE);
 			product.deductStock(cartItem.getQuantity());
 		}
 
@@ -68,5 +70,24 @@ public class SaleApplicationService {
 
 		return confirmation;
 
+	}
+
+	public void changeStatus(Long orderId, Status status) {
+
+		Sale sale = saleRepository.getOne(orderId);
+
+		if (status.equals(Status.CANCELLED)) {
+			returnAllItems(sale);
+		}
+		sale.setStatus(status);
+		saleRepository.save(sale);
+
+	}
+
+	private void returnAllItems(Sale sale) {
+		List<SalesLineItem> items = sale.getItems();
+		for (SalesLineItem item : items) {
+			sale.returnItem(item.getProduct(), item.getQuantity());
+		}
 	}
 }

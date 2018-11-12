@@ -147,30 +147,14 @@
                                             <p>Upcoming Deliveries</p>
                                         </div>
                                         <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
+                                            <div class="au-task__item au-task__item--primary" th:id="${order.id}" th:each= "order : ${orderTodayList}">
                                                 <div class="au-task__item-inner">
                                                     <h6 class="task">
-                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                        <a href="#" th:text="${order.delivery.deliveryAddress}">Meeting about plan for Admin Template 2018</a>
                                                     </h6>
-                                                    <span class="time">10:00 AM</span>
+                                                    <span class="time" th:text="${order.customerName}">02:00 PM</span>
                                                 </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--warning">
-                                                <div class="au-task__item-inner">
-                                                    <h6 class="task">
-                                                        <a href="#">Create new task for Dashboard</a>
-                                                    </h6>
-                                                    <span class="time">11:00 AM</span>
-                                                </div>
-                                            </div>
-                                            <div class="au-task__item au-task__item--primary">
-                                                <div class="au-task__item-inner">
-                                                    <h6 class="task">
-                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
-                                                    </h6>
-                                                    <span class="time">02:00 PM</span>
-                                                </div>
-                                            </div>
+                                            </div>          
                                         </div>
                                         <div class="au-task__footer">
                                             <button class="au-btn au-btn-load js-load-btn">load more</button>

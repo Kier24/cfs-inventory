@@ -13,12 +13,17 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	@Query("SELECT s FROM Sale s WHERE (s.delivery.deliveryDate BETWEEN ?1 AND ?2)")
 	List<Sale> findOrdersByDate(LocalDate startDate, LocalDate endDate);
 
-	@Query("SELECT s FROM Sale s WHERE (s.delivery.deliveryDate >= CURRENT_DATE)")
+	@Query("SELECT s FROM Sale s WHERE (s.delivery.deliveryDate >= CURRENT_DATE) and s.status='FOR_DELIVERY'")
 	List<Sale> getOrderFromToday();
+	
+	@Query("SELECT s FROM Sale s WHERE (s.delivery.deliveryDate = CURRENT_DATE) and s.status='FOR_DELIVERY'")
+	List<Sale> getAllOrdersToday();
 
-	@Query("Select count(quantity) as total from SalesLineItem")
+	@Query("Select coalesce(sum(quantity),0) as total from SalesLineItem")
 	Long getTotalOrderedItems();
 
-	@Query("Select count(sl.quantity) as total from Sale s join s.items sl where s.status = 'DELIVERED'")
+	@Query("Select coalesce(sum(sl.quantity),0) as total from Sale s join s.items sl where s.status = 'DELIVERED'")
 	Long getTotalDeliveredItems();
+	
+	
 }

@@ -5,9 +5,6 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content="au theme template"/>
-    <meta name="author" content="Hau Nguyen"/>
-    <meta name="keywords" content="au theme template"/>
 
     <!-- Title Page-->
     <title>Order</title>
@@ -101,12 +98,12 @@
 														<button class="item viewOrderDetails" title = "View" data-toggle="modal" data-target="#viewOrdermodal">
                                                             <i class="fa fa-search"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="modal" data-target="#changeStatmodal" title="Update">
+                                                        <button class="item btnEdit" data-toggle="modal" data-target="#changeStatmodal" title="Update">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-														<a href = "returnitem.html"><button class="item" title="Return an Item">
+														<a href = "returnitem.html" th:href="@{/order/returnItem/}+${order.id}"><button class="item" title="Return an Item">
                                                            <i class="fa fa-mail-reply-all"></i>
-                                                        </button>
+                                                        </button></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -135,7 +132,7 @@
 			<div class="modal fade" id="changeStatmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
 					<div class="modal-content">
-					<form action="#"  th:action="@{/orders/updateStatus}" method="post">
+					<form action="#"  th:action="@{/updateStatus}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title" id="smallmodalLabel">Change Order Status</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -144,11 +141,12 @@
 						</div>
 						<div class="modal-body">
 							<div class="col-12 col-md-12">
-                                <select name="select" id="select" class="form-control">
-                                    <option value = "created"> Created </option>
-									<option value = "fordelivery"> For Delivery </option>
-									<option value = "delivered"> Delivered </option>
-									<option value = "cancelled"> Cancelled </option>
+								<input type="hidden" id="orderId" name="orderId">
+                                <select name="newStatus" id="status" class="form-control">
+                                    <option value = "CREATED"> Created </option>
+									<option value = "FOR_DELIVERY"> For Delivery </option>
+									<option value = "DELIVERED"> Delivered </option>
+									<option value = "CANCELLED"> Cancelled </option>
                                 </select>
                             </div>
 						</div>
@@ -241,6 +239,7 @@
     <!-- Main JS-->
     <script src="js/main.js"></script>
 	<script src="external/crud.js"></script>
+	<script src="external/orderUpdateStatus.js"></script>
 	<script>
 	$('.viewOrderDetails').on('click', function() {
 		var orderId = $(this).closest('tr').attr('id');
