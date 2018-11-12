@@ -59,6 +59,7 @@ public class SaleApplicationService {
 		for (CartItem cartItem : cartItemsList) {
 			ProducedGood product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
 			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
+			sale.confirmOrder();
 			product.deductStock(cartItem.getQuantity());
 		}
 

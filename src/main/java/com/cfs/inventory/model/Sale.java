@@ -1,5 +1,6 @@
 package com.cfs.inventory.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class Sale {
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
+	private BigDecimal totalPrice;
 	@Embedded
 	private Delivery delivery;
 	@Enumerated(EnumType.STRING)
@@ -94,6 +96,13 @@ public class Sale {
 				items.put(product, new SalesLineItem(this, product, quantity));
 			}
 		}
+	}
+	
+	public void confirmOrder() {
+		items.entrySet().forEach(entry -> {
+		  SalesLineItem lineItem = entry.getValue();
+		  totalPrice=totalPrice.add((lineItem.getPrice()));
+		}); 
 	}
 
 	public void removeItem(ProducedGood product) {
