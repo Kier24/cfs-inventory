@@ -1,11 +1,11 @@
 package com.cfs.inventory.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
@@ -27,6 +27,7 @@ public class SalesLineItem {
 	private OrderType orderType;
 
 	private int quantity;
+	private BigDecimal price;
 
 	SalesLineItem(Sale sale, ProducedGood product, int quantity) {
 		if (sale == null) {
@@ -42,14 +43,22 @@ public class SalesLineItem {
 		this.sale = sale;
 		this.product = product;
 		this.quantity = quantity;
+		this.price=computePrice(product.getPrice(),quantity);
 	}
-
+	
+	private BigDecimal computePrice(BigDecimal productPrice, int quantity) {
+		return productPrice.multiply(BigDecimal.valueOf(quantity));
+	}
 	public ProducedGood getProduct() {
 		return product;
 	}
 
 	public int getQuantity() {
 		return quantity;
+	}
+	
+	public BigDecimal getPrice() {
+		return price;
 	}
 
 	public void setQuantity(int quantity) {

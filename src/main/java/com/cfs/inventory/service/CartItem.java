@@ -15,7 +15,7 @@ public class CartItem {
 	public CartItem(ProducedGood producedGood, int quantity) {
 		this.producedGood = producedGood;
 		this.name=producedGood.getName();
-		this.containerType=producedGood.getContainerType();
+		this.containerType=producedGood.getContainerType().getName();
 		this.quantity = quantity;
 	}
 

@@ -1,12 +1,15 @@
 package com.cfs.inventory.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.cfs.inventory.converter.LocalDateAttributeConverter;
 
@@ -17,13 +20,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProducedGood {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private int quantity;
+	private BigDecimal price;
 	private int criticalLevel;
-	private String containerType;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Container containerType;
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate dateCreated;
 
@@ -33,7 +39,7 @@ public class ProducedGood {
 		}
 		this.quantity -= quantity;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
