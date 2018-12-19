@@ -54,20 +54,25 @@
                                 <h3 class="title-5 m-b-35">Order List</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
+                                       	<form action="#" th:action="@{/orders}" method="GET">
                                         <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                            <select class="js-select2" name="status">
+                                                <option value="" disabled selected>Select Status</option>
+                                                <option value="CREATED">Created</option>
+                                                <option value="FOR_DELIVERY">For Delivery</option>
+                                                <option value="DELIVERED">Delivered</option>
+                                                <option value="CANCELLED">Cancelled</option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
+                                        
                                         <div class="rs-select2--light rs-select5--sm">
-                                                <input type="date" class="form-control" />
+                                                <input type="date" name="orderDate" class="form-control" />
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                        <button type="submit" class="au-btn-filter">
+                                            <i class="zmdi zmdi-filter-list"></i>Filter</button>
+                                        </form>
                                     </div>
                                     <div class="table-data__tool-right">
                                         <a href = "#" th:href="@{/createOrder}"><button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -104,6 +109,9 @@
 														<a href = "returnitem.html" th:href="@{/order/returnItem/}+${order.id}"><button class="item" title="Return an Item">
                                                            <i class="fa fa-mail-reply-all"></i>
                                                         </button></a>
+                                                        <a href ="#" th:href="@{/order/receipt/}+${order.id}"><button class="item" title="Print Receipt">
+                                                           <i class="fa fa-print"></i>
+                                                        </button></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -117,7 +125,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2018. All rights reserved.</p>
                                 </div>
                             </div>
                         </div>
@@ -197,6 +205,8 @@
 														<th>Product Name</th>
 														<th>Description</th>
 														<th>Quantity</th>
+														<th>Price</th>
+														<th>Total</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -262,9 +272,11 @@
 	            	for(var i = 0; i < data.items.length; i++) {
 	            		 var item = data.items[i];
 		            	 var productName = item.product.name;
-		            	 var productDescription = item.product.description;
+		            	 var productDescription = item.product.containerType.name;
+		            	 var price = item.product.price;
 					     var quantity=item.quantity;
-						 tableData += '<tr><td>' + productName + '</td><td>' + productDescription + '</td><td>' + quantity + '</td></tr>';
+					     var total=item.price;
+						 tableData += '<tr><td>' + productName + '</td><td>' + productDescription + '</td><td>' + quantity +'</td><td>'+price+'</td><td>'+total+'</td></tr>';
 	            	}
 	            	
 	            	 $('#address').val(deliveryAddress);

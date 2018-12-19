@@ -31,24 +31,27 @@ YUI().use(
 				var table = $("#tblGoods tbody");
 			
 				var actionButtons = "<td><div class=\"table-data-feature\">"+
-									"<button class=\"item\" data-toggle=\"modal\""+
+									"<button class=\"btnEdit item\" data-toggle=\"modal\""+
 									"data-target=\"#editModal\" title=\"Edit\">"+
 									"<i class=\"zmdi zmdi-edit\"></i>"+
 									"</button>"+
-									"<button class=\"item\" data-toggle=\"modal\""+
+									"<button class=\"deleteAction item\" data-toggle=\"modal\""+
 									"data-target=\"#deletemodal\" title=\"Delete\">"+
 									"<i class=\"zmdi zmdi-delete\"></i>"+
 									"</button>"+
-									"</div>	</td>";
+									"</div></td>";
+				
+				alert(actionButtons);
 				$.ajax({
 					type : "GET",
-					url : "/inventory/producedGoods/" + newDate,
+					url : "/inventory/producedGoods/dateCreated/" + newDate,
 					timeout : 100000,
 					success : function(data) {
 						table.empty();
 						$.each(data, function(idx, elem) {
-							table.append("<tr class=\"tr-shadow\"><td>" + elem.name
-									+ "</td><td>" + elem.quantity + "</td>   <td>"
+							table.append("<tr id=\""+elem.id+"\" class=\"tr-shadow\"><td id=\"productName\">" + elem.name
+									+"</td><td id=\"price\">" +elem.price
+									+ "</td><td id=\"quantity\">" + elem.quantity + "</td>   <td id=\"criticalLevel\">"
 									+ elem.criticalLevel + "</td>"+actionButtons+"</tr>");
 						});
 					},

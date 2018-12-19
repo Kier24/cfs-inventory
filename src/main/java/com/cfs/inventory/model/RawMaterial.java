@@ -62,5 +62,9 @@ public class RawMaterial {
 			return false;
 		return true;
 	}
+	
+	protected RawMaterial() {
+		
+	}
 
 }

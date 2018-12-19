@@ -27,12 +27,12 @@ public class Sale {
 	@GeneratedValue
 	private Long id;
 	@OneToMany(mappedBy = "sale", orphanRemoval = true, cascade = CascadeType.ALL)
-	@MapKey(name = "product")
+	@MapKey(name = "producedGood")
 	private Map<ProducedGood, SalesLineItem> items;
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
-	private BigDecimal totalPrice;
+	private BigDecimal totalPrice=BigDecimal.ZERO;
 	@Embedded
 	private Delivery delivery;
 	@Enumerated(EnumType.STRING)
@@ -98,11 +98,13 @@ public class Sale {
 		}
 	}
 	
-	public void confirmOrder() {
-		items.entrySet().forEach(entry -> {
-		  SalesLineItem lineItem = entry.getValue();
-		  totalPrice=totalPrice.add((lineItem.getPrice()));
-		}); 
+	public BigDecimal computeTotalAmount() {
+		for(SalesLineItem lineItem: items.values()) {
+			System.out.println("LINE ITEM: "+lineItem.getPrice());
+			totalPrice=totalPrice.add(lineItem.getPrice());
+		}
+		return totalPrice;
+		
 	}
 
 	public void removeItem(ProducedGood product) {
@@ -112,22 +114,22 @@ public class Sale {
 		items.remove(product);
 	}
 	
-	public void returnItem(ProducedGood product,int quantity) {
-		if (product == null) {
+	public void returnItem(ProducedGood producedGood,int quantity) {
+		if (producedGood == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
-		if (product.getId() == null) {
+		if (producedGood.getId() == null) {
 			throw new IllegalArgumentException("Product ID cannot be null");
 		}
 		if (quantity < 0) {
 			throw new IllegalArgumentException("Quantity cannot be negative");
 		}
-		if(items.get(product)==null) {
+		if(items.get(producedGood)==null) {
 			throw new IllegalStateException("Product to return does not exist from order");
 		}else {
-			SalesLineItem item = items.get(product);
+			SalesLineItem item = items.get(producedGood);
 			if(item.getQuantity()<=quantity) {
-				removeItem(product);
+				removeItem(producedGood);
 			}else {
 				item.setQuantity(item.getQuantity()-quantity);
 			}
@@ -154,6 +156,10 @@ public class Sale {
 
 	public Delivery getDelivery() {
 		return delivery;
+	}
+	
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
 	}
 
 	@Override

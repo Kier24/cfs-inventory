@@ -62,7 +62,7 @@
                                 <!-- DATA TABLE -->
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
-                                      <form action="#" th:action="@{/report/monthlyReport}" method="GET">
+                                      <form action="#" th:action="@{/report/weeklyReport}" method="GET">
                                         <div class="rs-select2--light rs-select5--sm">
                                                 <label>Select Date</label>
 												<input type="date" id="orderDate" name="orderDate" class="form-control" /> 
@@ -90,11 +90,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:id="${product.id}" th:each= "product : ${productList}">
+                                            <tr th:each= "product : ${productList}">
                                                 <td th:text="${product.name}"></td>
-                                                <td th:text="${product.delivered}"></td>
-												<td th:text="${product.stock}"></td>
-                                                
+                                                <td th:text="${product.totalNumberOrdered}"></td>
+												<td th:text="${product.currentStock}"></td>
                                             </tr>
                                             <tr class="spacer"></tr>
                                         </tbody>

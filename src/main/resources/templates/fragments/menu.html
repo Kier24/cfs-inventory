@@ -30,9 +30,15 @@
 						<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 							<li><i class="fa fa-lemon-o"></i><a href="#" th:action="@{/inventory/rawMaterials}">Raw
 									Materials</a></li>
-							<li><i class="fa fa-thumbs-up"></i><a href="#" th:action="@{/inventory/producedGoods}">Produced
+							<li><i class="fa fa-thumbs-up"></i><a href="#" th:action="@{/producedGoods}">Produced
 									Goods</a></li>
 							<li><i class="fa fa-copy"></i><a href="#" th:action="@{/inventory/returnedGoods}">Returned Goods</a></li>
+							<li>
+                                <a href="#" th:action="@{/backlog}"><i class="fa fa-inbox"></i>Backlog Items</a>
+                            </li>
+							<li>
+                                <a href="stockonhand.html" th:href="@{/stockOnHand}"><i class="fa fa-clipboard"></i>Stock on Hand</a>
+                            </li>
 						</ul></li>
 					<li><a href="#" th:action="@{/orders}"> <i
 							class="fas fa-table"></i>Order
@@ -42,13 +48,13 @@
                                 <i class="fa fa-files-o"></i>Reports</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                <li>
-                                    <a href="dailyreport.html"><i class="fa fa-file-text"></i>Daily Reports</a>
+                                    <a href="dailyreport.html" th:href="@{/report/dailyReport}"><i class="fa fa-file-text"></i>Daily Reports</a>
                                 </li>
 								<li>
-                                    <a href="weeklyreport.html"><i class="fa fa-files-o"></i>Weekly Reports</a>
+                                    <a href="weeklyreport.html" th:href="@{/report/weeklyReport}"><i class="fa fa-files-o"></i>Weekly Reports</a>
                                 </li>
 								<li>
-                                    <a href="monthlyreport.html"><i class="fa fa-calendar-o"></i>Monthly Reports</a>
+                                    <a href="monthlyreport.html" th:href="@{/report/monthlyReport}"><i class="fa fa-calendar-o"></i>Monthly Reports</a>
                                 </li>
                             </ul>
                         </li>
@@ -80,11 +86,17 @@
                                     <a href="rawmaterial.html" th:href="@{/inventory/rawMaterials}"><i class=" fa fa-lemon-o"></i>Raw Materials</a>
                                 </li>
 								<li>
-                                    <a href="Producedgood.html" th:href="@{/inventory/producedGoods}"><i class="fa fa-thumbs-up"></i>Produced Goods</a>
+                                    <a href="Producedgood.html" th:href="@{/producedGoods}"><i class="fa fa-thumbs-up"></i>Produced Goods</a>
                                 </li>
 								<li>
                                     <a href="returnedgoods.html" th:href="@{/inventory/returnedGoods}"><i class="fa fa-copy"></i>Returned Goods</a>
                                 </li>
+                                <li>
+                                	<a href="#" th:action="@{/backlog}"><i class="fa fa-inbox"></i>Backlog Items</a>
+                            	</li>
+								<li>
+                                	<a href="stockonhand.html" th:href="@{/stockOnHand}"><i class="fa fa-clipboard"></i>Stock on Hand</a>
+                            	</li>
                             </ul>
                         </li>
 						<li>
@@ -96,13 +108,13 @@
                                 <i class="fa fa-files-o"></i>Reports</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                <li>
-                                    <a href="dailyreport.html"><i class="fa fa-file-text"></i>Daily Reports</a>
+                                    <a href="dailyreport.html" th:href="@{/report/dailyReport}"><i class="fa fa-file-text"></i>Daily Reports</a>
                                 </li>
 								<li>
-                                    <a href="weeklyreport.html"><i class="fa fa-files-o"></i>Weekly Reports</a>
+                                    <a href="weeklyreport.html" th:href="@{/report/weeklyReport}"><i class="fa fa-files-o"></i>Weekly Reports</a>
                                 </li>
 								<li>
-                                    <a href="monthlyreport.html"><i class="fa fa-calendar-o"></i>Monthly Reports</a>
+                                    <a href="monthlyreport.html" th:href="@{/report/monthlyReport}"><i class="fa fa-calendar-o"></i>Monthly Reports</a>
                                 </li>
                             </ul>
                         </li>

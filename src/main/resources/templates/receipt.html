@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Title Page-->
+    <title>Generate Receipt</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" th:href="@{/css/font-face.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" th:href="@{/vendor/font-awesome-4.7/css/font-awesome.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" th:href="@{/vendor/font-awesome-5/css/fontawesome-all.min.css}"rel="stylesheet" media="all"/>
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" th:href="@{/vendor/mdi-font/css/material-design-iconic-font.min.css}" rel="stylesheet" media="all"/>
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" th:href="@{/vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet" media="all"/>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" th:href="@{/vendor/animsition/animsition.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" th:href="@{/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/wow/animate.css" th:href="@{/vendor/wow/animate.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/css-hamburgers/hamburgers.min.css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/slick/slick.css" th:href="@{/vendor/slick/slick.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/select2/select2.min.css" th:href="@{/vendor/select2/select2.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}" rel="stylesheet" media="all"/>
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" th:href="@{/css/theme.css}" rel="stylesheet" media="all"/>
+
+</head>
+ 
+
+
+<body class="animsition">
+
+
+               <!-- MAIN CONTENT-->
+
+
+                    <div class="container-fluid">
+						
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+									<div class = "receiptlogo">
+                                        <a class="logo" href="index.html">
+											<img src="images/icon/logo.png" th:src="@{/images/icon/logo.png}" alt="Critie's Food Seasoning" />
+										</a>
+										<div class = "headertitle">	
+											<h4>Cristie's Food Seasoning<h4>
+											<h6>Fuentes Subd. Brgy. Malaruhatan, Lian, Batangas<h6>
+											<h6>Mobile No. 0929709888 <h6>
+										</div>
+									</div>
+									<hr>
+                                   
+                                     <div class="card-body card-block form-horizontal">
+											<div class="row form-group">
+                                                <div class="col-md-2">
+                                                    <label class=" form-control-label">Deliver To:</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" th:value="${order.customerName}" name="text-input" placeholder="" class="form-control">
+                                                   
+                                                </div>
+												<div class="col-md-2">
+                                                    <label class=" form-control-label">Date:</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" th:value="${order.orderDate}"  name="text-input" placeholder="" class="form-control">
+                                                   
+                                                </div>
+                                            </div>
+											 <div class="row form-group">
+                                                <div class="col col-md-2">
+                                                    <label for="text-input"  class=" form-control-label">Address</label>
+                                                </div>
+                                                <div class="col-12 col-md-10">
+                                                    <input type="text" th:value="${order.delivery.deliveryAddress}" id="text-input" name="text-input" placeholder="" class="form-control">
+                                                   
+                                                </div>
+                                            </div>
+                                    </div>
+									<hr/>
+										<div class = "receipttext">
+											<h6>Received from CRISTIE'S FOOD SEASONINGS the following items in good order and condition<h6>
+										</div>
+									<hr/>
+									
+									<table class = "tablereceipt">
+                                        <thead>
+                                            <tr>
+                                                <th>Quantity</th>
+                                                <th>Unit</th>
+												<th>Description</th>
+                                                <th>Unit Price</th>
+												<th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="spacer"></tr>
+											<tr th:each="item:${order.items}"class="tr-shadow">
+                                                
+                                                <td th:text="${item.quantity}">15</td>
+                                                <td>CS</td>
+                                                <td th:text="${item.producedGood.product.name}">Banana KEtchup GALLON X4)</td>
+                                                <td th:text="${item.producedGood.product.price}">228.00</td>
+												<td th:text="${item.price}">3420</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+								<label class = "amounttext">Total Amount: <span th:text="${order.totalPrice}">4,032.00</span></label>
+								
+								<label class = "checkedby">Checked By: ............................................................................ <span class = "delivered">Delievered by: ............................................................................ </span> </label>
+								<span class = "note">Received above items in good condition </span>
+								
+								<label class = "receivedby">Received By: .................................................... <span class = "receiveddate">Received Date: <span th:text="${order.delivery.deliveryDate}">11/05/2018 </span></span></label>
+                                <hr/>
+								<span class = "disclaimer">No claim for damage and shortage will be entertained after receipt has been fully acknowledged. </span>
+								</div>
+							</div>
+						</div>
+
+
+        <!-- END PAGE CONTAINER-->
+
+    </div>
+	
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"
+        th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"
+        th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"
+        th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js"
+        th:src="@{/vendor/slick/slick.min.js}">
+        
+    </script>
+    <script src="vendor/wow/wow.min.js" th:src="@{/vendor/wow/wow.min.js}"></script>
+    <script src="vendor/animsition/animsition.min.js"
+        th:src="@{/vendor/animsition/animsition.min.js}"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"
+        th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}">
+        
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"
+        th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"
+        th:src="@{/vendor/counter-up/jquery.counterup.min.js}"></script>
+    <script src="vendor/circle-progress/circle-progress.min.js"
+        th:src="@{/vendor/circle-progress/circle-progress.min.js}"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"
+        th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.js}"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"
+        th:src="@{/vendor/chartjs/Chart.bundle.min.js}"></script>
+    <script src="vendor/select2/select2.min.js"
+        th:src="@{/vendor/select2/select2.min.js}"></script>
+    <script src="vendor/calendarsmall.js"
+        th:src="@{/vendor/calendarsmall.js}"></script>
+    <!-- Main JS-->
+    <script src="js/main.js" th:src="@{/js/main.js}"></script> 
+	
+</body>
+
+</html>
+<!-- end document-->

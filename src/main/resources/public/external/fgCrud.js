@@ -1,30 +1,27 @@
 $(document).ready(function() {
-	$('.btnDelete').on('click', function() {
-		var productId = $(this).closest('tr').attr('id');
-		$('#deleteId').val(productId);
-	});
-	$('.btnEdit').on('click', function() {
-		var productId = $(this).closest('tr').attr('id');
-		var productName = $(this).closest('tr').find('#name').text();
-		var productDescription = $(this).closest('tr').find('#description').text();
-		var quantity = $(this).closest('tr').find('#quantity').text();
-		
-		$('#editId').val(productId);
-		$('#editName').val(productName);
-		$('#editDesc').val(productDescription);
-		$('#editQuantity').val(quantity);
+	$('.deleteAction').on('click', function() {
+		alert('tite');
 	});
 	
-	$('.btnView').on('click', function() {
+	$('editModal').on('show', function() {
 		var productId = $(this).closest('tr').attr('id');
-		var productName = $(this).closest('tr').find('#name').text();
-		var productDescription = $(this).closest('tr').find('#description').text();
-		var quantity = $(this).closest('tr').find('#quantity').text();
 		
-		$('#editId').val(productId);
-		$('#editName').val(productName);
-		$('#editDesc').val(productDescription);
-		$('#editQuantity').val(quantity);
-	});
+		$.ajax({
+			type : "GET",
+			url : "/inventory/producedGoods/" + productId,
+			timeout : 100000,
+			success : function(data) {
+				
+				
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			},
+			done : function(e) {
 
+			}
+		});
+		
+	});
+	
 });

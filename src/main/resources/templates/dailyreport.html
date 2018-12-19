@@ -91,10 +91,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:id="${product.id}" th:each= "product : ${productList}">
+                                            <tr th:each= "product : ${productList}">
                                                 <td th:text="${product.name}"></td>
-                                                <td th:text="${product.delivered}"></td>
-												<td th:text="${product.stock}"></td>
+                                                <td th:text="${product.totalNumberOrdered}"></td>
+												<td th:text="${product.currentStock}"></td>
                                             </tr>
                                             <tr class="spacer"></tr>
                                         </tbody>

@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cfs.inventory.dto.ProducedGoodDto;
 import com.cfs.inventory.dto.RawMaterialDto;
+import com.cfs.inventory.model.ContainerType;
+import com.cfs.inventory.model.ContainerTypeRepository;
 import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.RawMaterial;
@@ -37,6 +39,7 @@ public class InventoryController {
 	private RawMaterialRepository rawMaterialRepository;
 	@Autowired
 	private ProducedGoodRepository producedGoodRepository;
+	
 	@Autowired
 	private Mapper modelMapper;
 
@@ -63,32 +66,20 @@ public class InventoryController {
 		modelView.addObject("action", "/inventory/rawMaterials/solid/add");
 		return modelView;
 	}
-
-	@GetMapping(value = "/producedGoods")
-	public ModelAndView getProducedGoods(ProducedGoodDto producedGoodDto) {
-		ModelAndView modelView = new ModelAndView();
-		modelView.addObject("producedGoods", producedGoodRepository.findAll());
-		modelView.setViewName("producedgoods");
-		return modelView;
+	
+	@GetMapping(value="/producedGoods/{productId}")
+	@ResponseBody
+	public ProducedGood getProducedGood(@PathVariable("productId")Long productId) {
+		return producedGoodRepository.getOne(productId);
 	}
-	@GetMapping(value="/producedGoods/{date}")
+	
+	@GetMapping(value="/producedGoods/dateCreated/{date}")
 	@ResponseBody
 	public List<ProducedGood> getProducedGoodsByDateCreated(@PathVariable("date") @DateTimeFormat(iso=ISO.DATE) LocalDate date){
 		System.out.println(date.toString());
 		return producedGoodRepository.getProducedGoodsByDateCreated(date);
 	}
-	@PostMapping(value = "/producedGoods/add")
-	public String saveFinishedGoods(@Valid @ModelAttribute("producedGoodDto") ProducedGoodDto producedGoodDto) {
-		ProducedGood newProducedGood = modelMapper.map(producedGoodDto, ProducedGood.class);
-		producedGoodRepository.save(newProducedGood);
-		return "redirect:/inventory/producedGoods";
-	}
 
-	@PostMapping(value = "/producedGoods/delete")
-	public String deleteFinishedGood(@RequestParam(name = "deleteId") Long producedGoodId) {
-		producedGoodRepository.deleteById(producedGoodId);
-		return "redirect:/inventory/finishedGoods";
-	}
 
 	@PostMapping(value = "/rawMaterials/solid/add")
 	public String saveSolidRawMaterial(@Valid @ModelAttribute("rawMaterial") RawMaterialDto rawMaterialDto) {

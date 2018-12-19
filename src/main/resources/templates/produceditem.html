@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="au theme template"/>
+    <meta name="author" content="Hau Nguyen"/>
+    <meta name="keywords" content="au theme template"/>
+
+    <!-- Title Page-->
+    <title>Add Produced Goods</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" th:href="@{/css/font-face.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" th:href="@{/vendor/font-awesome-4.7/css/font-awesome.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" th:href="@{/vendor/font-awesome-5/css/fontawesome-all.min.css}"rel="stylesheet" media="all"/>
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" th:href="@{/vendor/mdi-font/css/material-design-iconic-font.min.css}" rel="stylesheet" media="all"/>
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" th:href="@{/vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet" media="all"/>
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" th:href="@{/vendor/animsition/animsition.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" th:href="@{/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/wow/animate.css" th:href="@{/vendor/wow/animate.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/css-hamburgers/hamburgers.min.css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/slick/slick.css" th:href="@{/vendor/slick/slick.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/select2/select2.min.css" th:href="@{/vendor/select2/select2.min.css}" rel="stylesheet" media="all"/>
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}" rel="stylesheet" media="all"/>
+    
+    <!-- Main CSS-->
+    <link href="css/theme.css" th:href="@{/css/theme.css}" rel="stylesheet" media="all"/>
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+       <!-- HEADER-->
+		<header th:replace="fragments/menu :: menu"></header>
+		<aside th:replace="fragments/menu :: sidebar"></aside>
+		<!-- END HEADER -->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+			<header th:replace="fragments/pageheader::pageHeader"> </header>
+			<!-- END HEADER DESKTOP-->
+			
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+							<div class="row">
+                            <div class="col-md-12">
+								<div class="headertitle">
+                                <h2>Add Produced Goods</h2>
+								</div>
+                            </div>
+						</div>
+                            <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                               
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-right">
+											<button class="au-btn au-btn-icon au-btn--blue au-btn--small" data-toggle="modal" data-target="#backmodal">
+											<i class="fa fa-arrow-circle-left"></i>Back</button>
+													
+									</div>
+                                    <div class="table-data__tool-right">
+                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#addModal">
+                                            <i class="zmdi zmdi-plus"></i>Add Ingredient</button>
+											
+                                    </div>
+                                </div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="card">
+										<div class="card-header">Details</div>
+										<div class="card-body">
+											<form action="#" th:action="@{/producedGoods/product/add}" th:object="${producedGoodDto}" method="POST">
+											<div class="row form-group">
+                                                 <div class="col-4">
+													 <label for="productName" class="control-label mb-1">Product Name</label>
+                                                    <select name="productName" id="productName" th:field="*{productId}"class="form-control">
+													<option value="" disabled selected>Select Product</option>
+													<option th:each= "product : ${productList}" th:value="${product.id}" th:text="${product.name}"></option>
+													</select>
+                                                </div>
+                                                <div class="col-4">
+													<label for="productContainer" class="control-label mb-1">Container</label>
+                                                    <select name="productContainer" id="productContainer" th:field="*{container}" class="form-control">
+																<option value="" disabled selected>Select Container</option>
+																<option value="Gallon">Gallon</option>
+																<option value="Half Gallon">Half Gallon</option>
+																<option value="Liter">Liter</option>
+																<option value="320ml">320 ml</option>
+																<option value="200g">200 g</option>
+														</select>
+                                                </div>
+												 <div class="col-4">
+													<label for="productQuantity" class="control-label mb-1">Quantity</label>
+													<input id="productQuantity" name="productQuantity" th:field="*{quantity}" type="number" class="form-control productnumber identified visa" value="" data-val="true"
+                                                    data-val-required="Please enter product category" data-val-productnumber="Please enter a valid card number"
+                                                    autocomplete="productnumber" required/>
+                                                </div>
+                                            </div>
+											<div class = "buttonright"><button type="submit" class="btn btn-primary">Save</button></div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+								<div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>Ingredient Name</th>
+												<th>Unit</th>
+												<th>Quantity</th>
+                                                <th>Action</th>
+                                            </tr>
+											
+                                        </thead>
+                                        <tbody>
+											<tr class="tr-shadow" th:each="ingredient : ${ingredientList}">
+															<td th:text="${ingredient.name}"></td>
+															<td th:text="${ingredient.unit}"></td>
+															<td th:text="${ingredient.quantity}"></td>
+															<td>
+																<div class="table-data-feature">
+																	<button class="item" data-toggle="modal" data-target="#editModal" title="Edit Produced">
+																		<i class="zmdi zmdi-edit"></i>
+																	</button>
+																	<button class="item" data-toggle="modal" data-target="#deletemodal" title="Delete Produced">
+																		<i class="zmdi zmdi-delete"></i>
+																	</button>
+																</div>
+															</td>
+											</tr>
+                                        </tbody>
+                                    </table>
+									
+									<div class = "nodata" th:if="${#lists.isEmpty(ingredientList)}"> NO INGREDIENT ADDED YET </div>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+	</div>
+	</div>
+			
+		<!-- Modal Delete -->
+			<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="smallmodalLabel">Delete Produced Item</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>
+								Are You sure you want to Delete?
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal small -->
+			
+			
+			<!-- Modal Add Ingredient -->
+			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="mediummodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					<form action="#"  th:action="@{/producedGoods/product/ingredient/add}" th:object="${ingredientDto}" method="post">
+						<div class="modal-header">
+							<h5 class="modal-title" id="mediummodalLabel">Add Ingredient Item</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+								<hr/>
+									<div class="row form-group">
+												<div class="col-4">
+													 <label for="addName" class="control-label mb-1">Ingredient Name</label>
+                                                    <select name="addName" id="addName" th:field="*{name}" class="form-control">
+														<option value="" disabled selected>Select Ingredient</option>
+														<option th:each= "rawMaterial : ${rawMaterialList}" th:value="${rawMaterial.name}" th:text="${rawMaterial.name}"></option>
+													</select>
+                                                </div>
+                                                <div class="col-4">
+													<label for="addUnit" class="control-label mb-1">Unit</label>
+                                                    <select name="addUnit" id="addUnit" th:field="*{unit}" class="form-control">
+																<option value="" disabled selected>Select Unit</option>
+														</select>
+                                                </div>
+												<div class="col-4">
+													<label for="addQuantity" class="control-label mb-1">Quantity</label>
+													<input id="addQuantity" name="addQuantity" th:field="*{quantity}" type="number" min="0" class="form-control" required/>
+                                                </div>
+									</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="submit" class="btn btn-primary">Confirm</button>
+						</div>
+					</form>
+					</div>
+				</div>
+			</div>
+			<!-- end modal update status -->
+			
+			<!-- Modal Edit Ingredient -->
+			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="mediummodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					<form action="#"  th:action="@{/producedGoods/ingredient/add}" th:object="${ingredientDto}" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mediummodalLabel">Edit Ingredient Item</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <hr/>
+                                    <div class="row form-group">
+                                                <div class="col-4">
+                                                     <label for="editName" class="control-label mb-1">Ingredient Name</label>
+                                                    <select name="editName" id="editName" th:field="*{name}" class="form-control">
+                                                        <option value = ""> Option </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="editUnit" class="control-label mb-1">Unit</label>
+                                                    <select name="editUnit" id="editUnit" th:field="*{unit}" class="form-control">
+                                                                <option value="">Pieces</option>
+                                                        </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="editQuantity" class="control-label mb-1">Quantity</label>
+                                                    <input id="editQuantity" name="editQuantity" th:field="*{quantity}" type="number" min="0" class="form-control" required/>
+                                                </div>
+                                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </form>
+					</div>
+				</div>
+			</div>
+			<!-- end modal update status -->
+			
+		
+		<!-- Modal Return -->
+			<div class="modal fade" id="backmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="smallmodalLabel">Go Back</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>
+								Are You sure you want to go back without saving?
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<a href = "addnewproduced.html" th:href="@{/producedGoods/product}"><button type="button" class="btn btn-primary">Confirm</button><a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal Return -->
+ <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"
+        th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"
+        th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"
+        th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js"
+        th:src="@{/vendor/slick/slick.min.js}">
+        
+    </script>
+    <script src="vendor/wow/wow.min.js" th:src="@{/vendor/wow/wow.min.js}"></script>
+    <script src="vendor/animsition/animsition.min.js"
+        th:src="@{/vendor/animsition/animsition.min.js}"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"
+        th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}">
+        
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"
+        th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"
+        th:src="@{/vendor/counter-up/jquery.counterup.min.js}"></script>
+    <script src="vendor/circle-progress/circle-progress.min.js"
+        th:src="@{/vendor/circle-progress/circle-progress.min.js}"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"
+        th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.js}"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"
+        th:src="@{/vendor/chartjs/Chart.bundle.min.js}"></script>
+    <script src="vendor/select2/select2.min.js"
+        th:src="@{/vendor/select2/select2.min.js}"></script>
+    <script src="vendor/calendarsmall.js"
+        th:src="@{/vendor/calendarsmall.js}"></script>
+    <!-- Main JS-->
+    <script src="js/main.js" th:src="@{/js/main.js}"></script>
+	<script src="external/selectUnit.js" th:src="@{/external/selectUnit.js}"></script>
+
+</body>
+
+</html>
+<!-- end document-->

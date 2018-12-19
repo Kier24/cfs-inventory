@@ -20,8 +20,8 @@ public class SalesLineItem {
 	private Sale sale;
 
 	@ManyToOne
-	@MapsId("productId")
-	private ProducedGood product;
+	@MapsId("producedGoodId")
+	private ProducedGood producedGood;
 
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;
@@ -29,28 +29,30 @@ public class SalesLineItem {
 	private int quantity;
 	private BigDecimal price;
 
-	SalesLineItem(Sale sale, ProducedGood product, int quantity) {
+	SalesLineItem(Sale sale, ProducedGood producedGood, int quantity) {
+		
 		if (sale == null) {
 			throw new IllegalArgumentException("Sale cannot be null");
 		}
-		if (product == null) {
+		if (producedGood == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
 		if (quantity <= 0) {
 			throw new IllegalArgumentException("Quantity must be greater than zero");
 		}
-		this.id = new SalesLineItemId(sale, product);
+		
+		this.id = new SalesLineItemId(sale, producedGood);
 		this.sale = sale;
-		this.product = product;
+		this.producedGood = producedGood;
 		this.quantity = quantity;
-		this.price=computePrice(product.getPrice(),quantity);
+		this.price=computePrice(producedGood.getPrice(),quantity);
 	}
 	
 	private BigDecimal computePrice(BigDecimal productPrice, int quantity) {
 		return productPrice.multiply(BigDecimal.valueOf(quantity));
 	}
-	public ProducedGood getProduct() {
-		return product;
+	public ProducedGood getProducedGood() {
+		return producedGood;
 	}
 
 	public int getQuantity() {

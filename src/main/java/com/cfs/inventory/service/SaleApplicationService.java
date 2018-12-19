@@ -2,6 +2,7 @@ package com.cfs.inventory.service;
 
 import static com.cfs.inventory.model.OrderType.PER_PIECE;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,14 @@ public class SaleApplicationService {
 	public List<CartItem> getCartItems() {
 		return new ArrayList<>(cartItemsList);
 	}
-
+	public BigDecimal getTotalAmount() {
+		BigDecimal totalAmount = BigDecimal.ZERO;
+		for(CartItem item : cartItemsList) {
+			totalAmount = totalAmount.add(item.getProducedGood().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
+		}
+		
+		return totalAmount;
+	}
 	@Transactional
 	public SaleConfirmation createNewOrder(String customerName, Delivery delivery) {
 
@@ -61,7 +69,7 @@ public class SaleApplicationService {
 		for (CartItem cartItem : cartItemsList) {
 			ProducedGood product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
 			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
-			sale.confirmOrder();
+			sale.computeTotalAmount();
 			product.deductStock(cartItem.getQuantity());
 		}
 
@@ -88,7 +96,7 @@ public class SaleApplicationService {
 	private void returnAllItems(Sale sale) {
 		List<SalesLineItem> items = sale.getItems();
 		for (SalesLineItem item : items) {
-			sale.returnItem(item.getProduct(), item.getQuantity());
+			sale.returnItem(item.getProducedGood(), item.getQuantity());
 		}
 	}
 }

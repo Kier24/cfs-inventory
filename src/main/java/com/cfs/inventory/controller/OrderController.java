@@ -1,6 +1,7 @@
 package com.cfs.inventory.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,26 @@ public class OrderController {
 		return new ModelAndView("order", "orderList", saleList);
 
 	}
+	
+	@GetMapping(value="/order/receipt/{orderId}")
+	public ModelAndView getReceipt(@PathVariable(name="orderId")Long orderId) {
+		Sale sale = saleRepository.getOne(orderId);
+
+		return new ModelAndView("receipt", "order", sale);
+	}
+
+	@GetMapping(value="/orders",params="orderDate,status")
+	public ModelAndView getOrdersByOrderDateAndStatus(@RequestParam(required=false) Date orderDate,@RequestParam(required=false) String status) {
+		
+		List<Sale> saleList = new ArrayList<>();
+		if(orderDate==null && status == null) {
+			saleList=saleRepository.findAll();
+		}else {
+			saleList = saleRepository.findOrderByOrderDate(orderDate.toLocalDate());
+		}
+		
+		return new ModelAndView("order","orderList",saleList);
+	}
 
 	@GetMapping(value = "/createOrder")
 	public ModelAndView createOrder() {
@@ -48,7 +69,10 @@ public class OrderController {
 
 	@GetMapping(value = "viewCart")
 	public ModelAndView viewCartItems() {
-		return new ModelAndView("orderCart", "cartItems", saleApplication.getCartItems());
+		ModelAndView mav = new ModelAndView("orderCart");
+		mav.addObject("cartItems", saleApplication.getCartItems());
+		mav.addObject("totalAmount", saleApplication.getTotalAmount().toString());
+		return mav;
 	}
 
 	@PostMapping(value = "/orders/delete")
@@ -88,10 +112,10 @@ public class OrderController {
 		saleApplication.changeStatus(orderId, status);
 		return "redirect:/orders";
 	}
-	
-	@GetMapping(value="/order/returnItem/{order.id}")
+
+	@GetMapping(value = "/order/returnItem/{order.id}")
 	public String returnItemFromOrder() {
-		
+
 		return "returnitem";
 	}
 }

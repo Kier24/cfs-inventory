@@ -288,6 +288,29 @@ section {
     padding-left: 300px;
 }
 
+/**Order**/
+
+.price{
+	float:right;
+	margin-top:10%;
+}
+
+/**No Data**/
+
+.nodata{
+	text-align:center;
+	padding:%;
+	background:#FFFFFF;
+	font-size:2em;
+	height:300px;
+}
+
+.buttonright{
+	float:right;
+}
+
+
+
 /**Receipt**/
 
 .receiptlogo{

@@ -5,9 +5,6 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
     <title>Create Order</title>
@@ -78,15 +75,17 @@
                                             <tr>
                                                 <th>Product Name</th>
                                                 <th>Container</th>
+                                                <th>Price</th>
                                                 <th>Stock</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:id="${product.id}" th:each= "product : ${productList}">
-                                                <td th:text="${product.name}"></td>
-                                                <td th:text="${product.containerType}"></td>
-                                                <td th:text="${product.quantity}"class="process"></td>
+                                            <tr th:id="${producedGood.id}" th:each= "producedGood : ${productList}">
+                                                <td th:text="${producedGood.product.name}"></td>
+                                                <td th:text="${producedGood.containerType.name}"></td>
+                                                <td th:text="${producedGood.price}"class="process"></td>
+                                                <td th:text="${producedGood.quantity}"></td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button id="btnAddToCart" class="item btnAddToCart" data-toggle="modal" data-target="#addToCartModal" title="Add to Cart">
@@ -104,7 +103,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2018. All rights reserved.</p>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +129,7 @@
 							</div>
 							<div class="modal-body">
 								<input type="hidden" id="productId" class="form-control">
-								<input type="text" id="productquantity" placeholder="Enter Quantity" class="form-control">
+								<input type="number" min=0 id="productquantity" placeholder="Enter Quantity" class="form-control">
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
