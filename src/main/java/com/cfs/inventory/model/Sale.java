@@ -27,8 +27,8 @@ public class Sale {
 	@GeneratedValue
 	private Long id;
 	@OneToMany(mappedBy = "sale", orphanRemoval = true, cascade = CascadeType.ALL)
-	@MapKey(name = "producedGood")
-	private Map<ProducedGood, SalesLineItem> items;
+	@MapKey(name = "product")
+	private Map<Product, SalesLineItem> items;
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
@@ -66,13 +66,13 @@ public class Sale {
 		return status;
 	}
 	
-	public void addToOrder(ProducedGood product,int quantity,OrderType orderType) {
+	public void addToOrder(Product product,int quantity,OrderType orderType) {
 		if(orderType.equals(OrderType.PER_PIECE)) {
 			setItemQuantity(product,quantity);
 		}
 		//TODO: get equivalent quantity per box according to container
 	}
-	private void setItemQuantity(ProducedGood product, int quantity) {
+	private void setItemQuantity(Product product, int quantity) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
@@ -107,29 +107,29 @@ public class Sale {
 		
 	}
 
-	public void removeItem(ProducedGood product) {
+	public void removeItem(Product product) {
 		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
 		items.remove(product);
 	}
 	
-	public void returnItem(ProducedGood producedGood,int quantity) {
-		if (producedGood == null) {
+	public void returnItem(Product product,int quantity) {
+		if (product == null) {
 			throw new IllegalArgumentException("Product cannot be null");
 		}
-		if (producedGood.getId() == null) {
+		if (product.getId() == null) {
 			throw new IllegalArgumentException("Product ID cannot be null");
 		}
 		if (quantity < 0) {
 			throw new IllegalArgumentException("Quantity cannot be negative");
 		}
-		if(items.get(producedGood)==null) {
+		if(items.get(product)==null) {
 			throw new IllegalStateException("Product to return does not exist from order");
 		}else {
-			SalesLineItem item = items.get(producedGood);
+			SalesLineItem item = items.get(product);
 			if(item.getQuantity()<=quantity) {
-				removeItem(producedGood);
+				removeItem(product);
 			}else {
 				item.setQuantity(item.getQuantity()-quantity);
 			}

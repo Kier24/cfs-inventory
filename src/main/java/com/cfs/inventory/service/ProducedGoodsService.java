@@ -11,7 +11,6 @@ import com.cfs.inventory.model.ContainerTypeRepository;
 import com.cfs.inventory.model.Ingredient;
 import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
-import com.cfs.inventory.model.Product;
 import com.cfs.inventory.model.ProductRepository;
 import com.cfs.inventory.model.RawMaterial;
 import com.cfs.inventory.model.RawMaterialRepository;

@@ -96,7 +96,7 @@ public class SaleApplicationService {
 	private void returnAllItems(Sale sale) {
 		List<SalesLineItem> items = sale.getItems();
 		for (SalesLineItem item : items) {
-			sale.returnItem(item.getProducedGood(), item.getQuantity());
+			sale.returnItem(item.getProduct(), item.getQuantity());
 		}
 	}
 }

@@ -1,15 +1,15 @@
 package com.cfs.inventory.model;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
-
 import lombok.Getter;
+
+import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
 
 @Embeddable
 @Getter
 public class Ingredient {
 	
-	@ManyToOne
+	@OneToMany
 	private RawMaterial rawMaterial;
 	private int quantity;
 

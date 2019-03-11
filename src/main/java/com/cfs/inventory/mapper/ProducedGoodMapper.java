@@ -1,6 +1,5 @@
 package com.cfs.inventory.mapper;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import com.cfs.inventory.model.ContainerType;
 import com.cfs.inventory.model.ContainerTypeRepository;
 import com.cfs.inventory.model.Ingredient;
 import com.cfs.inventory.model.ProducedGood;
-import com.cfs.inventory.model.Product;
 import com.cfs.inventory.model.RawMaterial;
 import com.cfs.inventory.model.RawMaterialRepository;
 

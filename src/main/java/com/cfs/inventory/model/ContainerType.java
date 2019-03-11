@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ContainerType {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

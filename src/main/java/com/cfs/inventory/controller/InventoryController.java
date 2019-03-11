@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cfs.inventory.dto.ProducedGoodDto;
 import com.cfs.inventory.dto.RawMaterialDto;
-import com.cfs.inventory.model.ContainerType;
-import com.cfs.inventory.model.ContainerTypeRepository;
 import com.cfs.inventory.model.ProducedGood;
 import com.cfs.inventory.model.ProducedGoodRepository;
 import com.cfs.inventory.model.RawMaterial;
