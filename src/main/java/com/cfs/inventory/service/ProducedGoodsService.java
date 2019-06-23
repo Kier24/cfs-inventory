@@ -2,18 +2,10 @@ package com.cfs.inventory.service;
 
 import java.util.List;
 
+import com.cfs.inventory.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.cfs.inventory.model.ContainerType;
-import com.cfs.inventory.model.ContainerTypeRepository;
-import com.cfs.inventory.model.Ingredient;
-import com.cfs.inventory.model.ProducedGood;
-import com.cfs.inventory.model.ProducedGoodRepository;
-import com.cfs.inventory.model.ProductRepository;
-import com.cfs.inventory.model.RawMaterial;
-import com.cfs.inventory.model.RawMaterialRepository;
 
 @Service
 public class ProducedGoodsService {
@@ -26,20 +18,11 @@ public class ProducedGoodsService {
 	@Autowired
 	private RawMaterialRepository rawMaterialRepository;
 	@Autowired
-	private ContainerTypeRepository containerTypeRepository;
+	private ContainerRepository containerRepository;
 	
 	@Transactional
-	public void saveAll(List<ProducedGood> producedGoodList) {
-		for(ProducedGood good :producedGoodList) {
-			Product product =productRepository.getOne(good.getProduct().getId());
-			ContainerType container = containerTypeRepository.getOne(good.getContainerType().getId());
-			for(Ingredient ingredient:good.getIngredientList()) {
-				RawMaterial material = rawMaterialRepository.getOne(ingredient.getRawMaterial().getId());
-				material.deductStock(ingredient.getQuantity());
-			}
-			good.setProduct(product);
-			good.setContainerType(container);
-		}
-		producedGoodRepository.saveAll(producedGoodList);
+	public void saveAll(List<Product> products) {
+		ProducedGood producedGood = ProducedGood.builder().build();
+		producedGoodRepository.save(producedGood);
 	}
 }

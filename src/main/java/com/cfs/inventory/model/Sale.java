@@ -32,7 +32,6 @@ public class Sale {
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate orderDate;
 	private String customerName;
-	private BigDecimal totalPrice=BigDecimal.ZERO;
 	@Embedded
 	private Delivery delivery;
 	@Enumerated(EnumType.STRING)
@@ -97,15 +96,7 @@ public class Sale {
 			}
 		}
 	}
-	
-	public BigDecimal computeTotalAmount() {
-		for(SalesLineItem lineItem: items.values()) {
-			System.out.println("LINE ITEM: "+lineItem.getPrice());
-			totalPrice=totalPrice.add(lineItem.getPrice());
-		}
-		return totalPrice;
-		
-	}
+
 
 	public void removeItem(Product product) {
 		if (product == null) {
@@ -147,7 +138,7 @@ public class Sale {
 	}
 
 	public List<SalesLineItem> getItems() {
-		return new ArrayList<SalesLineItem>(items.values());
+		return new ArrayList<>(items.values());
 	}
 
 	public LocalDate getOrderDate() {
@@ -157,10 +148,7 @@ public class Sale {
 	public Delivery getDelivery() {
 		return delivery;
 	}
-	
-	public BigDecimal getTotalPrice() {
-		return totalPrice;
-	}
+
 
 	@Override
 	public int hashCode() {

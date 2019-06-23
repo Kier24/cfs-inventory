@@ -28,7 +28,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	@Query("Select coalesce(sum(sl.quantity),0) as total from Sale s join s.items sl where s.status = 'DELIVERED'")
 	Long getTotalDeliveredItems();
 	
-	@Query("Select coalesce(sum(s.totalPrice),0) as total from Sale s where s.totalPrice is not null")
-	BigDecimal getTotalEarnings();
+/*	@Query("Select coalesce(sum(s.totalPrice),0) as total from Sale s where s.totalPrice is not null")
+	BigDecimal getTotalEarnings();*/
 	
 }

@@ -2,101 +2,67 @@ package com.cfs.inventory.service;
 
 import static com.cfs.inventory.model.OrderType.PER_PIECE;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.cfs.inventory.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.cfs.inventory.model.Delivery;
-import com.cfs.inventory.model.ProducedGood;
-import com.cfs.inventory.model.ProducedGoodRepository;
-import com.cfs.inventory.model.Sale;
-import com.cfs.inventory.model.SaleRepository;
-import com.cfs.inventory.model.SalesLineItem;
-import com.cfs.inventory.model.Status;
 
 @Service
 public class SaleApplicationService {
 
-	private final SaleRepository saleRepository;
-	private final ProducedGoodRepository producedGoodRepository;
-	private final List<CartItem> cartItemsList = new ArrayList<>();
+    private final SaleRepository saleRepository;
+    private final ProductRepository productRepository;
 
-	@Autowired
-	public SaleApplicationService(SaleRepository saleRepository, ProducedGoodRepository producedGoodRepository) {
-		this.saleRepository = saleRepository;
-		this.producedGoodRepository = producedGoodRepository;
-	}
+    @Autowired
+    public SaleApplicationService(SaleRepository saleRepository, ProductRepository productRepository) {
+        this.saleRepository = saleRepository;
+        this.productRepository = productRepository;
+    }
 
-	// TODO: Plan if it should be List or Map. Possible conflict if user want to
-	// remove a certain product or edit quantity;
-	public void enterItem(Long id, int quantity) {
-		if (quantity < 0) {
-			throw new IllegalArgumentException("Quantity must be greather than zero but was " + quantity);
-		}
-		ProducedGood item = producedGoodRepository.getOne(id);
-		if (item.getQuantity() < quantity) {
-			throw new IllegalStateException("Input quantity cannot be greater than stock quantity.");
-		}
-		cartItemsList.add(new CartItem(item, quantity));
+    private void enterItem(Sale sale, List<CartItem> cartItems) {
+        cartItems.forEach(cartItem -> {
+            sale.addToOrder(cartItem.getProduct(), cartItem.getQuantity(), PER_PIECE);
+            Product product = productRepository.getOne(cartItem.getProduct().getId());
+            product.deductStock(cartItem.getQuantity());
+        });
 
-	}
+    }
 
-	public List<CartItem> getCartItems() {
-		return new ArrayList<>(cartItemsList);
-	}
-	public BigDecimal getTotalAmount() {
-		BigDecimal totalAmount = BigDecimal.ZERO;
-		for(CartItem item : cartItemsList) {
-			totalAmount = totalAmount.add(item.getProducedGood().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
-		}
-		
-		return totalAmount;
-	}
-	@Transactional
-	public SaleConfirmation createNewOrder(String customerName, Delivery delivery) {
+    @Transactional
+    public SaleConfirmation createNewOrder(String customerName, Delivery delivery, List<CartItem> cartItems) {
+        if (cartItems.size() <= 0) {
+            throw new IllegalStateException("Cannot create new order with empty cart");
+        }
 
-		if (cartItemsList.size() <= 0) {
-			throw new IllegalStateException("Cannot create new order with empty cart");
-		}
+        Sale sale = new Sale(customerName, delivery);
+        enterItem(sale, cartItems);
+        saleRepository.save(sale);
+        SaleConfirmation confirmation = new SaleConfirmation(sale.getItems(), sale.getCustomerName());
 
-		Sale sale = new Sale(customerName, delivery);
+        return confirmation;
 
-		for (CartItem cartItem : cartItemsList) {
-			ProducedGood product = producedGoodRepository.getOne(cartItem.getProducedGood().getId());
-			sale.addToOrder(product, cartItem.getQuantity(),PER_PIECE);
-			sale.computeTotalAmount();
-			product.deductStock(cartItem.getQuantity());
-		}
+    }
 
-		saleRepository.save(sale);
-		SaleConfirmation confirmation = new SaleConfirmation(sale.getItems(), sale.getCustomerName());
-		cartItemsList.clear();
+    public void changeStatus(Long orderId, Status status) {
 
-		return confirmation;
+        Sale sale = saleRepository.getOne(orderId);
 
-	}
+        if (status.equals(Status.CANCELLED)) {
+            returnAllItems(sale);
+        }
+        sale.setStatus(status);
+        saleRepository.save(sale);
 
-	public void changeStatus(Long orderId, Status status) {
+    }
 
-		Sale sale = saleRepository.getOne(orderId);
-
-		if (status.equals(Status.CANCELLED)) {
-			returnAllItems(sale);
-		}
-		sale.setStatus(status);
-		saleRepository.save(sale);
-
-	}
-
-	private void returnAllItems(Sale sale) {
-		List<SalesLineItem> items = sale.getItems();
-		for (SalesLineItem item : items) {
-			sale.returnItem(item.getProduct(), item.getQuantity());
-		}
-	}
+    private void returnAllItems(Sale sale) {
+        List<SalesLineItem> items = sale.getItems();
+        for (SalesLineItem item : items) {
+            sale.returnItem(item.getProduct(), item.getQuantity());
+        }
+    }
 }

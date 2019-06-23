@@ -3,41 +3,29 @@ package com.cfs.inventory.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cfs.inventory.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cfs.inventory.dto.IngredientDto;
 import com.cfs.inventory.dto.ProducedGoodDto;
 import com.cfs.inventory.dto.ProductDto;
-import com.cfs.inventory.model.ContainerType;
-import com.cfs.inventory.model.ContainerTypeRepository;
-import com.cfs.inventory.model.Ingredient;
-import com.cfs.inventory.model.ProducedGood;
-import com.cfs.inventory.model.RawMaterial;
-import com.cfs.inventory.model.RawMaterialRepository;
 
 @Component
 public class ProducedGoodMapper {
 
 	@Autowired
-	private ContainerTypeRepository containerTypeRepository;
+	private ContainerRepository containerRepository;
 	@Autowired
 	private RawMaterialRepository rawMaterialRepository;
 
-	public ProducedGood map(ProducedGoodDto producedGoodDto) {
-
-		Product product = mapToProductFromDto(producedGoodDto.getProduct());
-		List<Ingredient> ingredientList = mapToIngredientListFromDto(producedGoodDto.getIngredientList());
-
-		return ProducedGood.builder().product(product).ingredientList(ingredientList)
-				.containerType(retrieveContainerTypeFromId(producedGoodDto.getContainer()))
-				.quantity(producedGoodDto.getQuantity()).criticalLevel(producedGoodDto.getCriticalLevel())
-				.encoder(producedGoodDto.getEncoder()).dateCreated(producedGoodDto.getDateCreated()).build();
+	public ProducedGood map(ProducedGoodDto producedGoodDto,ProductDto productDto, IngredientDto ingredientDto) {
+		return  ProducedGood.builder().build();
 
 	}
 
-	private ContainerType retrieveContainerTypeFromId(String container) {
-		return containerTypeRepository.getContainerTypeByName("Gallon");
+	private Container retrieveContainerTypeFromId(String container) {
+		return containerRepository.getContainerByName("Gallon");
 	}
 
 	private List<Ingredient> mapToIngredientListFromDto(List<IngredientDto> ingredientListDto) {
@@ -56,6 +44,6 @@ public class ProducedGoodMapper {
 	}
 
 	private Product mapToProductFromDto(ProductDto productDto) {
-		return new Product(productDto.getId(),productDto.getName(), productDto.getPrice());
+		return new Product(productDto.getId(),productDto.getName(), "",new Container(),10,0);
 	}
 }

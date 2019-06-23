@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class ContainerType {
+public class Container {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +34,7 @@ public class ContainerType {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ContainerType other = (ContainerType) obj;
+		Container other = (Container) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -45,7 +45,6 @@ public class SalesLineItem {
 		this.sale = sale;
 		this.product = product;
 		this.quantity = quantity;
-		this.price=computePrice(this.product.getPrice(),quantity);
 	}
 	
 	private BigDecimal computePrice(BigDecimal productPrice, int quantity) {

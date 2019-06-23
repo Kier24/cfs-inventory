@@ -19,27 +19,19 @@ import lombok.Setter;
 @Setter
 @Builder
 @AllArgsConstructor
-public class Product {
+public class ProducedGood {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@OneToMany(cascade = CascadeType.ALL)
-	private Product product;
-	@ElementCollection
-	private List<Ingredient> ingredientList;
+	private List<Product> product;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Ingredient> ingredients;
 	@Convert(converter = LocalDateAttributeConverter.class)
 	private LocalDate dateCreated;
 	private String encoder;
 
-	public BigDecimal getPrice() {
-		return product.getPrice();
-	}
-	
-	public String getProductName() {
-		return product.getName();
-	}
-	
 	protected ProducedGood() {
 		
 	}

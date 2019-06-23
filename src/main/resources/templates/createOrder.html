@@ -81,11 +81,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:id="${producedGood.id}" th:each= "producedGood : ${productList}">
-                                                <td th:text="${producedGood.product.name}"></td>
-                                                <td th:text="${producedGood.containerType.name}"></td>
-                                                <td th:text="${producedGood.price}"class="process"></td>
-                                                <td th:text="${producedGood.quantity}"></td>
+                                            <tr th:id="${product.id}" th:each= "product : ${productList}">
+                                                <td th:text="${product.name}"></td>
+                                                <td th:text="${product.container.name}"></td>
+                                                <td th:text="${product.quantity}"></td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button id="btnAddToCart" class="item btnAddToCart" data-toggle="modal" data-target="#addToCartModal" title="Add to Cart">

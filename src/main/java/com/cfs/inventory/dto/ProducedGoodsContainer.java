@@ -27,7 +27,6 @@ public class ProducedGoodsContainer {
 		ProductDto productDto = new ProductDto();
 		productDto.setId(product.getId());
 		productDto.setName(product.getName());
-		productDto.setPrice(product.getPrice());
 		producedGoodDto.setProduct(productDto);
 		producedGoodDtoList.add(producedGoodDto);
 	}

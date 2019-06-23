@@ -4,27 +4,22 @@ import java.math.BigDecimal;
 
 import com.cfs.inventory.model.ProducedGood;
 
+import com.cfs.inventory.model.Product;
 import lombok.Getter;
 
 @Getter
 public class CartItem {
 
-	private ProducedGood producedGood;
-	private String name;
-	private String containerType;
-	private int quantity;
-	private BigDecimal subTotal= BigDecimal.ZERO;
+    private Product product;
+    private String name;
+    private String containerType;
+    private int quantity;
 
-	public CartItem(ProducedGood producedGood, int quantity) {
-		this.producedGood = producedGood;
-		this.name=producedGood.getProductName();
-		this.containerType=producedGood.getContainerType().getName();
-		this.quantity = quantity;
-		computeSubTotal(producedGood);
-	}
-	
-	private void computeSubTotal(ProducedGood producedGood) {
-		subTotal=producedGood.getPrice().multiply(BigDecimal.valueOf(quantity));
-	}
-	
+    public CartItem(Product product, int quantity) {
+        this.product = product;
+        this.name = product.getName();
+        this.containerType = product.getContainer().getName();
+        this.quantity = quantity;
+    }
+
 }

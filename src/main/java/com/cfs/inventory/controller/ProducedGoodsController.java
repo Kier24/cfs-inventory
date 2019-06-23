@@ -70,11 +70,8 @@ public class ProducedGoodsController {
 		List<ProducedGoodDto> producedGoodDtoList = producedGoodscontainer.getProducedGoodDtoList();
 		List<ProducedGood> producedGoodList = new ArrayList<>();
 		for (ProducedGoodDto producedGoodDto : producedGoodDtoList) {
-			producedGoodDto.setEncoder(encoder);
-			producedGoodDto.setDateCreated(productionDate.toLocalDate());
-			producedGoodList.add(mapper.map(producedGoodDto));
+
 		}
-		produceGoodsService.saveAll(producedGoodList);
 		producedGoodscontainer.clear();
 		return "redirect:/producedGoods/";
 	}
@@ -103,7 +100,7 @@ public class ProducedGoodsController {
 	@GetMapping("/producedGoods/date/{productionDate}/encoder/{encoder}")
 	public List<ProducedGood> getProducedGoodByDateAndEncoder(@PathVariable("productionDate") Date productionDate,
 			@PathVariable("encoder") String encoder) {
-		return producedGoodRepository.getProducedGoodBydateCreatedAndEncoder(productionDate.toLocalDate(), encoder);
+		return producedGoodRepository.getProducedGoodByDateCreatedAndEncoder(productionDate.toLocalDate(), encoder);
 	}
 
 }
